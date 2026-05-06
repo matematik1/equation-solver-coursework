@@ -1,0 +1,63 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:dg="clr-namespace:Avalonia.Controls;assembly=Avalonia.Controls.DataGrid"
+        xmlns:oxy="http://oxyplot.org/avalonia"
+        x:Class="EquationSolver.Views.MainWindow"
+        Title="Розв'язання нелінійних рівнянь" Width="1000" Height="700">
+
+    <Grid ColumnDefinitions="300, *" RowDefinitions="*, Auto">
+        <!-- Left Panel: Inputs -->
+        <Border Grid.Column="0" Grid.RowSpan="2" Padding="15">
+            <StackPanel Spacing="10">
+                <TextBlock Text="Налаштування" FontWeight="Bold" FontSize="18"/>
+
+                <TextBlock Text="Функція f(x):"/>
+                <TextBox Text="{Binding Equation.Expression}"/>
+
+                <TextBlock Text="Інтервал [a, b]:"/>
+                <Grid ColumnDefinitions="*,10,*">
+                    <TextBox Grid.Column="0" Text="{Binding Equation.A}" />
+                    <TextBlock Grid.Column="1" Text="-" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                    <TextBox Grid.Column="2" Text="{Binding Equation.B}" />
+                </Grid>
+
+                <TextBlock Text="Початкове наближення:"/>
+                <TextBox Text="{Binding Equation.InitialGuess}"/>
+
+                <TextBlock Text="Точність (Epsilon):"/>
+                <TextBox Text="{Binding Equation.Epsilon}" />
+
+                <TextBlock Text="Макс. ітерацій:"/>
+                <TextBox Text="{Binding Equation.MaxIterations}" />
+
+                <TextBlock Text="Метод розв'язання:"/>
+                <ComboBox ItemsSource="{Binding AvailableMethods}" SelectedItem="{Binding SelectedMethod}" HorizontalAlignment="Stretch" />
+
+                <Button Content="Розв'язати" Command="{Binding SolveCommand}" HorizontalAlignment="Stretch" HorizontalContentAlignment="Center"/>
+                <Button Content="Скасувати" Command="{Binding CancelCommand}" HorizontalAlignment="Stretch" HorizontalContentAlignment="Center"/>
+                <Button Content="Зберегти результати" Command="{Binding SaveCommand}" HorizontalAlignment="Stretch" HorizontalContentAlignment="Center"/>
+                
+                <TextBlock Text="{Binding ErrorMessage}" Foreground="Red" TextWrapping="Wrap" IsVisible="{Binding IsErrorVisible}"/>
+            </StackPanel>
+        </Border>
+
+        <!-- Right Panel Top: Graph -->
+        <Border Grid.Column="1" Grid.Row="0" Margin="10">
+            <oxy:PlotView Model="{Binding PlotModel}" />
+        </Border>
+
+        <!-- Right Panel Bottom: Results -->
+        <Grid Grid.Column="1" Grid.Row="1" Margin="10,0,10,10" RowDefinitions="Auto, *">
+            <ProgressBar Grid.Row="0" IsIndeterminate="True" IsVisible="{Binding IsBusy}"/>
+            
+            <dg:DataGrid Grid.Row="1" ItemsSource="{Binding Iterations}" IsVisible="{Binding IsNotComparisonMode}" AutoGenerateColumns="False" IsReadOnly="True" MinHeight="200">
+                <dg:DataGrid.Columns>
+                    <dg:DataGridTextColumn Header="№" Binding="{Binding IterationNumber}" />
+                    <dg:DataGridTextColumn Header="Xn" Binding="{Binding Xn}" />
+                    <dg:DataGridTextColumn Header="f(Xn)" Binding="{Binding FXn}" />
+                    <dg:DataGridTextColumn Header="Похибка" Binding="{Binding Error}" />
+                </dg:DataGrid.Columns>
+            </dg:DataGrid>
+        </Grid>
+    </Grid>
+</Window>

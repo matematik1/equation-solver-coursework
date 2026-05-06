@@ -1,0 +1,80 @@
+using System;
+using System.Collections.Generic;
+using System.Diagnostics;
+using System.Threading;
+using System.Threading.Tasks;
+using EquationSolver.Models;
+using EquationSolver.Services.Parsers;
+
+namespace EquationSolver.Services.Solvers
+{
+    public class SecantSolver : IEquationSolver
+    {
+        private readonly IFunctionParser _parser;
+
+        public SecantSolver(IFunctionParser parser)
+        {
+            _parser = parser;
+        }
+
+        public async Task<ResultModel> SolveAsync(EquationModel equation, CancellationToken cancellationToken)
+        {
+            return await Task.Run(() =>
+            {
+                var stopwatch = Stopwatch.StartNew();
+                var iterations = new List<IterationData>();
+
+                double x0 = equation.A; // First guess
+                double x1 = equation.B; // Second guess
+                
+                // For secant method, we could use A and B as initial guesses,
+                // or use InitialGuess and another point. Let's use A and B.
+
+                int iterationCount = 0;
+                double error = double.MaxValue;
+
+                double fx0 = _parser.Evaluate(equation.Expression, x0);
+                double fx1 = _parser.Evaluate(equation.Expression, x1);
+
+                while (error > equation.Epsilon && iterationCount < equation.MaxIterations)
+                {
+                    cancellationToken.ThrowIfCancellationRequested();
+                    iterationCount++;
+
+                    double denominator = fx1 - fx0;
+                    if (Math.Abs(denominator) < 1e-12)
+                    {
+                        return ResultModel.Error($"Ділення на нуль на ітерації {iterationCount}. Метод розбігається.");
+                    }
+
+                    double x2 = x1 - fx1 * (x1 - x0) / denominator;
+                    error = Math.Abs(x2 - x1);
+
+                    double fx2 = _parser.Evaluate(equation.Expression, x2);
+
+                    iterations.Add(new IterationData
+                    {
+                        IterationNumber = iterationCount,
+                        Xn = x2,
+                        FXn = fx2,
+                        Error = error
+                    });
+
+                    x0 = x1;
+                    fx0 = fx1;
+                    x1 = x2;
+                    fx1 = fx2;
+                }
+
+                stopwatch.Stop();
+
+                if (iterationCount >= equation.MaxIterations)
+                {
+                    return ResultModel.Error("Перевищено максимальну кількість ітерацій.");
+                }
+
+                return ResultModel.Success(x1, iterations, stopwatch.ElapsedMilliseconds, iterationCount);
+            }, cancellationToken);
+        }
+    }
+}
