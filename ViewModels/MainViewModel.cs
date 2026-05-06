@@ -23,19 +23,16 @@ namespace EquationSolver.ViewModels
         private CancellationTokenSource? _cancellationTokenSource;
 
         [ObservableProperty]
-        private EquationModel _equation = new EquationModel { Expression = "x^3 - x - 2", A = 1, B = 2, InitialGuess = 1.5, Epsilon = 1e-5, MaxIterations = 100 };
+        private EquationModel _equation = new EquationModel { Expression = "x^3 - x - 2", A = "1", B = "2", InitialGuess = "1.5", Epsilon = "1e-5", MaxIterations = "100" };
 
         [ObservableProperty]
-        private ObservableCollection<string> _availableMethods = new() { "Бісекція", "Ньютон", "Січні", "Порівняння всіх" };
+        private ObservableCollection<string> _availableMethods = new() { "Бісекція", "Ньютон", "Січні" };
 
         [ObservableProperty]
         private string _selectedMethod = "Бісекція";
 
         [ObservableProperty]
         private ObservableCollection<IterationData> _iterations = new();
-
-        [ObservableProperty]
-        private ObservableCollection<ComparisonResult> _comparisonResults = new();
 
         [ObservableProperty]
         private ResultModel? _currentResult;
@@ -51,12 +48,14 @@ namespace EquationSolver.ViewModels
 
         [ObservableProperty]
         private bool _isErrorVisible;
-        
-        [ObservableProperty]
-        [NotifyPropertyChangedFor(nameof(IsNotComparisonMode))]
-        private bool _isComparisonMode;
 
-        public bool IsNotComparisonMode => !IsComparisonMode;
+        [ObservableProperty]
+        private string _rootCoordinates = string.Empty;
+
+        [ObservableProperty]
+        private bool _isRootVisible;
+
+        public bool IsNewtonMethod => SelectedMethod == "Ньютон";
 
         // An action to request a file save path from the View (handled in code-behind)
         public Func<Task<string?>>? RequestSaveFilePathAsync { get; set; }
@@ -85,22 +84,33 @@ namespace EquationSolver.ViewModels
             PlotModel.Axes.Add(new LinearAxis { Position = AxisPosition.Left, Title = "Y", MajorGridlineStyle = LineStyle.Solid, MinorGridlineStyle = LineStyle.Dot });
         }
 
+        partial void OnSelectedMethodChanged(string value)
+        {
+            OnPropertyChanged(nameof(IsNewtonMethod));
+        }
+
+        private string FormatValue(double value, string epsilonStr)
+        {
+            int decimals = 5; // default
+            double eps = Validator.ParseDouble(epsilonStr, out bool epsSuccess);
+            if (epsSuccess && eps > 0 && eps < 1)
+            {
+                decimals = (int)Math.Ceiling(Math.Abs(Math.Log10(eps)));
+                if (decimals > 15) decimals = 15;
+            }
+            return value.ToString($"F{decimals}");
+        }
+
         [RelayCommand]
         private async Task SolveAsync()
         {
             ClearErrors();
             
-            if (SelectedMethod == "Порівняння всіх")
-            {
-                await CompareAllAsync();
-                return;
-            }
-
-            IsComparisonMode = false;
             var validationError = Validator.ValidateEquationModel(Equation, SelectedMethod, _parser);
             if (validationError != null)
             {
                 ShowError(validationError);
+                IsRootVisible = false;
                 return;
             }
 
@@ -113,18 +123,29 @@ namespace EquationSolver.ViewModels
                 var solver = _solverFactory.CreateSolver(SelectedMethod);
                 CurrentResult = await solver.SolveAsync(Equation, _cancellationTokenSource.Token);
 
+                double a = Validator.ParseDouble(Equation.A, out _);
+                double b = Validator.ParseDouble(Equation.B, out _);
+
                 if (CurrentResult.IsSuccess)
                 {
                     foreach (var iter in CurrentResult.Iterations)
                     {
                         Iterations.Add(iter);
                     }
-                    UpdatePlot(Equation.Expression, Equation.A, Equation.B, CurrentResult.Root!.Value);
+                    
+                    IsRootVisible = true;
+                    string formattedX = FormatValue(CurrentResult.Root!.Value, Equation.Epsilon);
+                    double rootY = _parser.Evaluate(Equation.Expression, CurrentResult.Root.Value);
+                    string formattedY = FormatValue(rootY, Equation.Epsilon);
+                    RootCoordinates = $"X = {formattedX}\nf(X) = {formattedY}";
+
+                    UpdatePlot(Equation.Expression, a, b, CurrentResult.Root!.Value);
                 }
                 else
                 {
+                    IsRootVisible = false;
                     ShowError(CurrentResult.ErrorMessage ?? "Невідома помилка під час обчислення.");
-                    UpdatePlot(Equation.Expression, Equation.A, Equation.B, null);
+                    UpdatePlot(Equation.Expression, a, b, null);
                 }
             }
             catch (OperationCanceledException)
@@ -143,62 +164,6 @@ namespace EquationSolver.ViewModels
             }
         }
 
-        private async Task CompareAllAsync()
-        {
-            IsComparisonMode = true;
-            IsBusy = true;
-            ComparisonResults.Clear();
-            _cancellationTokenSource = new CancellationTokenSource();
-
-            string[] methods = { "Бісекція", "Ньютон", "Січні" };
-
-            try
-            {
-                foreach (var method in methods)
-                {
-                    var validationError = Validator.ValidateEquationModel(Equation, method, _parser);
-                    if (validationError != null)
-                    {
-                        ComparisonResults.Add(new ComparisonResult
-                        {
-                            MethodName = method,
-                            IsSuccess = false,
-                            ErrorMessage = validationError
-                        });
-                        continue;
-                    }
-
-                    var solver = _solverFactory.CreateSolver(method);
-                    var result = await solver.SolveAsync(Equation, _cancellationTokenSource.Token);
-
-                    ComparisonResults.Add(new ComparisonResult
-                    {
-                        MethodName = method,
-                        IterationsCount = result.TotalIterations,
-                        ElapsedMilliseconds = result.ElapsedMilliseconds,
-                        Root = result.Root,
-                        IsSuccess = result.IsSuccess,
-                        ErrorMessage = result.ErrorMessage
-                    });
-                }
-                UpdatePlot(Equation.Expression, Equation.A, Equation.B, null); // Just draw the function
-            }
-            catch (OperationCanceledException)
-            {
-                ShowError("Порівняння скасовано користувачем.");
-            }
-            catch (Exception ex)
-            {
-                ShowError($"Помилка: {ex.Message}");
-            }
-            finally
-            {
-                IsBusy = false;
-                _cancellationTokenSource.Dispose();
-                _cancellationTokenSource = null;
-            }
-        }
-
         [RelayCommand]
         private void Cancel()
         {
@@ -208,7 +173,7 @@ namespace EquationSolver.ViewModels
         [RelayCommand]
         private async Task SaveAsync()
         {
-            if (CurrentResult == null || !CurrentResult.IsSuccess || IsComparisonMode)
+            if (CurrentResult == null || !CurrentResult.IsSuccess)
             {
                 ShowError("Немає успішних результатів одного методу для збереження.");
                 return;
@@ -250,8 +215,8 @@ namespace EquationSolver.ViewModels
             };
 
             // Expand interval slightly for better visual
-            double minX = a - Math.Abs(b - a) * 0.2;
-            double maxX = b + Math.Abs(b - a) * 0.2;
+            double minX = Math.Min(a, b) - Math.Abs(b - a) * 0.2;
+            double maxX = Math.Max(a, b) + Math.Abs(b - a) * 0.2;
             
             // If the user interval is too small or inverted
             if (minX >= maxX)
@@ -308,6 +273,7 @@ namespace EquationSolver.ViewModels
                 }
             }
 
+            PlotModel.ResetAllAxes(); // IMPORTANT: resets scaling to fit the new data
             PlotModel.InvalidatePlot(true);
         }
     }

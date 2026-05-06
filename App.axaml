@@ -1,9 +1,18 @@
 <Application xmlns="https://github.com/avaloniaui"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:oxy="clr-namespace:OxyPlot.Avalonia;assembly=OxyPlot.Avalonia"
              x:Class="EquationSolver.App">
     <Application.Styles>
         <FluentTheme />
         <StyleInclude Source="avares://Avalonia.Controls.DataGrid/Themes/Fluent.xaml"/>
         <StyleInclude Source="avares://OxyPlot.Avalonia/Themes/Default.axaml"/>
+        <Style Selector="oxy|TrackerControl">
+            <Setter Property="Background" Value="#000000"/>
+            <Setter Property="BorderBrush" Value="#FF758888"/>
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="Foreground" Value="#FFFFFF"/>
+            <Setter Property="FontSize" Value="12"/>
+            <Setter Property="Padding" Value="8,4"/>
+        </Style>
     </Application.Styles>
 </Application>

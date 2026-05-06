@@ -5,6 +5,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using EquationSolver.Models;
 using EquationSolver.Services.Parsers;
+using EquationSolver.Utils;
 
 namespace EquationSolver.Services.Solvers
 {
@@ -24,8 +25,10 @@ namespace EquationSolver.Services.Solvers
                 var stopwatch = Stopwatch.StartNew();
                 var iterations = new List<IterationData>();
 
-                double x0 = equation.A; // First guess
-                double x1 = equation.B; // Second guess
+                double x0 = Validator.ParseDouble(equation.A, out _); // First guess
+                double x1 = Validator.ParseDouble(equation.B, out _); // Second guess
+                double epsilon = Validator.ParseDouble(equation.Epsilon, out _);
+                int maxIterations = Validator.ParseInt(equation.MaxIterations, out _);
                 
                 // For secant method, we could use A and B as initial guesses,
                 // or use InitialGuess and another point. Let's use A and B.
@@ -36,7 +39,7 @@ namespace EquationSolver.Services.Solvers
                 double fx0 = _parser.Evaluate(equation.Expression, x0);
                 double fx1 = _parser.Evaluate(equation.Expression, x1);
 
-                while (error > equation.Epsilon && iterationCount < equation.MaxIterations)
+                while (error > epsilon && iterationCount < maxIterations)
                 {
                     cancellationToken.ThrowIfCancellationRequested();
                     iterationCount++;
@@ -68,7 +71,7 @@ namespace EquationSolver.Services.Solvers
 
                 stopwatch.Stop();
 
-                if (iterationCount >= equation.MaxIterations)
+                if (iterationCount >= maxIterations)
                 {
                     return ResultModel.Error("Перевищено максимальну кількість ітерацій.");
                 }

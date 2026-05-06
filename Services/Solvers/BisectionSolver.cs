@@ -5,6 +5,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using EquationSolver.Models;
 using EquationSolver.Services.Parsers;
+using EquationSolver.Utils;
 
 namespace EquationSolver.Services.Solvers
 {
@@ -24,8 +25,10 @@ namespace EquationSolver.Services.Solvers
                 var stopwatch = Stopwatch.StartNew();
                 var iterations = new List<IterationData>();
                 
-                double a = equation.A;
-                double b = equation.B;
+                double a = Validator.ParseDouble(equation.A, out _);
+                double b = Validator.ParseDouble(equation.B, out _);
+                double epsilon = Validator.ParseDouble(equation.Epsilon, out _);
+                int maxIterations = Validator.ParseInt(equation.MaxIterations, out _);
                 
                 double fa = _parser.Evaluate(equation.Expression, a);
                 double fb = _parser.Evaluate(equation.Expression, b);
@@ -38,7 +41,7 @@ namespace EquationSolver.Services.Solvers
                 double c = a;
                 int iterationCount = 0;
 
-                while ((b - a) / 2.0 > equation.Epsilon && iterationCount < equation.MaxIterations)
+                while ((b - a) / 2.0 > epsilon && iterationCount < maxIterations)
                 {
                     cancellationToken.ThrowIfCancellationRequested();
                     iterationCount++;
@@ -70,7 +73,7 @@ namespace EquationSolver.Services.Solvers
 
                 stopwatch.Stop();
                 
-                if (iterationCount >= equation.MaxIterations)
+                if (iterationCount >= maxIterations)
                 {
                     return ResultModel.Error("Перевищено максимальну кількість ітерацій.");
                 }
