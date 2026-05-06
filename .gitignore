@@ -1,6 +1,6 @@
 bin/
 obj/
+local/
 .vs/
 .idea/
 *.user
-*.modernssdd
