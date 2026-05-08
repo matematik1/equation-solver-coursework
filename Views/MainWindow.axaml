@@ -45,8 +45,11 @@
                             <TextBlock Text="Налаштування" Classes="Header" Margin="0,0,0,15"/>
 
                         <TextBlock Text="Функція f(x):" Classes="Label"/>
-                        <TextBox Text="{Binding Equation.Expression}" Watermark="Напр: x^2 - 4"/>
-                        <TextBlock Text="Для степеня використовуйте ^ (Ctrl+E)" Classes="Hint"/>
+                        <Grid ColumnDefinitions="*, Auto">
+                            <TextBox Grid.Column="0" Name="FunctionInput" Text="{Binding Equation.Expression}" Watermark="Напр: x^2 - 4"/>
+                            <Button Grid.Column="1" Content="^" Click="InsertPowerSymbol_Click" ToolTip.Tip="Вставити символ степеня" Width="30" Padding="0" Margin="5,0,0,0" VerticalAlignment="Stretch" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
+                        </Grid>
+                        <TextBlock Text="Для степеня використовуйте ^ (кнопка ^ або Ctrl+E)" Classes="Hint"/>
 
                         <TextBlock Text="Інтервал [a, b]:" Classes="Label"/>
                         <Grid ColumnDefinitions="*,15,*">
@@ -59,6 +62,7 @@
                         <StackPanel IsVisible="{Binding IsNewtonMethod}">
                             <TextBlock Text="Початкове наближення:" Classes="Label"/>
                             <TextBox Text="{Binding Equation.InitialGuess}" Watermark="x0"/>
+                            <TextBlock Text="Допустимо: ±1 000 000 | До 15 знаків" Classes="Hint"/>
                         </StackPanel>
 
                         <TextBlock Text="Точність (Epsilon):" Classes="Label"/>
@@ -101,7 +105,7 @@
         <!-- Right Panel: Graph and Results -->
         <Grid Grid.Column="1" Grid.Row="0" RowDefinitions="3*, 2*">
             <!-- Top: Graph -->
-            <Border Grid.Row="0" Margin="15" Background="#FFFFFF" BorderBrush="#DDDDDD" BorderThickness="1" CornerRadius="8" BoxShadow="0 2 5 0 #20000000">
+            <Border Grid.Row="0" Margin="15" Background="White" BorderBrush="#DDDDDD" BorderThickness="1" CornerRadius="8" ClipToBounds="True" BoxShadow="0 2 5 0 #20000000">
                 <oxy:PlotView Model="{Binding PlotModel}" MinHeight="250"/>
             </Border>
 

@@ -22,17 +22,35 @@ namespace EquationSolver.Views
             // Reliable Shortcut for '^': Ctrl + E (Exponent)
             if (e.Key == Key.E && e.KeyModifiers.HasFlag(KeyModifiers.Control))
             {
+                InsertPowerSymbol();
+                e.Handled = true;
+            }
+        }
+
+        public void InsertPowerSymbol_Click(object? sender, Avalonia.Interactivity.RoutedEventArgs e)
+        {
+            InsertPowerSymbol();
+        }
+
+        private void InsertPowerSymbol()
+        {
+            // Find the TextBox by name if possible, or use focus
+            var textBox = this.FindControl<TextBox>("FunctionInput");
+            
+            if (textBox == null)
+            {
                 var focusManager = TopLevel.GetTopLevel(this)?.FocusManager;
                 var focusedElement = focusManager?.GetFocusedElement();
+                if (focusedElement is TextBox fb) textBox = fb;
+            }
 
-                if (focusedElement is TextBox textBox && textBox.DataContext == (this.DataContext as MainViewModel)?.Equation)
-                {
-                    int caretIndex = textBox.CaretIndex;
-                    string currentText = textBox.Text ?? string.Empty;
-                    textBox.Text = currentText.Insert(caretIndex, "^");
-                    textBox.CaretIndex = caretIndex + 1;
-                    e.Handled = true;
-                }
+            if (textBox != null)
+            {
+                int caretIndex = textBox.CaretIndex;
+                string currentText = textBox.Text ?? string.Empty;
+                textBox.Text = currentText.Insert(caretIndex, "^");
+                textBox.CaretIndex = caretIndex + 1;
+                textBox.Focus(); // Ensure focus stays or returns to the textbox
             }
         }
 
