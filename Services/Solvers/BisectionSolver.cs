@@ -22,6 +22,7 @@ namespace EquationSolver.Services.Solvers
         {
             return await Task.Run(() =>
             {
+                Console.WriteLine($"[BisectionSolver] Started for f(x)={equation.Expression}");
                 try
                 {
                     var stopwatch = Stopwatch.StartNew();
@@ -37,6 +38,7 @@ namespace EquationSolver.Services.Solvers
 
                     if (Math.Sign(fa) == Math.Sign(fb))
                     {
+                        Console.WriteLine("[BisectionSolver] Validation failed: f(a) and f(b) have the same sign");
                         return ResultModel.Error("Метод бісекції: Функція має однаковий знак на кінцях інтервалу.");
                     }
 
@@ -52,6 +54,7 @@ namespace EquationSolver.Services.Solvers
 
                         if (!double.IsFinite(fc))
                         {
+                            Console.WriteLine($"[BisectionSolver] Divergence detected: non-finite value at iteration {iterationCount}");
                             return ResultModel.Error($"Метод бісекції: Отримано нескінченне значення або NaN на ітерації {iterationCount}.");
                         }
 
@@ -79,6 +82,7 @@ namespace EquationSolver.Services.Solvers
                     }
 
                     stopwatch.Stop();
+                    Console.WriteLine($"[BisectionSolver] Finished in {iterationCount} iterations. Success: {iterationCount < maxIterations}");
                     
                     if (iterationCount >= maxIterations)
                     {
@@ -90,7 +94,7 @@ namespace EquationSolver.Services.Solvers
                 catch (OperationCanceledException) { throw; }
                 catch (Exception ex)
                 {
-                    Console.WriteLine($"Bisection Error: {ex}");
+                    Console.WriteLine($"[BisectionSolver] Critical Error: {ex}");
                     return ResultModel.Error($"Помилка під час обчислення: {ex.Message}");
                 }
             }, cancellationToken);

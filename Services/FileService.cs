@@ -25,25 +25,41 @@ namespace EquationSolver.Services
             }
             else
             {
-                // Save as TXT
+                // Save as TXT with professional formatting
                 var sb = new StringBuilder();
-                sb.AppendLine("=== Результати розв'язання рівняння ===");
-                sb.AppendLine($"Рівняння: {equationStr}");
-                sb.AppendLine($"Метод: {methodName}");
-                sb.AppendLine($"Статус: {(result.IsSuccess ? "Успішно" : "Помилка")}");
-                
+                sb.AppendLine("============================================================");
+                sb.AppendLine("         ЗВІТ ПРО РОЗВ'ЯЗАННЯ НЕЛІНІЙНОГО РІВНЯННЯ         ");
+                sb.AppendLine("============================================================");
+                sb.AppendLine($"Дата та час:        {DateTime.Now:dd.MM.yyyy HH:mm:ss}");
+                sb.AppendLine($"Рівняння f(x):      {equationStr}");
+                sb.AppendLine($"Метод розв'язання:  {methodName}");
+                sb.AppendLine($"Статус:             {(result.IsSuccess ? "УСПІШНО" : "ПОМИЛКА")}");
+                sb.AppendLine("------------------------------------------------------------");
+
                 if (result.IsSuccess)
                 {
-                    sb.AppendLine($"Корінь: {result.Root}");
+                    sb.AppendLine($"Знайдений корінь X: {result.Root:F15}");
+                    
+                    // Evaluate f(root) for the report
+                    double fRoot = 0;
+                    try 
+                    { 
+                        var parser = new Parsers.FunctionParser();
+                        fRoot = parser.Evaluate(equationStr, result.Root!.Value);
+                    } catch { }
+                    
+                    sb.AppendLine($"Значення f(X):      {fRoot:E4}");
                     sb.AppendLine($"Кількість ітерацій: {result.TotalIterations}");
-                    sb.AppendLine($"Час виконання: {result.ElapsedMilliseconds} мс");
+                    sb.AppendLine($"Час виконання:      {result.ElapsedMilliseconds} мс");
+                    sb.AppendLine("------------------------------------------------------------");
                     sb.AppendLine();
-                    sb.AppendLine("=== Таблиця ітерацій ===");
-                    sb.AppendLine($"{"№",-5} | {"Xn",-20} | {"f(Xn)",-20} | {"Похибка",-20}");
-                    sb.AppendLine(new string('-', 75));
+                    sb.AppendLine("ТАБЛИЦЯ ІТЕРАЦІЙ:");
+                    sb.AppendLine(string.Format("{0,-5} | {1,-20} | {2,-20} | {3,-15}", "№", "Xn", "f(Xn)", "Похибка"));
+                    sb.AppendLine(new string('-', 68));
                     foreach (var iter in result.Iterations)
                     {
-                        sb.AppendLine($"{iter.IterationNumber,-5} | {iter.Xn,-20:F8} | {iter.FXn,-20:F8} | {iter.Error,-20:E4}");
+                        sb.AppendLine(string.Format("{0,-5} | {1,-20:F12} | {2,-20:E8} | {3,-15:E4}", 
+                            iter.IterationNumber, iter.Xn, iter.FXn, iter.Error));
                     }
                 }
                 else
@@ -51,6 +67,7 @@ namespace EquationSolver.Services
                     sb.AppendLine($"Повідомлення про помилку: {result.ErrorMessage}");
                 }
 
+                sb.AppendLine("============================================================");
                 await File.WriteAllTextAsync(filePath, sb.ToString());
             }
         }

@@ -24,6 +24,7 @@ namespace EquationSolver.Services.Solvers
         {
             return await Task.Run(() =>
             {
+                Console.WriteLine($"[NewtonSolver] Started for f(x)={equation.Expression}");
                 try
                 {
                     var stopwatch = Stopwatch.StartNew();
@@ -32,6 +33,9 @@ namespace EquationSolver.Services.Solvers
                     double x0 = Validator.ParseDouble(equation.InitialGuess, out _);
                     double epsilon = Validator.ParseDouble(equation.Epsilon, out _);
                     int maxIterations = Validator.ParseInt(equation.MaxIterations, out _);
+                    
+                    double a = Validator.ParseDouble(equation.A, out _);
+                    double b = Validator.ParseDouble(equation.B, out _);
 
                     int iterationCount = 0;
                     double error = double.MaxValue;
@@ -48,16 +52,18 @@ namespace EquationSolver.Services.Solvers
                         double fx0MinusDx = _parser.Evaluate(equation.Expression, x0 - Dx);
                         double derivative = (fx0PlusDx - fx0MinusDx) / (2 * Dx);
 
-                        if (Math.Abs(derivative) < 1e-12)
+                        if (Math.Abs(derivative) < 1e-15)
                         {
+                            Console.WriteLine($"[NewtonSolver] Divergence detected: derivative near zero at iteration {iterationCount}");
                             return ResultModel.Error($"Метод Ньютона: Похідна наближається до нуля на ітерації {iterationCount}. Метод розбігається.");
                         }
 
                         double x1 = x0 - fx0 / derivative;
                         
-                        if (!double.IsFinite(x1))
+                        if (!Validator.ValidateIterationBounds(x1, a, b, out string? boundError))
                         {
-                            return ResultModel.Error($"Метод Ньютона: Отримано нескінченне значення або NaN на ітерації {iterationCount}.");
+                            Console.WriteLine($"[NewtonSolver] Out of bounds: {boundError} at iteration {iterationCount}, x={x1}");
+                            return ResultModel.Error($"Метод Ньютона: {boundError}");
                         }
 
                         error = Math.Abs(x1 - x0);
@@ -74,14 +80,15 @@ namespace EquationSolver.Services.Solvers
 
                         x0 = x1;
 
-                        // Check for divergence
                         if (error > 1e20)
                         {
-                             return ResultModel.Error($"Метод Ньютона: Метод розбігається (помилка занадто велика).");
+                             Console.WriteLine($"[NewtonSolver] Massive divergence detected");
+                             return ResultModel.Error($"Метод Ньютона: Метод розбігається (похибка занадто велика).");
                         }
                     }
 
                     stopwatch.Stop();
+                    Console.WriteLine($"[NewtonSolver] Finished in {iterationCount} iterations. Success: {iterationCount < maxIterations}");
 
                     if (iterationCount >= maxIterations)
                     {
@@ -93,7 +100,7 @@ namespace EquationSolver.Services.Solvers
                 catch (OperationCanceledException) { throw; }
                 catch (Exception ex)
                 {
-                    Console.WriteLine($"Newton Error: {ex}");
+                    Console.WriteLine($"[NewtonSolver] Critical Error: {ex}");
                     return ResultModel.Error($"Помилка під час обчислення: {ex.Message}");
                 }
             }, cancellationToken);

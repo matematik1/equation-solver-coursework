@@ -1,6 +1,7 @@
 using System;
 using System.Collections.ObjectModel;
 using System.Globalization;
+using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 using CommunityToolkit.Mvvm.ComponentModel;
@@ -49,6 +50,12 @@ namespace EquationSolver.ViewModels
 
         [ObservableProperty]
         private bool _isErrorVisible;
+
+        [ObservableProperty]
+        private string _warningMessage = string.Empty;
+
+        [ObservableProperty]
+        private bool _isWarningVisible;
 
         [ObservableProperty]
         private string _rootCoordinates = string.Empty;
@@ -116,6 +123,8 @@ namespace EquationSolver.ViewModels
         private async Task SolveAsync()
         {
             ClearErrors();
+            WarningMessage = string.Empty;
+            IsWarningVisible = false;
             
             try
             {
@@ -125,6 +134,14 @@ namespace EquationSolver.ViewModels
                     ShowError(validationError);
                     IsRootVisible = false;
                     return;
+                }
+
+                // Check for non-blocking warnings
+                var warnings = Validator.CheckWarnings(Equation, SelectedMethod, _parser);
+                if (warnings.Any())
+                {
+                    WarningMessage = string.Join("\n", warnings);
+                    IsWarningVisible = true;
                 }
 
                 IsBusy = true;
@@ -239,6 +256,14 @@ namespace EquationSolver.ViewModels
                 PlotModel.Annotations.Clear();
                 PlotModel.Title = $"Графік f(x) = {expression}";
 
+                if (Math.Abs(b - a) > 10000)
+                {
+                    PlotModel.Title += " (графік вимкнено)";
+                    ShowError("Інтервал занадто великий для коректного відображення графіка.");
+                    PlotModel.InvalidatePlot(true);
+                    return;
+                }
+
                 var lineSeries = new LineSeries
                 {
                     Title = "f(x)",
@@ -264,6 +289,7 @@ namespace EquationSolver.ViewModels
 
                 int pointsCount = 500;
                 double step = (maxX - minX) / pointsCount;
+                bool hasExtremeValues = false;
                 bool hasPoints = false;
 
                 for (double x = minX; x <= maxX; x += step)
@@ -273,19 +299,38 @@ namespace EquationSolver.ViewModels
                         double y = _parser.Evaluate(expression, x);
                         if (double.IsFinite(y))
                         {
-                            lineSeries.Points.Add(new DataPoint(x, y));
-                            hasPoints = true;
+                            if (Math.Abs(y) < 1e6)
+                            {
+                                lineSeries.Points.Add(new DataPoint(x, y));
+                                hasPoints = true;
+                            }
+                            else
+                            {
+                                hasExtremeValues = true;
+                                // Add a break in the line if Y is too extreme
+                                lineSeries.Points.Add(DataPoint.Undefined);
+                            }
+                        }
+                        else
+                        {
+                             lineSeries.Points.Add(DataPoint.Undefined);
                         }
                     }
                     catch
                     {
-                        // Ignore math errors for specific points
+                        lineSeries.Points.Add(DataPoint.Undefined);
                     }
+                }
+
+                if (hasExtremeValues)
+                {
+                    WarningMessage = "Графік автоматично масштабовано для коректного відображення (видалено екстремальні значення Y).";
+                    IsWarningVisible = true;
                 }
 
                 if (!hasPoints)
                 {
-                    ShowError("Неможливо побудувати графік для заданої функції (всі значення NaN або нескінченні).");
+                    ShowError("Неможливо побудувати графік для заданої функції (всі значення NaN або занадто великі).");
                 }
 
                 PlotModel.Series.Add(lineSeries);

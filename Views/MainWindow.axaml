@@ -41,6 +41,7 @@
                     <Button Content="Зберегти результати" Command="{Binding SaveCommand}" HorizontalAlignment="Stretch" HorizontalContentAlignment="Center"/>
                     
                     <TextBlock Text="{Binding ErrorMessage}" Foreground="Red" TextWrapping="Wrap" IsVisible="{Binding IsErrorVisible}" FontWeight="SemiBold" Margin="0,10,0,0"/>
+                    <TextBlock Text="{Binding WarningMessage}" Foreground="Orange" TextWrapping="Wrap" IsVisible="{Binding IsWarningVisible}" FontWeight="SemiBold" Margin="0,10,0,0"/>
                 </StackPanel>
             </ScrollViewer>
         </Border>

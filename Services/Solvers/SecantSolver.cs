@@ -22,6 +22,7 @@ namespace EquationSolver.Services.Solvers
         {
             return await Task.Run(() =>
             {
+                Console.WriteLine($"[SecantSolver] Started for f(x)={equation.Expression}");
                 try
                 {
                     var stopwatch = Stopwatch.StartNew();
@@ -32,6 +33,9 @@ namespace EquationSolver.Services.Solvers
                     double epsilon = Validator.ParseDouble(equation.Epsilon, out _);
                     int maxIterations = Validator.ParseInt(equation.MaxIterations, out _);
                     
+                    double a = Validator.ParseDouble(equation.A, out _);
+                    double b = Validator.ParseDouble(equation.B, out _);
+
                     int iterationCount = 0;
                     double error = double.MaxValue;
 
@@ -44,16 +48,18 @@ namespace EquationSolver.Services.Solvers
                         iterationCount++;
 
                         double denominator = fx1 - fx0;
-                        if (Math.Abs(denominator) < 1e-15)
+                        if (Math.Abs(denominator) < 1e-18)
                         {
+                            Console.WriteLine($"[SecantSolver] Divergence detected: denominator near zero at iteration {iterationCount}");
                             return ResultModel.Error($"Метод Січних: Ділення на нуль (f(x1) ≈ f(x0)) на ітерації {iterationCount}. Метод розбігається.");
                         }
 
                         double x2 = x1 - fx1 * (x1 - x0) / denominator;
                         
-                        if (!double.IsFinite(x2))
+                        if (!Validator.ValidateIterationBounds(x2, a, b, out string? boundError))
                         {
-                            return ResultModel.Error($"Метод Січних: Отримано нескінченне значення або NaN на ітерації {iterationCount}.");
+                            Console.WriteLine($"[SecantSolver] Out of bounds: {boundError} at iteration {iterationCount}, x={x2}");
+                            return ResultModel.Error($"Метод Січних: {boundError}");
                         }
 
                         error = Math.Abs(x2 - x1);
@@ -76,11 +82,13 @@ namespace EquationSolver.Services.Solvers
                         // Check for divergence
                         if (error > 1e20)
                         {
-                            return ResultModel.Error($"Метод Січних: Метод розбігається (помилка занадто велика).");
+                            Console.WriteLine($"[SecantSolver] Massive divergence detected");
+                            return ResultModel.Error($"Метод Січних: Метод розбігається (похибка занадто велика).");
                         }
                     }
 
                     stopwatch.Stop();
+                    Console.WriteLine($"[SecantSolver] Finished in {iterationCount} iterations. Success: {iterationCount < maxIterations}");
 
                     if (iterationCount >= maxIterations)
                     {
@@ -92,7 +100,7 @@ namespace EquationSolver.Services.Solvers
                 catch (OperationCanceledException) { throw; }
                 catch (Exception ex)
                 {
-                    Console.WriteLine($"Secant Error: {ex}");
+                    Console.WriteLine($"[SecantSolver] Critical Error: {ex}");
                     return ResultModel.Error($"Помилка під час обчислення: {ex.Message}");
                 }
             }, cancellationToken);

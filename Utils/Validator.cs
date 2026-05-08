@@ -90,6 +90,79 @@ namespace EquationSolver.Utils
             return null;
         }
 
+        public static bool ValidateIterationBounds(double x, double a, double b, out string? errorMessage)
+        {
+            if (!double.IsFinite(x))
+            {
+                errorMessage = "Метод розбігається (отримано NaN або нескінченність).";
+                return false;
+            }
+
+            if (Math.Abs(x) > 1e12)
+            {
+                errorMessage = "Метод розбігається та виходить за межі допустимих обчислень (значення занадто велике).";
+                return false;
+            }
+
+            double range = Math.Abs(b - a);
+            double buffer = range * 2.0; // Allow 2x range buffer instead of 0.5 for better convergence paths
+            if (x < a - buffer || x > b + buffer)
+            {
+                errorMessage = "Метод розбігається та виходить далеко за межі допустимого інтервалу.";
+                return false;
+            }
+
+            errorMessage = null;
+            return true;
+        }
+
+        public static List<string> CheckWarnings(EquationModel model, string methodName, IFunctionParser parser)
+        {
+            var warnings = new List<string>();
+
+            double epsilon = ParseDouble(model.Epsilon, out _);
+            if (epsilon < 1e-12 && epsilon > 0)
+            {
+                warnings.Add("Надто мала точність може значно збільшити час обчислень.");
+            }
+
+            if (methodName == "Ньютон")
+            {
+                double x0 = ParseDouble(model.InitialGuess, out _);
+                try
+                {
+                    double dx = 1e-7;
+                    double fxPlus = parser.Evaluate(model.Expression, x0 + dx);
+                    double fxMinus = parser.Evaluate(model.Expression, x0 - dx);
+                    double derivative = (fxPlus - fxMinus) / (2 * dx);
+
+                    if (Math.Abs(derivative) < 1e-4)
+                    {
+                        warnings.Add("Початкове наближення знаходиться близько до точки, де похідна близька до нуля. Метод Ньютона може розбігатися.");
+                    }
+                }
+                catch { /* Ignore parser errors during warning check */ }
+            }
+
+            if (methodName == "Січні")
+            {
+                double a = ParseDouble(model.A, out _);
+                double b = ParseDouble(model.B, out _);
+                try
+                {
+                    double fa = parser.Evaluate(model.Expression, a);
+                    double fb = parser.Evaluate(model.Expression, b);
+                    if (Math.Abs(fa - fb) < 1e-7)
+                    {
+                        warnings.Add("Метод Січних може стати нестабільним через дуже близькі значення функції на краях інтервалу.");
+                    }
+                }
+                catch { }
+            }
+
+            return warnings;
+        }
+
         public static string? ValidateEquationModel(EquationModel model, string methodName, IFunctionParser parser)
         {
             var exprError = ValidateExpression(model.Expression, parser);
