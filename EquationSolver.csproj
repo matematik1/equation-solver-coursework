@@ -4,12 +4,14 @@
     <TargetFramework>net9.0</TargetFramework>
     <Nullable>enable</Nullable>
     <ApplicationManifest>app.manifest</ApplicationManifest>
+    <ApplicationIcon>ico\app.ico</ApplicationIcon>
     <AvaloniaUseCompiledBindingsByDefault>false</AvaloniaUseCompiledBindingsByDefault>
   </PropertyGroup>
 
   <ItemGroup>
     <Folder Include="Models\" />
     <AvaloniaResource Include="Assets\**" />
+    <AvaloniaResource Include="ico\**" />
     <Compile Remove="StressTests\**" />
   </ItemGroup>
 

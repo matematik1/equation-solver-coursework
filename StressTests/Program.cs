@@ -47,17 +47,17 @@ namespace StressTests
 
             int testId = 1;
 
-            // 1. MASS TESTING OF VALID SOLVABLE CASES
-            Console.WriteLine("Running functional tests...");
-            foreach (var func in testFunctions)
+            // 1. MASS TESTING OF RANDOM CASES
+            Console.WriteLine("Running functional tests with random functions...");
+            var randomFunctions = RandomFunctionGenerator.GenerateFunctions(120);
+            
+            foreach (var func in randomFunctions)
             {
                 foreach (var method in methods)
                 {
-                    foreach (var eps in epsilons)
-                    {
-                        var model = CreateDefaultModel(func, eps, method);
-                        results.Add(await RunSingleTest(testId++, func, method, model, solverFactory, parser));
-                    }
+                    // Randomize interval slightly for variety
+                    var model = CreateDefaultModel(func, "1e-7", method);
+                    results.Add(await RunSingleTest(testId++, func, method, model, solverFactory, parser));
                 }
             }
 

@@ -1,1111 +1,3290 @@
 === EquationSolver Mass Testing Report ===
-Generated on: 08.05.2026 13:39:03
+Generated on: 08.05.2026 16:45:36
 
 Test ID: 1
-Function: x^2 - 4
+Function: 1/x
 Method: Бісекція
-Parameters: A=0, B=5, IG=3, Eps=1e-5, MaxIter=500
-Status: PASS
-Root: 1,9999885559082031
-f(root): -4,5776E-005
-Iterations: 18
-Time: 52 ms
+Parameters: A=0.1, B=2, IG=1, Eps=1e-7, MaxIter=500
+Status: VALIDATION_REJECTED
+Time: 0 ms
+Error: На заданому інтервалі функція не змінює знак. Метод бісекції неможливий.
 ----------------------------------------
 Test ID: 2
-Function: x^2 - 4
-Method: Бісекція
-Parameters: A=0, B=5, IG=3, Eps=1e-10, MaxIter=500
-Status: PASS
-Root: 1,9999999999708962
-f(root): -1,1642E-010
-Iterations: 35
-Time: 60 ms
+Function: 1/x
+Method: Ньютон
+Parameters: A=0.1, B=2, IG=1, Eps=1e-7, MaxIter=500
+Status: FAIL_SOLVER
+Time: 61 ms
+Error: Метод Ньютона: Метод розбігається та виходить далеко за межі допустимого інтервалу.
 ----------------------------------------
 Test ID: 3
-Function: x^2 - 4
-Method: Бісекція
-Parameters: A=0, B=5, IG=3, Eps=1e-15, MaxIter=500
-Status: PASS
-Root: 2,0000000000000018
-f(root): 0,0000E+000
-Iterations: 49
-Time: 72 ms
+Function: 1/x
+Method: Січні
+Parameters: A=0.1, B=2, IG=1, Eps=1e-7, MaxIter=500
+Status: FAIL_SOLVER
+Time: 32 ms
+Error: Метод Січних: Метод розбігається та виходить далеко за межі допустимого інтервалу.
 ----------------------------------------
 Test ID: 4
-Function: x^2 - 4
-Method: Ньютон
-Parameters: A=0, B=5, IG=3, Eps=1e-5, MaxIter=500
+Function: tan(x)
+Method: Бісекція
+Parameters: A=-10, B=10, IG=0, Eps=1e-7, MaxIter=500
 Status: PASS
-Root: 1,9999999999999991
+Root: 0
 f(root): 0,0000E+000
-Iterations: 5
-Time: 32 ms
+Iterations: 1
+Time: 26 ms
 ----------------------------------------
 Test ID: 5
-Function: x^2 - 4
+Function: tan(x)
 Method: Ньютон
-Parameters: A=0, B=5, IG=3, Eps=1e-10, MaxIter=500
+Parameters: A=-10, B=10, IG=0, Eps=1e-7, MaxIter=500
 Status: PASS
-Root: 1,9999999999999991
+Root: 0
 f(root): 0,0000E+000
-Iterations: 5
-Time: 29 ms
+Iterations: 1
+Time: 24 ms
 ----------------------------------------
 Test ID: 6
-Function: x^2 - 4
-Method: Ньютон
-Parameters: A=0, B=5, IG=3, Eps=1e-15, MaxIter=500
+Function: tan(x)
+Method: Січні
+Parameters: A=-10, B=10, IG=0, Eps=1e-7, MaxIter=500
 Status: PASS
-Root: 1,9999999999999991
+Root: 0
 f(root): 0,0000E+000
-Iterations: 6
-Time: 30 ms
+Iterations: 2
+Time: 29 ms
 ----------------------------------------
 Test ID: 7
-Function: x^2 - 4
-Method: Січні
-Parameters: A=0, B=5, IG=3, Eps=1e-5, MaxIter=500
+Function: ln(x)
+Method: Бісекція
+Parameters: A=0.1, B=5, IG=2, Eps=1e-7, MaxIter=500
 Status: PASS
-Root: 2,0000000000873386
-f(root): 3,4935E-010
-Iterations: 8
-Time: 15 ms
+Root: 1,0000000089406968
+f(root): 8,9407E-009
+Iterations: 25
+Time: 156 ms
 ----------------------------------------
 Test ID: 8
-Function: x^2 - 4
-Method: Січні
-Parameters: A=0, B=5, IG=3, Eps=1e-10, MaxIter=500
+Function: ln(x)
+Method: Ньютон
+Parameters: A=0.1, B=5, IG=2, Eps=1e-7, MaxIter=500
 Status: PASS
-Root: 2,0000000000001044
-f(root): 4,0000E-013
-Iterations: 9
-Time: 15 ms
+Root: 1
+f(root): 0,0000E+000
+Iterations: 6
+Time: 127 ms
 ----------------------------------------
 Test ID: 9
-Function: x^2 - 4
+Function: ln(x)
 Method: Січні
-Parameters: A=0, B=5, IG=3, Eps=1e-15, MaxIter=500
-Status: PASS
-Root: 2,0000000000000044
-f(root): 0,0000E+000
-Iterations: 11
-Time: 17 ms
+Parameters: A=0.1, B=5, IG=2, Eps=1e-7, MaxIter=500
+Status: FAIL_SOLVER
+Time: 59 ms
+Error: Помилка під час обчислення: Результат обчислення не є числом (NaN). Можливо, ділення на нуль або корінь з від'ємного числа.
 ----------------------------------------
 Test ID: 10
-Function: x^3 - x - 2
+Function: sqrt(x)
 Method: Бісекція
-Parameters: A=1, B=2, IG=1.5, Eps=1e-5, MaxIter=500
-Status: PASS
-Root: 1,5213775634765625
-f(root): -1,2739E-005
-Iterations: 16
-Time: 26 ms
+Parameters: A=-10, B=10, IG=0, Eps=1e-7, MaxIter=500
+Status: VALIDATION_REJECTED
+Time: 0 ms
+Error: Помилка обчислення функції на кінцях інтервалу: Результат обчислення не є числом (NaN). Можливо, ділення на нуль або корінь з від'ємного числа.
 ----------------------------------------
 Test ID: 11
-Function: x^3 - x - 2
-Method: Бісекція
-Parameters: A=1, B=2, IG=1.5, Eps=1e-10, MaxIter=500
-Status: PASS
-Root: 1,5213797067990527
-f(root): -3,2780E-011
-Iterations: 33
-Time: 56 ms
+Function: sqrt(x)
+Method: Ньютон
+Parameters: A=-10, B=10, IG=0, Eps=1e-7, MaxIter=500
+Status: FAIL_SOLVER
+Time: 9 ms
+Error: Помилка під час обчислення: Результат обчислення не є числом (NaN). Можливо, ділення на нуль або корінь з від'ємного числа.
 ----------------------------------------
 Test ID: 12
-Function: x^3 - x - 2
-Method: Бісекція
-Parameters: A=1, B=2, IG=1.5, Eps=1e-15, MaxIter=500
-Status: PASS
-Root: 1,5213797068045665
-f(root): -0,0000E+000
-Iterations: 44
-Time: 62 ms
+Function: sqrt(x)
+Method: Січні
+Parameters: A=-10, B=10, IG=0, Eps=1e-7, MaxIter=500
+Status: FAIL_SOLVER
+Time: 3 ms
+Error: Помилка під час обчислення: Результат обчислення не є числом (NaN). Можливо, ділення на нуль або корінь з від'ємного числа.
 ----------------------------------------
 Test ID: 13
-Function: x^3 - x - 2
-Method: Ньютон
-Parameters: A=1, B=2, IG=1.5, Eps=1e-5, MaxIter=500
-Status: PASS
-Root: 1,521379706804576
-f(root): 7,0000E-014
-Iterations: 3
-Time: 13 ms
+Function: x^2 + 4
+Method: Бісекція
+Parameters: A=-10, B=10, IG=0, Eps=1e-7, MaxIter=500
+Status: VALIDATION_REJECTED
+Time: 0 ms
+Error: На заданому інтервалі функція не змінює знак. Метод бісекції неможливий.
 ----------------------------------------
 Test ID: 14
-Function: x^3 - x - 2
+Function: x^2 + 4
 Method: Ньютон
-Parameters: A=1, B=2, IG=1.5, Eps=1e-10, MaxIter=500
-Status: PASS
-Root: 1,5213797068045642
-f(root): -2,0000E-014
-Iterations: 4
-Time: 28 ms
+Parameters: A=-10, B=10, IG=0, Eps=1e-7, MaxIter=500
+Status: FAIL_SOLVER
+Time: 25 ms
+Error: Метод Ньютона: Похідна наближається до нуля на ітерації 1. Метод розбігається.
 ----------------------------------------
 Test ID: 15
-Function: x^3 - x - 2
-Method: Ньютон
-Parameters: A=1, B=2, IG=1.5, Eps=1e-15, MaxIter=500
-Status: PASS
-Root: 1,5213797068045676
-f(root): 0,0000E+000
-Iterations: 6
-Time: 33 ms
+Function: x^2 + 4
+Method: Січні
+Parameters: A=-10, B=10, IG=0, Eps=1e-7, MaxIter=500
+Status: FAIL_SOLVER
+Time: 12 ms
+Error: Метод Січних: Ділення на нуль (f(x1) ≈ f(x0)) на ітерації 1. Метод розбігається.
 ----------------------------------------
 Test ID: 16
-Function: x^3 - x - 2
-Method: Січні
-Parameters: A=1, B=2, IG=1.5, Eps=1e-5, MaxIter=500
-Status: PASS
-Root: 1,5213797079848763
-f(root): 7,0155E-009
-Iterations: 6
-Time: 9 ms
+Function: exp(x) + 100
+Method: Бісекція
+Parameters: A=-10, B=10, IG=0, Eps=1e-7, MaxIter=500
+Status: VALIDATION_REJECTED
+Time: 0 ms
+Error: На заданому інтервалі функція не змінює знак. Метод бісекції неможливий.
 ----------------------------------------
 Test ID: 17
-Function: x^3 - x - 2
-Method: Січні
-Parameters: A=1, B=2, IG=1.5, Eps=1e-10, MaxIter=500
-Status: PASS
-Root: 1,5213797068045687
-f(root): 0,0000E+000
-Iterations: 8
-Time: 12 ms
+Function: exp(x) + 100
+Method: Ньютон
+Parameters: A=-10, B=10, IG=0, Eps=1e-7, MaxIter=500
+Status: FAIL_SOLVER
+Time: 15 ms
+Error: Метод Ньютона: Метод розбігається та виходить далеко за межі допустимого інтервалу.
 ----------------------------------------
 Test ID: 18
-Function: x^3 - x - 2
+Function: exp(x) + 100
 Method: Січні
-Parameters: A=1, B=2, IG=1.5, Eps=1e-15, MaxIter=500
-Status: PASS
-Root: 1,5213797068045687
-f(root): 0,0000E+000
-Iterations: 9
-Time: 14 ms
+Parameters: A=-10, B=10, IG=0, Eps=1e-7, MaxIter=500
+Status: FAIL_SOLVER
+Time: 17 ms
+Error: Метод Січних: Метод розбігається та виходить далеко за межі допустимого інтервалу.
 ----------------------------------------
 Test ID: 19
-Function: x^5 - 3x + 1
+Function: sqrt(x^5 - sin(pi))
 Method: Бісекція
-Parameters: A=-10, B=10, IG=0, Eps=1e-5, MaxIter=500
+Parameters: A=0, B=3.14, IG=1.5, Eps=1e-7, MaxIter=500
 Status: PASS
-Root: -1,3887977600097656
-f(root): -9,0102E-005
-Iterations: 20
-Time: 32 ms
+Root: 1,4972686767578126E-06
+f(root): 0,0000E+000
+Iterations: 21
+Time: 100 ms
 ----------------------------------------
 Test ID: 20
-Function: x^5 - 3x + 1
-Method: Бісекція
-Parameters: A=-10, B=10, IG=0, Eps=1e-10, MaxIter=500
-Status: PASS
-Root: -1,3887919845001306
-f(root): -1,4489E-009
-Iterations: 37
-Time: 62 ms
+Function: sqrt(x^5 - sin(pi))
+Method: Ньютон
+Parameters: A=0, B=3.14, IG=1.5, Eps=1e-7, MaxIter=500
+Status: FAIL_SOLVER
+Time: 604 ms
+Error: Метод Ньютона: Похідна наближається до нуля на ітерації 27. Метод розбігається.
 ----------------------------------------
 Test ID: 21
-Function: x^5 - 3x + 1
-Method: Бісекція
-Parameters: A=-10, B=10, IG=0, Eps=1e-15, MaxIter=500
+Function: sqrt(x^5 - sin(pi))
+Method: Січні
+Parameters: A=0, B=3.14, IG=1.5, Eps=1e-7, MaxIter=500
 Status: PASS
-Root: -1,3887919844072538
-f(root): -0,0000E+000
-Iterations: 51
-Time: 113 ms
+Root: 0
+f(root): 0,0000E+000
+Iterations: 2
+Time: 29 ms
 ----------------------------------------
 Test ID: 22
-Function: x^5 - 3x + 1
-Method: Ньютон
-Parameters: A=-10, B=10, IG=0, Eps=1e-5, MaxIter=500
-Status: PASS
-Root: 0,33473414194334533
-f(root): 1,8000E-014
-Iterations: 3
-Time: 18 ms
+Function: (3*cos(x) - 2) - (5*ln(x))
+Method: Бісекція
+Parameters: A=0, B=3.14, IG=1.5, Eps=1e-7, MaxIter=500
+Status: VALIDATION_REJECTED
+Time: 0 ms
+Error: Помилка обчислення функції на кінцях інтервалу: Значення функції занадто велике (нескінченність).
 ----------------------------------------
 Test ID: 23
-Function: x^5 - 3x + 1
+Function: (3*cos(x) - 2) - (5*ln(x))
 Method: Ньютон
-Parameters: A=-10, B=10, IG=0, Eps=1e-10, MaxIter=500
+Parameters: A=0, B=3.14, IG=1.5, Eps=1e-7, MaxIter=500
 Status: PASS
-Root: 0,33473414194335144
-f(root): 0,0000E+000
-Iterations: 4
-Time: 26 ms
-----------------------------------------
-Test ID: 24
-Function: x^5 - 3x + 1
-Method: Ньютон
-Parameters: A=-10, B=10, IG=0, Eps=1e-15, MaxIter=500
-Status: PASS
-Root: 0,33473414194335144
+Root: 0,9501967719347358
 f(root): 0,0000E+000
 Iterations: 5
-Time: 30 ms
+Time: 111 ms
+----------------------------------------
+Test ID: 24
+Function: (3*cos(x) - 2) - (5*ln(x))
+Method: Січні
+Parameters: A=0, B=3.14, IG=1.5, Eps=1e-7, MaxIter=500
+Status: FAIL_SOLVER
+Time: 8 ms
+Error: Помилка під час обчислення: Значення функції занадто велике (нескінченність).
 ----------------------------------------
 Test ID: 25
-Function: x^5 - 3x + 1
-Method: Січні
-Parameters: A=-10, B=10, IG=0, Eps=1e-5, MaxIter=500
+Function: (4*log10(x)) * (x^2 - 32)
+Method: Бісекція
+Parameters: A=0.1, B=5, IG=2, Eps=1e-7, MaxIter=500
 Status: PASS
-Root: 0,3347341419433392
-f(root): 3,7000E-014
-Iterations: 6
-Time: 12 ms
+Root: 1,0000000089406968
+f(root): -4,8148E-007
+Iterations: 25
+Time: 89 ms
 ----------------------------------------
 Test ID: 26
-Function: x^5 - 3x + 1
-Method: Січні
-Parameters: A=-10, B=10, IG=0, Eps=1e-10, MaxIter=500
+Function: (4*log10(x)) * (x^2 - 32)
+Method: Ньютон
+Parameters: A=0.1, B=5, IG=2, Eps=1e-7, MaxIter=500
 Status: PASS
-Root: 0,3347341419433518
+Root: 1
 f(root): -0,0000E+000
+Iterations: 7
+Time: 103 ms
+----------------------------------------
+Test ID: 27
+Function: (4*log10(x)) * (x^2 - 32)
+Method: Січні
+Parameters: A=0.1, B=5, IG=2, Eps=1e-7, MaxIter=500
+Status: FAIL_SOLVER
+Time: 42 ms
+Error: Метод Січних: Знайдений корінь 5,6569 знаходиться поза межами інтервалу [0,1; 5].
+----------------------------------------
+Test ID: 28
+Function: (-9*x^3) * (x^2 - 25)
+Method: Бісекція
+Parameters: A=-10, B=10, IG=0, Eps=1e-7, MaxIter=500
+Status: PASS
+Root: 0
+f(root): -0,0000E+000
+Iterations: 1
+Time: 19 ms
+----------------------------------------
+Test ID: 29
+Function: (-9*x^3) * (x^2 - 25)
+Method: Ньютон
+Parameters: A=-10, B=10, IG=0, Eps=1e-7, MaxIter=500
+Status: FAIL_SOLVER
+Time: 8 ms
+Error: Метод Ньютона: Похідна наближається до нуля на ітерації 1. Метод розбігається.
+----------------------------------------
+Test ID: 30
+Function: (-9*x^3) * (x^2 - 25)
+Method: Січні
+Parameters: A=-10, B=10, IG=0, Eps=1e-7, MaxIter=500
+Status: PASS
+Root: 0
+f(root): -0,0000E+000
+Iterations: 2
+Time: 27 ms
+----------------------------------------
+Test ID: 31
+Function: (x^2 - 55) - (x^2 - 3)
+Method: Бісекція
+Parameters: A=-10, B=10, IG=0, Eps=1e-7, MaxIter=500
+Status: VALIDATION_REJECTED
+Time: 0 ms
+Error: На заданому інтервалі функція не змінює знак. Метод бісекції неможливий.
+----------------------------------------
+Test ID: 32
+Function: (x^2 - 55) - (x^2 - 3)
+Method: Ньютон
+Parameters: A=-10, B=10, IG=0, Eps=1e-7, MaxIter=500
+Status: FAIL_SOLVER
+Time: 8 ms
+Error: Метод Ньютона: Похідна наближається до нуля на ітерації 1. Метод розбігається.
+----------------------------------------
+Test ID: 33
+Function: (x^2 - 55) - (x^2 - 3)
+Method: Січні
+Parameters: A=-10, B=10, IG=0, Eps=1e-7, MaxIter=500
+Status: FAIL_SOLVER
+Time: 7 ms
+Error: Метод Січних: Ділення на нуль (f(x1) ≈ f(x0)) на ітерації 1. Метод розбігається.
+----------------------------------------
+Test ID: 34
+Function: (x^2 - 11) - (x - cos(x))
+Method: Бісекція
+Parameters: A=0, B=3.14, IG=1.5, Eps=1e-7, MaxIter=500
+Status: VALIDATION_REJECTED
+Time: 0 ms
+Error: На заданому інтервалі функція не змінює знак. Метод бісекції неможливий.
+----------------------------------------
+Test ID: 35
+Function: (x^2 - 11) - (x - cos(x))
+Method: Ньютон
+Parameters: A=0, B=3.14, IG=1.5, Eps=1e-7, MaxIter=500
+Status: FAIL_SOLVER
+Time: 6 ms
+Error: Метод Ньютона: Метод розбігається та виходить далеко за межі допустимого інтервалу.
+----------------------------------------
+Test ID: 36
+Function: (x^2 - 11) - (x - cos(x))
+Method: Січні
+Parameters: A=0, B=3.14, IG=1.5, Eps=1e-7, MaxIter=500
+Status: FAIL_SOLVER
+Time: 37 ms
+Error: Метод Січних: Знайдений корінь 3,9550 знаходиться поза межами інтервалу [0; 3,14].
+----------------------------------------
+Test ID: 37
+Function: (-4*x^3 + 2) - (7*x^2)
+Method: Бісекція
+Parameters: A=-10, B=10, IG=0, Eps=1e-7, MaxIter=500
+Status: PASS
+Root: 0,4741375148296356
+f(root): -1,2397E-006
+Iterations: 27
+Time: 101 ms
+----------------------------------------
+Test ID: 38
+Function: (-4*x^3 + 2) - (7*x^2)
+Method: Ньютон
+Parameters: A=-10, B=10, IG=0, Eps=1e-7, MaxIter=500
+Status: FAIL_SOLVER
+Time: 15 ms
+Error: Метод Ньютона: Похідна наближається до нуля на ітерації 1. Метод розбігається.
+----------------------------------------
+Test ID: 39
+Function: (-4*x^3 + 2) - (7*x^2)
+Method: Січні
+Parameters: A=-10, B=10, IG=0, Eps=1e-7, MaxIter=500
+Status: PASS
+Root: -1,5388591524149886
+f(root): 3,3000E-012
+Iterations: 8
+Time: 44 ms
+----------------------------------------
+Test ID: 40
+Function: 1*x^1
+Method: Бісекція
+Parameters: A=-10, B=10, IG=0, Eps=1e-7, MaxIter=500
+Status: PASS
+Root: 0
+f(root): 0,0000E+000
+Iterations: 1
+Time: 6 ms
+----------------------------------------
+Test ID: 41
+Function: 1*x^1
+Method: Ньютон
+Parameters: A=-10, B=10, IG=0, Eps=1e-7, MaxIter=500
+Status: PASS
+Root: 0
+f(root): 0,0000E+000
+Iterations: 1
+Time: 17 ms
+----------------------------------------
+Test ID: 42
+Function: 1*x^1
+Method: Січні
+Parameters: A=-10, B=10, IG=0, Eps=1e-7, MaxIter=500
+Status: PASS
+Root: 0
+f(root): 0,0000E+000
+Iterations: 2
+Time: 12 ms
+----------------------------------------
+Test ID: 43
+Function: x / ln(x)
+Method: Бісекція
+Parameters: A=0.1, B=5, IG=2, Eps=1e-7, MaxIter=500
+Status: FAIL_ACCURACY
+Root: 1,0000000089406968
+f(root): 1,1185E+008
+Iterations: 25
+Time: 113 ms
+Error: f(root) = 111848106,50000003 is too large for epsilon 1E-07
+----------------------------------------
+Test ID: 44
+Function: x / ln(x)
+Method: Ньютон
+Parameters: A=0.1, B=5, IG=2, Eps=1e-7, MaxIter=500
+Status: FAIL_SOLVER
+Time: 26 ms
+Error: Помилка під час обчислення: Результат обчислення не є числом (NaN). Можливо, ділення на нуль або корінь з від'ємного числа.
+----------------------------------------
+Test ID: 45
+Function: x / ln(x)
+Method: Січні
+Parameters: A=0.1, B=5, IG=2, Eps=1e-7, MaxIter=500
+Status: FAIL_SOLVER
+Time: 53 ms
+Error: Метод Січних: Знайдений корінь 0,0000 знаходиться поза межами інтервалу [0,1; 5].
+----------------------------------------
+Test ID: 46
+Function: (6*x^2) + (x + cos(x))
+Method: Бісекція
+Parameters: A=0, B=3.14, IG=1.5, Eps=1e-7, MaxIter=500
+Status: VALIDATION_REJECTED
+Time: 0 ms
+Error: На заданому інтервалі функція не змінює знак. Метод бісекції неможливий.
+----------------------------------------
+Test ID: 47
+Function: (6*x^2) + (x + cos(x))
+Method: Ньютон
+Parameters: A=0, B=3.14, IG=1.5, Eps=1e-7, MaxIter=500
+Status: FAIL_SOLVER
+Time: 118 ms
+Error: Метод Ньютона: Метод розбігається та виходить далеко за межі допустимого інтервалу.
+----------------------------------------
+Test ID: 48
+Function: (6*x^2) + (x + cos(x))
+Method: Січні
+Parameters: A=0, B=3.14, IG=1.5, Eps=1e-7, MaxIter=500
+Status: FAIL_SOLVER
+Time: 14 ms
+Error: Метод Січних: Метод розбігається та виходить далеко за межі допустимого інтервалу.
+----------------------------------------
+Test ID: 49
+Function: (x^2 - 38) * (x - tan(x))
+Method: Бісекція
+Parameters: A=-10, B=10, IG=0, Eps=1e-7, MaxIter=500
+Status: PASS
+Root: 0
+f(root): -0,0000E+000
+Iterations: 1
+Time: 12 ms
+----------------------------------------
+Test ID: 50
+Function: (x^2 - 38) * (x - tan(x))
+Method: Ньютон
+Parameters: A=-10, B=10, IG=0, Eps=1e-7, MaxIter=500
+Status: FAIL_SOLVER
+Time: 20 ms
+Error: Метод Ньютона: Похідна наближається до нуля на ітерації 1. Метод розбігається.
+----------------------------------------
+Test ID: 51
+Function: (x^2 - 38) * (x - tan(x))
+Method: Січні
+Parameters: A=-10, B=10, IG=0, Eps=1e-7, MaxIter=500
+Status: PASS
+Root: 0
+f(root): -0,0000E+000
+Iterations: 2
+Time: 15 ms
+----------------------------------------
+Test ID: 52
+Function: 3*sin(x) - 6
+Method: Бісекція
+Parameters: A=0, B=3.14, IG=1.5, Eps=1e-7, MaxIter=500
+Status: VALIDATION_REJECTED
+Time: 0 ms
+Error: На заданому інтервалі функція не змінює знак. Метод бісекції неможливий.
+----------------------------------------
+Test ID: 53
+Function: 3*sin(x) - 6
+Method: Ньютон
+Parameters: A=0, B=3.14, IG=1.5, Eps=1e-7, MaxIter=500
+Status: FAIL_SOLVER
+Time: 8 ms
+Error: Метод Ньютона: Метод розбігається та виходить далеко за межі допустимого інтервалу.
+----------------------------------------
+Test ID: 54
+Function: 3*sin(x) - 6
+Method: Січні
+Parameters: A=0, B=3.14, IG=1.5, Eps=1e-7, MaxIter=500
+Status: FAIL_SOLVER
+Time: 10 ms
+Error: Метод Січних: Метод розбігається та виходить далеко за межі допустимого інтервалу.
+----------------------------------------
+Test ID: 55
+Function: (1*log10(x) - 4) - (x^2 - 33)
+Method: Бісекція
+Parameters: A=0.1, B=5, IG=2, Eps=1e-7, MaxIter=500
+Status: VALIDATION_REJECTED
+Time: 0 ms
+Error: На заданому інтервалі функція не змінює знак. Метод бісекції неможливий.
+----------------------------------------
+Test ID: 56
+Function: (1*log10(x) - 4) - (x^2 - 33)
+Method: Ньютон
+Parameters: A=0.1, B=5, IG=2, Eps=1e-7, MaxIter=500
+Status: FAIL_SOLVER
+Time: 158 ms
+Error: Метод Ньютона: Знайдений корінь 5,4531 знаходиться поза межами інтервалу [0,1; 5].
+----------------------------------------
+Test ID: 57
+Function: (1*log10(x) - 4) - (x^2 - 33)
+Method: Січні
+Parameters: A=0.1, B=5, IG=2, Eps=1e-7, MaxIter=500
+Status: FAIL_SOLVER
+Time: 38 ms
+Error: Метод Січних: Знайдений корінь 5,4531 знаходиться поза межами інтервалу [0,1; 5].
+----------------------------------------
+Test ID: 58
+Function: (x^2 - 67) / (0*x^3 + 8)
+Method: Бісекція
+Parameters: A=-10, B=10, IG=0, Eps=1e-7, MaxIter=500
+Status: VALIDATION_REJECTED
+Time: 0 ms
+Error: На заданому інтервалі функція не змінює знак. Метод бісекції неможливий.
+----------------------------------------
+Test ID: 59
+Function: (x^2 - 67) / (0*x^3 + 8)
+Method: Ньютон
+Parameters: A=-10, B=10, IG=0, Eps=1e-7, MaxIter=500
+Status: FAIL_SOLVER
+Time: 16 ms
+Error: Метод Ньютона: Похідна наближається до нуля на ітерації 1. Метод розбігається.
+----------------------------------------
+Test ID: 60
+Function: (x^2 - 67) / (0*x^3 + 8)
+Method: Січні
+Parameters: A=-10, B=10, IG=0, Eps=1e-7, MaxIter=500
+Status: FAIL_SOLVER
+Time: 6 ms
+Error: Метод Січних: Ділення на нуль (f(x1) ≈ f(x0)) на ітерації 1. Метод розбігається.
+----------------------------------------
+Test ID: 61
+Function: x / exp(x)
+Method: Бісекція
+Parameters: A=-10, B=10, IG=0, Eps=1e-7, MaxIter=500
+Status: PASS
+Root: 0
+f(root): 0,0000E+000
+Iterations: 1
+Time: 11 ms
+----------------------------------------
+Test ID: 62
+Function: x / exp(x)
+Method: Ньютон
+Parameters: A=-10, B=10, IG=0, Eps=1e-7, MaxIter=500
+Status: PASS
+Root: 0
+f(root): 0,0000E+000
+Iterations: 1
+Time: 30 ms
+----------------------------------------
+Test ID: 63
+Function: x / exp(x)
+Method: Січні
+Parameters: A=-10, B=10, IG=0, Eps=1e-7, MaxIter=500
+Status: FAIL_SOLVER
+Time: 16 ms
+Error: Метод Січних: Отриманий результат не є коренем. f(x) = 4,5400E-004
+----------------------------------------
+Test ID: 64
+Function: x * sqrt(x)
+Method: Бісекція
+Parameters: A=-10, B=10, IG=0, Eps=1e-7, MaxIter=500
+Status: VALIDATION_REJECTED
+Time: 0 ms
+Error: Помилка обчислення функції на кінцях інтервалу: Результат обчислення не є числом (NaN). Можливо, ділення на нуль або корінь з від'ємного числа.
+----------------------------------------
+Test ID: 65
+Function: x * sqrt(x)
+Method: Ньютон
+Parameters: A=-10, B=10, IG=0, Eps=1e-7, MaxIter=500
+Status: FAIL_SOLVER
+Time: 14 ms
+Error: Помилка під час обчислення: Результат обчислення не є числом (NaN). Можливо, ділення на нуль або корінь з від'ємного числа.
+----------------------------------------
+Test ID: 66
+Function: x * sqrt(x)
+Method: Січні
+Parameters: A=-10, B=10, IG=0, Eps=1e-7, MaxIter=500
+Status: FAIL_SOLVER
+Time: 3 ms
+Error: Помилка під час обчислення: Результат обчислення не є числом (NaN). Можливо, ділення на нуль або корінь з від'ємного числа.
+----------------------------------------
+Test ID: 67
+Function: x + ln(x)
+Method: Бісекція
+Parameters: A=0.1, B=5, IG=2, Eps=1e-7, MaxIter=500
+Status: PASS
+Root: 0,567143431305885
+f(root): 3,8933E-007
+Iterations: 25
+Time: 119 ms
+----------------------------------------
+Test ID: 68
+Function: x + ln(x)
+Method: Ньютон
+Parameters: A=0.1, B=5, IG=2, Eps=1e-7, MaxIter=500
+Status: PASS
+Root: 0,567143290409784
+f(root): 0,0000E+000
+Iterations: 6
+Time: 123 ms
+----------------------------------------
+Test ID: 69
+Function: x + ln(x)
+Method: Січні
+Parameters: A=0.1, B=5, IG=2, Eps=1e-7, MaxIter=500
+Status: PASS
+Root: 0,567143290409784
+f(root): 0,0000E+000
+Iterations: 9
+Time: 58 ms
+----------------------------------------
+Test ID: 70
+Function: (x^2 - 22) - (10*x^5)
+Method: Бісекція
+Parameters: A=-10, B=10, IG=0, Eps=1e-7, MaxIter=500
+Status: PASS
+Root: -1,1562170088291168
+f(root): -7,5939E-007
+Iterations: 27
+Time: 174 ms
+----------------------------------------
+Test ID: 71
+Function: (x^2 - 22) - (10*x^5)
+Method: Ньютон
+Parameters: A=-10, B=10, IG=0, Eps=1e-7, MaxIter=500
+Status: FAIL_SOLVER
+Time: 8 ms
+Error: Метод Ньютона: Похідна наближається до нуля на ітерації 1. Метод розбігається.
+----------------------------------------
+Test ID: 72
+Function: (x^2 - 22) - (10*x^5)
+Method: Січні
+Parameters: A=-10, B=10, IG=0, Eps=1e-7, MaxIter=500
+Status: FAIL_SOLVER
+Time: 20 ms
+Error: Метод Січних: Метод розбігається та виходить далеко за межі допустимого інтервалу.
+----------------------------------------
+Test ID: 73
+Function: (x^2 - 84) / (-3*x^3)
+Method: Бісекція
+Parameters: A=-10, B=10, IG=0, Eps=1e-7, MaxIter=500
+Status: FAIL_SOLVER
+Time: 24 ms
+Error: Помилка під час обчислення: Результат обчислення не є числом (NaN). Можливо, ділення на нуль або корінь з від'ємного числа.
+----------------------------------------
+Test ID: 74
+Function: (x^2 - 84) / (-3*x^3)
+Method: Ньютон
+Parameters: A=-10, B=10, IG=0, Eps=1e-7, MaxIter=500
+Status: FAIL_SOLVER
+Time: 3 ms
+Error: Помилка під час обчислення: Результат обчислення не є числом (NaN). Можливо, ділення на нуль або корінь з від'ємного числа.
+----------------------------------------
+Test ID: 75
+Function: (x^2 - 84) / (-3*x^3)
+Method: Січні
+Parameters: A=-10, B=10, IG=0, Eps=1e-7, MaxIter=500
+Status: FAIL_SOLVER
+Time: 7 ms
+Error: Помилка під час обчислення: Результат обчислення не є числом (NaN). Можливо, ділення на нуль або корінь з від'ємного числа.
+----------------------------------------
+Test ID: 76
+Function: x^2 - 59
+Method: Бісекція
+Parameters: A=-10, B=10, IG=0, Eps=1e-7, MaxIter=500
+Status: VALIDATION_REJECTED
+Time: 0 ms
+Error: На заданому інтервалі функція не змінює знак. Метод бісекції неможливий.
+----------------------------------------
+Test ID: 77
+Function: x^2 - 59
+Method: Ньютон
+Parameters: A=-10, B=10, IG=0, Eps=1e-7, MaxIter=500
+Status: FAIL_SOLVER
+Time: 5 ms
+Error: Метод Ньютона: Похідна наближається до нуля на ітерації 1. Метод розбігається.
+----------------------------------------
+Test ID: 78
+Function: x^2 - 59
+Method: Січні
+Parameters: A=-10, B=10, IG=0, Eps=1e-7, MaxIter=500
+Status: FAIL_SOLVER
+Time: 4 ms
+Error: Метод Січних: Ділення на нуль (f(x1) ≈ f(x0)) на ітерації 1. Метод розбігається.
+----------------------------------------
+Test ID: 79
+Function: -9*x^1 + -14
+Method: Бісекція
+Parameters: A=-10, B=10, IG=0, Eps=1e-7, MaxIter=500
+Status: PASS
+Root: -1,5555556118488312
+f(root): 5,0664E-007
+Iterations: 27
+Time: 78 ms
+----------------------------------------
+Test ID: 80
+Function: -9*x^1 + -14
+Method: Ньютон
+Parameters: A=-10, B=10, IG=0, Eps=1e-7, MaxIter=500
+Status: PASS
+Root: -1,5555555555555602
+f(root): 0,0000E+000
+Iterations: 2
+Time: 33 ms
+----------------------------------------
+Test ID: 81
+Function: -9*x^1 + -14
+Method: Січні
+Parameters: A=-10, B=10, IG=0, Eps=1e-7, MaxIter=500
+Status: PASS
+Root: -1,5555555555555554
+f(root): 0,0000E+000
+Iterations: 2
+Time: 28 ms
+----------------------------------------
+Test ID: 82
+Function: (4*log10(x)) + (x^2 - 80)
+Method: Бісекція
+Parameters: A=0.1, B=5, IG=2, Eps=1e-7, MaxIter=500
+Status: VALIDATION_REJECTED
+Time: 0 ms
+Error: На заданому інтервалі функція не змінює знак. Метод бісекції неможливий.
+----------------------------------------
+Test ID: 83
+Function: (4*log10(x)) + (x^2 - 80)
+Method: Ньютон
+Parameters: A=0.1, B=5, IG=2, Eps=1e-7, MaxIter=500
+Status: FAIL_SOLVER
+Time: 12 ms
+Error: Метод Ньютона: Метод розбігається та виходить далеко за межі допустимого інтервалу.
+----------------------------------------
+Test ID: 84
+Function: (4*log10(x)) + (x^2 - 80)
+Method: Січні
+Parameters: A=0.1, B=5, IG=2, Eps=1e-7, MaxIter=500
+Status: FAIL_SOLVER
+Time: 43 ms
+Error: Метод Січних: Знайдений корінь 8,7313 знаходиться поза межами інтервалу [0,1; 5].
+----------------------------------------
+Test ID: 85
+Function: x / tan(x)
+Method: Бісекція
+Parameters: A=-10, B=10, IG=0, Eps=1e-7, MaxIter=500
+Status: VALIDATION_REJECTED
+Time: 0 ms
+Error: На заданому інтервалі функція не змінює знак. Метод бісекції неможливий.
+----------------------------------------
+Test ID: 86
+Function: x / tan(x)
+Method: Ньютон
+Parameters: A=-10, B=10, IG=0, Eps=1e-7, MaxIter=500
+Status: FAIL_SOLVER
+Time: 2 ms
+Error: Помилка під час обчислення: Результат обчислення не є числом (NaN). Можливо, ділення на нуль або корінь з від'ємного числа.
+----------------------------------------
+Test ID: 87
+Function: x / tan(x)
+Method: Січні
+Parameters: A=-10, B=10, IG=0, Eps=1e-7, MaxIter=500
+Status: FAIL_SOLVER
+Time: 12 ms
+Error: Метод Січних: Ділення на нуль (f(x1) ≈ f(x0)) на ітерації 1. Метод розбігається.
+----------------------------------------
+Test ID: 88
+Function: x + ln(x)
+Method: Бісекція
+Parameters: A=0.1, B=5, IG=2, Eps=1e-7, MaxIter=500
+Status: PASS
+Root: 0,567143431305885
+f(root): 3,8933E-007
+Iterations: 25
+Time: 104 ms
+----------------------------------------
+Test ID: 89
+Function: x + ln(x)
+Method: Ньютон
+Parameters: A=0.1, B=5, IG=2, Eps=1e-7, MaxIter=500
+Status: PASS
+Root: 0,567143290409784
+f(root): 0,0000E+000
+Iterations: 6
+Time: 62 ms
+----------------------------------------
+Test ID: 90
+Function: x + ln(x)
+Method: Січні
+Parameters: A=0.1, B=5, IG=2, Eps=1e-7, MaxIter=500
+Status: PASS
+Root: 0,567143290409784
+f(root): 0,0000E+000
+Iterations: 9
+Time: 50 ms
+----------------------------------------
+Test ID: 91
+Function: (7*x^2) + (x * cos(x))
+Method: Бісекція
+Parameters: A=0, B=3.14, IG=1.5, Eps=1e-7, MaxIter=500
+Status: PASS
+Root: 1,8715858459472657E-07
+f(root): 1,8716E-007
+Iterations: 24
+Time: 75 ms
+----------------------------------------
+Test ID: 92
+Function: (7*x^2) + (x * cos(x))
+Method: Ньютон
+Parameters: A=0, B=3.14, IG=1.5, Eps=1e-7, MaxIter=500
+Status: PASS
+Root: -4,028553572254504E-19
+f(root): -0,0000E+000
+Iterations: 9
+Time: 46 ms
+----------------------------------------
+Test ID: 93
+Function: (7*x^2) + (x * cos(x))
+Method: Січні
+Parameters: A=0, B=3.14, IG=1.5, Eps=1e-7, MaxIter=500
+Status: PASS
+Root: 0
+f(root): 0,0000E+000
+Iterations: 2
+Time: 14 ms
+----------------------------------------
+Test ID: 94
+Function: (x^2 - 87) * (x^2 - 46)
+Method: Бісекція
+Parameters: A=-10, B=10, IG=0, Eps=1e-7, MaxIter=500
+Status: VALIDATION_REJECTED
+Time: 0 ms
+Error: На заданому інтервалі функція не змінює знак. Метод бісекції неможливий.
+----------------------------------------
+Test ID: 95
+Function: (x^2 - 87) * (x^2 - 46)
+Method: Ньютон
+Parameters: A=-10, B=10, IG=0, Eps=1e-7, MaxIter=500
+Status: FAIL_SOLVER
+Time: 3 ms
+Error: Метод Ньютона: Похідна наближається до нуля на ітерації 1. Метод розбігається.
+----------------------------------------
+Test ID: 96
+Function: (x^2 - 87) * (x^2 - 46)
+Method: Січні
+Parameters: A=-10, B=10, IG=0, Eps=1e-7, MaxIter=500
+Status: FAIL_SOLVER
+Time: 1 ms
+Error: Метод Січних: Ділення на нуль (f(x1) ≈ f(x0)) на ітерації 1. Метод розбігається.
+----------------------------------------
+Test ID: 97
+Function: (x^2 - 8) / (x^2 - 53)
+Method: Бісекція
+Parameters: A=-10, B=10, IG=0, Eps=1e-7, MaxIter=500
+Status: VALIDATION_REJECTED
+Time: 0 ms
+Error: На заданому інтервалі функція не змінює знак. Метод бісекції неможливий.
+----------------------------------------
+Test ID: 98
+Function: (x^2 - 8) / (x^2 - 53)
+Method: Ньютон
+Parameters: A=-10, B=10, IG=0, Eps=1e-7, MaxIter=500
+Status: FAIL_SOLVER
+Time: 4 ms
+Error: Метод Ньютона: Похідна наближається до нуля на ітерації 1. Метод розбігається.
+----------------------------------------
+Test ID: 99
+Function: (x^2 - 8) / (x^2 - 53)
+Method: Січні
+Parameters: A=-10, B=10, IG=0, Eps=1e-7, MaxIter=500
+Status: FAIL_SOLVER
+Time: 2 ms
+Error: Метод Січних: Ділення на нуль (f(x1) ≈ f(x0)) на ітерації 1. Метод розбігається.
+----------------------------------------
+Test ID: 100
+Function: (x^2 - 86) + (x / sin(x))
+Method: Бісекція
+Parameters: A=0, B=3.14, IG=1.5, Eps=1e-7, MaxIter=500
+Status: VALIDATION_REJECTED
+Time: 0 ms
+Error: Помилка обчислення функції на кінцях інтервалу: Результат обчислення не є числом (NaN). Можливо, ділення на нуль або корінь з від'ємного числа.
+----------------------------------------
+Test ID: 101
+Function: (x^2 - 86) + (x / sin(x))
+Method: Ньютон
+Parameters: A=0, B=3.14, IG=1.5, Eps=1e-7, MaxIter=500
+Status: FAIL_SOLVER
+Time: 6 ms
+Error: Метод Ньютона: Метод розбігається та виходить далеко за межі допустимого інтервалу.
+----------------------------------------
+Test ID: 102
+Function: (x^2 - 86) + (x / sin(x))
+Method: Січні
+Parameters: A=0, B=3.14, IG=1.5, Eps=1e-7, MaxIter=500
+Status: FAIL_SOLVER
+Time: 2 ms
+Error: Помилка під час обчислення: Результат обчислення не є числом (NaN). Можливо, ділення на нуль або корінь з від'ємного числа.
+----------------------------------------
+Test ID: 103
+Function: (x^2 - 1) / (3*log10(x))
+Method: Бісекція
+Parameters: A=0.1, B=5, IG=2, Eps=1e-7, MaxIter=500
+Status: VALIDATION_REJECTED
+Time: 0 ms
+Error: На заданому інтервалі функція не змінює знак. Метод бісекції неможливий.
+----------------------------------------
+Test ID: 104
+Function: (x^2 - 1) / (3*log10(x))
+Method: Ньютон
+Parameters: A=0.1, B=5, IG=2, Eps=1e-7, MaxIter=500
+Status: FAIL_SOLVER
+Time: 10 ms
+Error: Помилка під час обчислення: Результат обчислення не є числом (NaN). Можливо, ділення на нуль або корінь з від'ємного числа.
+----------------------------------------
+Test ID: 105
+Function: (x^2 - 1) / (3*log10(x))
+Method: Січні
+Parameters: A=0.1, B=5, IG=2, Eps=1e-7, MaxIter=500
+Status: FAIL_SOLVER
+Time: 4 ms
+Error: Помилка під час обчислення: Результат обчислення не є числом (NaN). Можливо, ділення на нуль або корінь з від'ємного числа.
+----------------------------------------
+Test ID: 106
+Function: (x^2 - 31) + (4*tan(x) - 3)
+Method: Бісекція
+Parameters: A=-10, B=10, IG=0, Eps=1e-7, MaxIter=500
+Status: VALIDATION_REJECTED
+Time: 0 ms
+Error: На заданому інтервалі функція не змінює знак. Метод бісекції неможливий.
+----------------------------------------
+Test ID: 107
+Function: (x^2 - 31) + (4*tan(x) - 3)
+Method: Ньютон
+Parameters: A=-10, B=10, IG=0, Eps=1e-7, MaxIter=500
+Status: PASS
+Root: 5,948891991931857
+f(root): 3,0000E-014
+Iterations: 7
+Time: 42 ms
+----------------------------------------
+Test ID: 108
+Function: (x^2 - 31) + (4*tan(x) - 3)
+Method: Січні
+Parameters: A=-10, B=10, IG=0, Eps=1e-7, MaxIter=500
+Status: FAIL_SOLVER
+Time: 2 ms
+Error: Метод Січних: Метод розбігається та виходить далеко за межі допустимого інтервалу.
+----------------------------------------
+Test ID: 109
+Function: 4*sqrt(x)
+Method: Бісекція
+Parameters: A=-10, B=10, IG=0, Eps=1e-7, MaxIter=500
+Status: VALIDATION_REJECTED
+Time: 0 ms
+Error: Помилка обчислення функції на кінцях інтервалу: Результат обчислення не є числом (NaN). Можливо, ділення на нуль або корінь з від'ємного числа.
+----------------------------------------
+Test ID: 110
+Function: 4*sqrt(x)
+Method: Ньютон
+Parameters: A=-10, B=10, IG=0, Eps=1e-7, MaxIter=500
+Status: FAIL_SOLVER
+Time: 3 ms
+Error: Помилка під час обчислення: Результат обчислення не є числом (NaN). Можливо, ділення на нуль або корінь з від'ємного числа.
+----------------------------------------
+Test ID: 111
+Function: 4*sqrt(x)
+Method: Січні
+Parameters: A=-10, B=10, IG=0, Eps=1e-7, MaxIter=500
+Status: FAIL_SOLVER
+Time: 1 ms
+Error: Помилка під час обчислення: Результат обчислення не є числом (NaN). Можливо, ділення на нуль або корінь з від'ємного числа.
+----------------------------------------
+Test ID: 112
+Function: x * cos(x)
+Method: Бісекція
+Parameters: A=0, B=3.14, IG=1.5, Eps=1e-7, MaxIter=500
+Status: PASS
+Root: 1,8715858459472657E-07
+f(root): 1,8716E-007
+Iterations: 24
+Time: 34 ms
+----------------------------------------
+Test ID: 113
+Function: x * cos(x)
+Method: Ньютон
+Parameters: A=0, B=3.14, IG=1.5, Eps=1e-7, MaxIter=500
+Status: PASS
+Root: 1,5707963267948966
+f(root): 0,0000E+000
+Iterations: 4
+Time: 24 ms
+----------------------------------------
+Test ID: 114
+Function: x * cos(x)
+Method: Січні
+Parameters: A=0, B=3.14, IG=1.5, Eps=1e-7, MaxIter=500
+Status: PASS
+Root: 0
+f(root): 0,0000E+000
+Iterations: 2
+Time: 3 ms
+----------------------------------------
+Test ID: 115
+Function: (3*cos(x)) / (1*x^2)
+Method: Бісекція
+Parameters: A=0, B=3.14, IG=1.5, Eps=1e-7, MaxIter=500
+Status: VALIDATION_REJECTED
+Time: 0 ms
+Error: Помилка обчислення функції на кінцях інтервалу: Результат обчислення не є числом (NaN). Можливо, ділення на нуль або корінь з від'ємного числа.
+----------------------------------------
+Test ID: 116
+Function: (3*cos(x)) / (1*x^2)
+Method: Ньютон
+Parameters: A=0, B=3.14, IG=1.5, Eps=1e-7, MaxIter=500
+Status: PASS
+Root: 1,5707963267948966
+f(root): 0,0000E+000
+Iterations: 4
+Time: 23 ms
+----------------------------------------
+Test ID: 117
+Function: (3*cos(x)) / (1*x^2)
+Method: Січні
+Parameters: A=0, B=3.14, IG=1.5, Eps=1e-7, MaxIter=500
+Status: FAIL_SOLVER
+Time: 1 ms
+Error: Помилка під час обчислення: Результат обчислення не є числом (NaN). Можливо, ділення на нуль або корінь з від'ємного числа.
+----------------------------------------
+Test ID: 118
+Function: (x^2 - 3) + (5*abs(x) - 6)
+Method: Бісекція
+Parameters: A=-10, B=10, IG=0, Eps=1e-7, MaxIter=500
+Status: VALIDATION_REJECTED
+Time: 0 ms
+Error: На заданому інтервалі функція не змінює знак. Метод бісекції неможливий.
+----------------------------------------
+Test ID: 119
+Function: (x^2 - 3) + (5*abs(x) - 6)
+Method: Ньютон
+Parameters: A=-10, B=10, IG=0, Eps=1e-7, MaxIter=500
+Status: FAIL_SOLVER
+Time: 4 ms
+Error: Метод Ньютона: Похідна наближається до нуля на ітерації 1. Метод розбігається.
+----------------------------------------
+Test ID: 120
+Function: (x^2 - 3) + (5*abs(x) - 6)
+Method: Січні
+Parameters: A=-10, B=10, IG=0, Eps=1e-7, MaxIter=500
+Status: FAIL_SOLVER
+Time: 2 ms
+Error: Метод Січних: Ділення на нуль (f(x1) ≈ f(x0)) на ітерації 1. Метод розбігається.
+----------------------------------------
+Test ID: 121
+Function: x^2 - 52
+Method: Бісекція
+Parameters: A=-10, B=10, IG=0, Eps=1e-7, MaxIter=500
+Status: VALIDATION_REJECTED
+Time: 0 ms
+Error: На заданому інтервалі функція не змінює знак. Метод бісекції неможливий.
+----------------------------------------
+Test ID: 122
+Function: x^2 - 52
+Method: Ньютон
+Parameters: A=-10, B=10, IG=0, Eps=1e-7, MaxIter=500
+Status: FAIL_SOLVER
+Time: 2 ms
+Error: Метод Ньютона: Похідна наближається до нуля на ітерації 1. Метод розбігається.
+----------------------------------------
+Test ID: 123
+Function: x^2 - 52
+Method: Січні
+Parameters: A=-10, B=10, IG=0, Eps=1e-7, MaxIter=500
+Status: FAIL_SOLVER
+Time: 1 ms
+Error: Метод Січних: Ділення на нуль (f(x1) ≈ f(x0)) на ітерації 1. Метод розбігається.
+----------------------------------------
+Test ID: 124
+Function: (3*x^2) * (x^2 - 57)
+Method: Бісекція
+Parameters: A=-10, B=10, IG=0, Eps=1e-7, MaxIter=500
+Status: VALIDATION_REJECTED
+Time: 0 ms
+Error: На заданому інтервалі функція не змінює знак. Метод бісекції неможливий.
+----------------------------------------
+Test ID: 125
+Function: (3*x^2) * (x^2 - 57)
+Method: Ньютон
+Parameters: A=-10, B=10, IG=0, Eps=1e-7, MaxIter=500
+Status: FAIL_SOLVER
+Time: 5 ms
+Error: Метод Ньютона: Похідна наближається до нуля на ітерації 1. Метод розбігається.
+----------------------------------------
+Test ID: 126
+Function: (3*x^2) * (x^2 - 57)
+Method: Січні
+Parameters: A=-10, B=10, IG=0, Eps=1e-7, MaxIter=500
+Status: FAIL_SOLVER
+Time: 4 ms
+Error: Метод Січних: Ділення на нуль (f(x1) ≈ f(x0)) на ітерації 1. Метод розбігається.
+----------------------------------------
+Test ID: 127
+Function: (4*sin(x)) / (-8*x^4)
+Method: Бісекція
+Parameters: A=0, B=3.14, IG=1.5, Eps=1e-7, MaxIter=500
+Status: VALIDATION_REJECTED
+Time: 0 ms
+Error: Помилка обчислення функції на кінцях інтервалу: Результат обчислення не є числом (NaN). Можливо, ділення на нуль або корінь з від'ємного числа.
+----------------------------------------
+Test ID: 128
+Function: (4*sin(x)) / (-8*x^4)
+Method: Ньютон
+Parameters: A=0, B=3.14, IG=1.5, Eps=1e-7, MaxIter=500
+Status: FAIL_SOLVER
+Time: 37 ms
+Error: Метод Ньютона: Знайдений корінь 3,1416 знаходиться поза межами інтервалу [0; 3,14].
+----------------------------------------
+Test ID: 129
+Function: (4*sin(x)) / (-8*x^4)
+Method: Січні
+Parameters: A=0, B=3.14, IG=1.5, Eps=1e-7, MaxIter=500
+Status: FAIL_SOLVER
+Time: 2 ms
+Error: Помилка під час обчислення: Результат обчислення не є числом (NaN). Можливо, ділення на нуль або корінь з від'ємного числа.
+----------------------------------------
+Test ID: 130
+Function: (x + cos(x)) * (x^2 - 8)
+Method: Бісекція
+Parameters: A=0, B=3.14, IG=1.5, Eps=1e-7, MaxIter=500
+Status: PASS
+Root: 2,8284271848201756
+f(root): 6,3788E-007
+Iterations: 24
+Time: 38 ms
+----------------------------------------
+Test ID: 131
+Function: (x + cos(x)) * (x^2 - 8)
+Method: Ньютон
+Parameters: A=0, B=3.14, IG=1.5, Eps=1e-7, MaxIter=500
+Status: PASS
+Root: 2,8284271247461903
+f(root): 0,0000E+000
+Iterations: 6
+Time: 34 ms
+----------------------------------------
+Test ID: 132
+Function: (x + cos(x)) * (x^2 - 8)
+Method: Січні
+Parameters: A=0, B=3.14, IG=1.5, Eps=1e-7, MaxIter=500
+Status: PASS
+Root: 2,828427124744163
+f(root): -2,1530E-011
 Iterations: 7
 Time: 14 ms
 ----------------------------------------
-Test ID: 27
-Function: x^5 - 3x + 1
-Method: Січні
-Parameters: A=-10, B=10, IG=0, Eps=1e-15, MaxIter=500
-Status: PASS
-Root: 0,3347341419433518
-f(root): -0,0000E+000
-Iterations: 8
-Time: 12 ms
-----------------------------------------
-Test ID: 28
-Function: sin(x)
+Test ID: 133
+Function: 2*log10(x) - 9
 Method: Бісекція
-Parameters: A=0, B=3.14, IG=1.5, Eps=1e-5, MaxIter=500
-Status: PASS
-Root: 1,19781494140625E-05
-f(root): 1,1978E-005
-Iterations: 18
-Time: 28 ms
+Parameters: A=0.1, B=5, IG=2, Eps=1e-7, MaxIter=500
+Status: VALIDATION_REJECTED
+Time: 0 ms
+Error: На заданому інтервалі функція не змінює знак. Метод бісекції неможливий.
 ----------------------------------------
-Test ID: 29
-Function: sin(x)
-Method: Бісекція
-Parameters: A=0, B=3.14, IG=1.5, Eps=1e-10, MaxIter=500
-Status: PASS
-Root: 1,8277205526828767E-10
-f(root): 1,8277E-010
-Iterations: 34
-Time: 69 ms
-----------------------------------------
-Test ID: 30
-Function: sin(x)
-Method: Бісекція
-Parameters: A=0, B=3.14, IG=1.5, Eps=1e-15, MaxIter=500
-Status: PASS
-Root: 8,924416761146859E-14
-f(root): 0,0000E+000
-Iterations: 45
-Time: 76 ms
-----------------------------------------
-Test ID: 31
-Function: sin(x)
+Test ID: 134
+Function: 2*log10(x) - 9
 Method: Ньютон
-Parameters: A=0, B=3.14, IG=1.5, Eps=1e-5, MaxIter=500
+Parameters: A=0.1, B=5, IG=2, Eps=1e-7, MaxIter=500
+Status: FAIL_SOLVER
+Time: 5 ms
+Error: Метод Ньютона: Метод розбігається та виходить далеко за межі допустимого інтервалу.
+----------------------------------------
+Test ID: 135
+Function: 2*log10(x) - 9
+Method: Січні
+Parameters: A=0.1, B=5, IG=2, Eps=1e-7, MaxIter=500
+Status: FAIL_SOLVER
+Time: 6 ms
+Error: Метод Січних: Метод розбігається та виходить далеко за межі допустимого інтервалу.
+----------------------------------------
+Test ID: 136
+Function: 2*cos(x) - 3
+Method: Бісекція
+Parameters: A=0, B=3.14, IG=1.5, Eps=1e-7, MaxIter=500
+Status: VALIDATION_REJECTED
+Time: 0 ms
+Error: На заданому інтервалі функція не змінює знак. Метод бісекції неможливий.
+----------------------------------------
+Test ID: 137
+Function: 2*cos(x) - 3
+Method: Ньютон
+Parameters: A=0, B=3.14, IG=1.5, Eps=1e-7, MaxIter=500
 Status: FAIL_SOLVER
 Time: 7 ms
 Error: Метод Ньютона: Метод розбігається та виходить далеко за межі допустимого інтервалу.
 ----------------------------------------
-Test ID: 32
-Function: sin(x)
-Method: Ньютон
-Parameters: A=0, B=3.14, IG=1.5, Eps=1e-10, MaxIter=500
+Test ID: 138
+Function: 2*cos(x) - 3
+Method: Січні
+Parameters: A=0, B=3.14, IG=1.5, Eps=1e-7, MaxIter=500
 Status: FAIL_SOLVER
 Time: 6 ms
-Error: Метод Ньютона: Метод розбігається та виходить далеко за межі допустимого інтервалу.
+Error: Метод Січних: Метод розбігається та виходить далеко за межі допустимого інтервалу.
 ----------------------------------------
-Test ID: 33
-Function: sin(x)
+Test ID: 139
+Function: 2*x^4
+Method: Бісекція
+Parameters: A=-10, B=10, IG=0, Eps=1e-7, MaxIter=500
+Status: VALIDATION_REJECTED
+Time: 0 ms
+Error: На заданому інтервалі функція не змінює знак. Метод бісекції неможливий.
+----------------------------------------
+Test ID: 140
+Function: 2*x^4
 Method: Ньютон
-Parameters: A=0, B=3.14, IG=1.5, Eps=1e-15, MaxIter=500
+Parameters: A=-10, B=10, IG=0, Eps=1e-7, MaxIter=500
 Status: FAIL_SOLVER
-Time: 5 ms
+Time: 3 ms
+Error: Метод Ньютона: Похідна наближається до нуля на ітерації 1. Метод розбігається.
+----------------------------------------
+Test ID: 141
+Function: 2*x^4
+Method: Січні
+Parameters: A=-10, B=10, IG=0, Eps=1e-7, MaxIter=500
+Status: FAIL_SOLVER
+Time: 7 ms
+Error: Метод Січних: Ділення на нуль (f(x1) ≈ f(x0)) на ітерації 1. Метод розбігається.
+----------------------------------------
+Test ID: 142
+Function: x^2 - 27
+Method: Бісекція
+Parameters: A=-10, B=10, IG=0, Eps=1e-7, MaxIter=500
+Status: VALIDATION_REJECTED
+Time: 0 ms
+Error: На заданому інтервалі функція не змінює знак. Метод бісекції неможливий.
+----------------------------------------
+Test ID: 143
+Function: x^2 - 27
+Method: Ньютон
+Parameters: A=-10, B=10, IG=0, Eps=1e-7, MaxIter=500
+Status: FAIL_SOLVER
+Time: 4 ms
+Error: Метод Ньютона: Похідна наближається до нуля на ітерації 1. Метод розбігається.
+----------------------------------------
+Test ID: 144
+Function: x^2 - 27
+Method: Січні
+Parameters: A=-10, B=10, IG=0, Eps=1e-7, MaxIter=500
+Status: FAIL_SOLVER
+Time: 2 ms
+Error: Метод Січних: Ділення на нуль (f(x1) ≈ f(x0)) на ітерації 1. Метод розбігається.
+----------------------------------------
+Test ID: 145
+Function: 3*sqrt(x)
+Method: Бісекція
+Parameters: A=-10, B=10, IG=0, Eps=1e-7, MaxIter=500
+Status: VALIDATION_REJECTED
+Time: 0 ms
+Error: Помилка обчислення функції на кінцях інтервалу: Результат обчислення не є числом (NaN). Можливо, ділення на нуль або корінь з від'ємного числа.
+----------------------------------------
+Test ID: 146
+Function: 3*sqrt(x)
+Method: Ньютон
+Parameters: A=-10, B=10, IG=0, Eps=1e-7, MaxIter=500
+Status: FAIL_SOLVER
+Time: 4 ms
+Error: Помилка під час обчислення: Результат обчислення не є числом (NaN). Можливо, ділення на нуль або корінь з від'ємного числа.
+----------------------------------------
+Test ID: 147
+Function: 3*sqrt(x)
+Method: Січні
+Parameters: A=-10, B=10, IG=0, Eps=1e-7, MaxIter=500
+Status: FAIL_SOLVER
+Time: 3 ms
+Error: Помилка під час обчислення: Результат обчислення не є числом (NaN). Можливо, ділення на нуль або корінь з від'ємного числа.
+----------------------------------------
+Test ID: 148
+Function: (-9*x^1) + (x / ln(x))
+Method: Бісекція
+Parameters: A=0.1, B=5, IG=2, Eps=1e-7, MaxIter=500
+Status: VALIDATION_REJECTED
+Time: 0 ms
+Error: На заданому інтервалі функція не змінює знак. Метод бісекції неможливий.
+----------------------------------------
+Test ID: 149
+Function: (-9*x^1) + (x / ln(x))
+Method: Ньютон
+Parameters: A=0.1, B=5, IG=2, Eps=1e-7, MaxIter=500
+Status: FAIL_SOLVER
+Time: 30 ms
+Error: Помилка під час обчислення: Результат обчислення не є числом (NaN). Можливо, ділення на нуль або корінь з від'ємного числа.
+----------------------------------------
+Test ID: 150
+Function: (-9*x^1) + (x / ln(x))
+Method: Січні
+Parameters: A=0.1, B=5, IG=2, Eps=1e-7, MaxIter=500
+Status: FAIL_SOLVER
+Time: 6 ms
+Error: Помилка під час обчислення: Результат обчислення не є числом (NaN). Можливо, ділення на нуль або корінь з від'ємного числа.
+----------------------------------------
+Test ID: 151
+Function: -4*x^2
+Method: Бісекція
+Parameters: A=-10, B=10, IG=0, Eps=1e-7, MaxIter=500
+Status: VALIDATION_REJECTED
+Time: 0 ms
+Error: На заданому інтервалі функція не змінює знак. Метод бісекції неможливий.
+----------------------------------------
+Test ID: 152
+Function: -4*x^2
+Method: Ньютон
+Parameters: A=-10, B=10, IG=0, Eps=1e-7, MaxIter=500
+Status: FAIL_SOLVER
+Time: 6 ms
+Error: Метод Ньютона: Похідна наближається до нуля на ітерації 1. Метод розбігається.
+----------------------------------------
+Test ID: 153
+Function: -4*x^2
+Method: Січні
+Parameters: A=-10, B=10, IG=0, Eps=1e-7, MaxIter=500
+Status: FAIL_SOLVER
+Time: 4 ms
+Error: Метод Січних: Ділення на нуль (f(x1) ≈ f(x0)) на ітерації 1. Метод розбігається.
+----------------------------------------
+Test ID: 154
+Function: (5*sqrt(x)) - (-3*x^2 + -11)
+Method: Бісекція
+Parameters: A=-10, B=10, IG=0, Eps=1e-7, MaxIter=500
+Status: VALIDATION_REJECTED
+Time: 0 ms
+Error: Помилка обчислення функції на кінцях інтервалу: Результат обчислення не є числом (NaN). Можливо, ділення на нуль або корінь з від'ємного числа.
+----------------------------------------
+Test ID: 155
+Function: (5*sqrt(x)) - (-3*x^2 + -11)
+Method: Ньютон
+Parameters: A=-10, B=10, IG=0, Eps=1e-7, MaxIter=500
+Status: FAIL_SOLVER
+Time: 4 ms
+Error: Помилка під час обчислення: Результат обчислення не є числом (NaN). Можливо, ділення на нуль або корінь з від'ємного числа.
+----------------------------------------
+Test ID: 156
+Function: (5*sqrt(x)) - (-3*x^2 + -11)
+Method: Січні
+Parameters: A=-10, B=10, IG=0, Eps=1e-7, MaxIter=500
+Status: FAIL_SOLVER
+Time: 2 ms
+Error: Помилка під час обчислення: Результат обчислення не є числом (NaN). Можливо, ділення на нуль або корінь з від'ємного числа.
+----------------------------------------
+Test ID: 157
+Function: x^2 - 89
+Method: Бісекція
+Parameters: A=-10, B=10, IG=0, Eps=1e-7, MaxIter=500
+Status: VALIDATION_REJECTED
+Time: 0 ms
+Error: На заданому інтервалі функція не змінює знак. Метод бісекції неможливий.
+----------------------------------------
+Test ID: 158
+Function: x^2 - 89
+Method: Ньютон
+Parameters: A=-10, B=10, IG=0, Eps=1e-7, MaxIter=500
+Status: FAIL_SOLVER
+Time: 2 ms
+Error: Метод Ньютона: Похідна наближається до нуля на ітерації 1. Метод розбігається.
+----------------------------------------
+Test ID: 159
+Function: x^2 - 89
+Method: Січні
+Parameters: A=-10, B=10, IG=0, Eps=1e-7, MaxIter=500
+Status: FAIL_SOLVER
+Time: 2 ms
+Error: Метод Січних: Ділення на нуль (f(x1) ≈ f(x0)) на ітерації 1. Метод розбігається.
+----------------------------------------
+Test ID: 160
+Function: (1*ln(x)) * (1*sin(x) - 2)
+Method: Бісекція
+Parameters: A=0, B=3.14, IG=1.5, Eps=1e-7, MaxIter=500
+Status: VALIDATION_REJECTED
+Time: 0 ms
+Error: Помилка обчислення функції на кінцях інтервалу: Значення функції занадто велике (нескінченність).
+----------------------------------------
+Test ID: 161
+Function: (1*ln(x)) * (1*sin(x) - 2)
+Method: Ньютон
+Parameters: A=0, B=3.14, IG=1.5, Eps=1e-7, MaxIter=500
+Status: PASS
+Root: 0,9999999999999934
+f(root): 0,0000E+000
+Iterations: 5
+Time: 26 ms
+----------------------------------------
+Test ID: 162
+Function: (1*ln(x)) * (1*sin(x) - 2)
+Method: Січні
+Parameters: A=0, B=3.14, IG=1.5, Eps=1e-7, MaxIter=500
+Status: FAIL_SOLVER
+Time: 3 ms
+Error: Помилка під час обчислення: Значення функції занадто велике (нескінченність).
+----------------------------------------
+Test ID: 163
+Function: x - ln(x)
+Method: Бісекція
+Parameters: A=0.1, B=5, IG=2, Eps=1e-7, MaxIter=500
+Status: VALIDATION_REJECTED
+Time: 0 ms
+Error: На заданому інтервалі функція не змінює знак. Метод бісекції неможливий.
+----------------------------------------
+Test ID: 164
+Function: x - ln(x)
+Method: Ньютон
+Parameters: A=0.1, B=5, IG=2, Eps=1e-7, MaxIter=500
+Status: FAIL_SOLVER
+Time: 6 ms
+Error: Помилка під час обчислення: Результат обчислення не є числом (NaN). Можливо, ділення на нуль або корінь з від'ємного числа.
+----------------------------------------
+Test ID: 165
+Function: x - ln(x)
+Method: Січні
+Parameters: A=0.1, B=5, IG=2, Eps=1e-7, MaxIter=500
+Status: FAIL_SOLVER
+Time: 2 ms
+Error: Метод Січних: Метод розбігається та виходить далеко за межі допустимого інтервалу.
+----------------------------------------
+Test ID: 166
+Function: (-6*x^2) - (x + cos(x))
+Method: Бісекція
+Parameters: A=0, B=3.14, IG=1.5, Eps=1e-7, MaxIter=500
+Status: VALIDATION_REJECTED
+Time: 0 ms
+Error: На заданому інтервалі функція не змінює знак. Метод бісекції неможливий.
+----------------------------------------
+Test ID: 167
+Function: (-6*x^2) - (x + cos(x))
+Method: Ньютон
+Parameters: A=0, B=3.14, IG=1.5, Eps=1e-7, MaxIter=500
+Status: FAIL_SOLVER
+Time: 41 ms
 Error: Метод Ньютона: Метод розбігається та виходить далеко за межі допустимого інтервалу.
 ----------------------------------------
-Test ID: 34
-Function: sin(x)
+Test ID: 168
+Function: (-6*x^2) - (x + cos(x))
 Method: Січні
-Parameters: A=0, B=3.14, IG=1.5, Eps=1e-5, MaxIter=500
-Status: PASS
-Root: 0
-f(root): 0,0000E+000
-Iterations: 2
-Time: 5 ms
-----------------------------------------
-Test ID: 35
-Function: sin(x)
-Method: Січні
-Parameters: A=0, B=3.14, IG=1.5, Eps=1e-10, MaxIter=500
-Status: PASS
-Root: 0
-f(root): 0,0000E+000
-Iterations: 2
-Time: 5 ms
-----------------------------------------
-Test ID: 36
-Function: sin(x)
-Method: Січні
-Parameters: A=0, B=3.14, IG=1.5, Eps=1e-15, MaxIter=500
-Status: PASS
-Root: 0
-f(root): 0,0000E+000
-Iterations: 2
-Time: 6 ms
-----------------------------------------
-Test ID: 37
-Function: cos(x) - x
-Method: Бісекція
-Parameters: A=0, B=3.14, IG=1.5, Eps=1e-5, MaxIter=500
-Status: PASS
-Root: 0,7390877532958984
-f(root): -4,3850E-006
-Iterations: 18
-Time: 26 ms
-----------------------------------------
-Test ID: 38
-Function: cos(x) - x
-Method: Бісекція
-Parameters: A=0, B=3.14, IG=1.5, Eps=1e-10, MaxIter=500
-Status: PASS
-Root: 0,739085133258486
-f(root): -7,2510E-011
-Iterations: 34
-Time: 51 ms
-----------------------------------------
-Test ID: 39
-Function: cos(x) - x
-Method: Бісекція
-Parameters: A=0, B=3.14, IG=1.5, Eps=1e-15, MaxIter=500
-Status: PASS
-Root: 0,739085133215158
-f(root): 0,0000E+000
-Iterations: 46
-Time: 69 ms
-----------------------------------------
-Test ID: 40
-Function: cos(x) - x
-Method: Ньютон
-Parameters: A=0, B=3.14, IG=1.5, Eps=1e-5, MaxIter=500
-Status: PASS
-Root: 0,7390851332151609
-f(root): -0,0000E+000
-Iterations: 4
-Time: 27 ms
-----------------------------------------
-Test ID: 41
-Function: cos(x) - x
-Method: Ньютон
-Parameters: A=0, B=3.14, IG=1.5, Eps=1e-10, MaxIter=500
-Status: PASS
-Root: 0,7390851332151609
-f(root): -0,0000E+000
-Iterations: 5
-Time: 29 ms
-----------------------------------------
-Test ID: 42
-Function: cos(x) - x
-Method: Ньютон
-Parameters: A=0, B=3.14, IG=1.5, Eps=1e-15, MaxIter=500
-Status: PASS
-Root: 0,7390851332151609
-f(root): -0,0000E+000
-Iterations: 5
-Time: 28 ms
-----------------------------------------
-Test ID: 43
-Function: cos(x) - x
-Method: Січні
-Parameters: A=0, B=3.14, IG=1.5, Eps=1e-5, MaxIter=500
-Status: PASS
-Root: 0,7390851331992189
-f(root): 2,6680E-011
-Iterations: 5
-Time: 9 ms
-----------------------------------------
-Test ID: 44
-Function: cos(x) - x
-Method: Січні
-Parameters: A=0, B=3.14, IG=1.5, Eps=1e-10, MaxIter=500
-Status: PASS
-Root: 0,7390851332151605
-f(root): 0,0000E+000
-Iterations: 6
-Time: 10 ms
-----------------------------------------
-Test ID: 45
-Function: cos(x) - x
-Method: Січні
-Parameters: A=0, B=3.14, IG=1.5, Eps=1e-15, MaxIter=500
-Status: PASS
-Root: 0,7390851332151605
-f(root): 0,0000E+000
-Iterations: 7
-Time: 14 ms
-----------------------------------------
-Test ID: 46
-Function: e^x - 2
-Method: Бісекція
-Parameters: A=-10, B=10, IG=0, Eps=1e-5, MaxIter=500
-Status: PASS
-Root: 0,6931495666503906
-f(root): 4,7722E-006
-Iterations: 20
-Time: 16 ms
-----------------------------------------
-Test ID: 47
-Function: e^x - 2
-Method: Бісекція
-Parameters: A=-10, B=10, IG=0, Eps=1e-10, MaxIter=500
-Status: PASS
-Root: 0,6931471805728506
-f(root): 2,5810E-011
-Iterations: 37
-Time: 26 ms
-----------------------------------------
-Test ID: 48
-Function: e^x - 2
-Method: Бісекція
-Parameters: A=-10, B=10, IG=0, Eps=1e-15, MaxIter=500
-Status: PASS
-Root: 0,6931471805599454
-f(root): 0,0000E+000
-Iterations: 51
-Time: 35 ms
-----------------------------------------
-Test ID: 49
-Function: e^x - 2
-Method: Ньютон
-Parameters: A=-10, B=10, IG=0, Eps=1e-5, MaxIter=500
-Status: PASS
-Root: 0,6931471805600254
-f(root): 1,6000E-013
-Iterations: 5
-Time: 13 ms
-----------------------------------------
-Test ID: 50
-Function: e^x - 2
-Method: Ньютон
-Parameters: A=-10, B=10, IG=0, Eps=1e-10, MaxIter=500
-Status: PASS
-Root: 0,6931471805599454
-f(root): 0,0000E+000
-Iterations: 6
-Time: 16 ms
-----------------------------------------
-Test ID: 51
-Function: e^x - 2
-Method: Ньютон
-Parameters: A=-10, B=10, IG=0, Eps=1e-15, MaxIter=500
-Status: PASS
-Root: 0,6931471805599454
-f(root): 0,0000E+000
-Iterations: 7
-Time: 18 ms
-----------------------------------------
-Test ID: 52
-Function: e^x - 2
-Method: Січні
-Parameters: A=-10, B=10, IG=0, Eps=1e-5, MaxIter=500
+Parameters: A=0, B=3.14, IG=1.5, Eps=1e-7, MaxIter=500
 Status: FAIL_SOLVER
 Time: 3 ms
 Error: Метод Січних: Метод розбігається та виходить далеко за межі допустимого інтервалу.
 ----------------------------------------
-Test ID: 53
-Function: e^x - 2
-Method: Січні
-Parameters: A=-10, B=10, IG=0, Eps=1e-10, MaxIter=500
-Status: FAIL_SOLVER
-Time: 2 ms
-Error: Метод Січних: Метод розбігається та виходить далеко за межі допустимого інтервалу.
-----------------------------------------
-Test ID: 54
-Function: e^x - 2
-Method: Січні
-Parameters: A=-10, B=10, IG=0, Eps=1e-15, MaxIter=500
-Status: FAIL_SOLVER
-Time: 2 ms
-Error: Метод Січних: Метод розбігається та виходить далеко за межі допустимого інтервалу.
-----------------------------------------
-Test ID: 55
-Function: ln(x) - 1
+Test ID: 169
+Function: (5*ln(x)) * (x^2 - 46)
 Method: Бісекція
-Parameters: A=0.1, B=5, IG=2, Eps=1e-5, MaxIter=500
+Parameters: A=0.1, B=5, IG=2, Eps=1e-7, MaxIter=500
 Status: PASS
-Root: 2,718284225463867
-f(root): 8,8181E-007
-Iterations: 18
-Time: 13 ms
+Root: 1,0000000089406968
+f(root): -2,0117E-006
+Iterations: 25
+Time: 28 ms
 ----------------------------------------
-Test ID: 56
-Function: ln(x) - 1
-Method: Бісекція
-Parameters: A=0.1, B=5, IG=2, Eps=1e-10, MaxIter=500
-Status: PASS
-Root: 2,7182818283530645
-f(root): -3,8988E-011
-Iterations: 35
-Time: 27 ms
-----------------------------------------
-Test ID: 57
-Function: ln(x) - 1
-Method: Бісекція
-Parameters: A=0.1, B=5, IG=2, Eps=1e-15, MaxIter=500
-Status: PASS
-Root: 2,7182818284590455
-f(root): 0,0000E+000
-Iterations: 45
-Time: 33 ms
-----------------------------------------
-Test ID: 58
-Function: ln(x) - 1
+Test ID: 170
+Function: (5*ln(x)) * (x^2 - 46)
 Method: Ньютон
-Parameters: A=0.1, B=5, IG=2, Eps=1e-5, MaxIter=500
+Parameters: A=0.1, B=5, IG=2, Eps=1e-7, MaxIter=500
 Status: PASS
-Root: 2,7182818284589465
-f(root): -3,6000E-014
-Iterations: 4
-Time: 12 ms
-----------------------------------------
-Test ID: 59
-Function: ln(x) - 1
-Method: Ньютон
-Parameters: A=0.1, B=5, IG=2, Eps=1e-10, MaxIter=500
-Status: PASS
-Root: 2,718281828459044
+Root: 1
 f(root): -0,0000E+000
-Iterations: 5
-Time: 14 ms
-----------------------------------------
-Test ID: 60
-Function: ln(x) - 1
-Method: Ньютон
-Parameters: A=0.1, B=5, IG=2, Eps=1e-15, MaxIter=500
-Status: PASS
-Root: 2,718281828459044
-f(root): -0,0000E+000
-Iterations: 6
-Time: 14 ms
-----------------------------------------
-Test ID: 61
-Function: ln(x) - 1
-Method: Січні
-Parameters: A=0.1, B=5, IG=2, Eps=1e-5, MaxIter=500
-Status: PASS
-Root: 2,7182818285216443
-f(root): 2,3030E-011
 Iterations: 7
-Time: 5 ms
+Time: 37 ms
 ----------------------------------------
-Test ID: 62
-Function: ln(x) - 1
+Test ID: 171
+Function: (5*ln(x)) * (x^2 - 46)
 Method: Січні
-Parameters: A=0.1, B=5, IG=2, Eps=1e-10, MaxIter=500
-Status: PASS
-Root: 2,7182818284590424
-f(root): -0,0000E+000
-Iterations: 8
-Time: 5 ms
+Parameters: A=0.1, B=5, IG=2, Eps=1e-7, MaxIter=500
+Status: FAIL_SOLVER
+Time: 13 ms
+Error: Метод Січних: Знайдений корінь 6,7823 знаходиться поза межами інтервалу [0,1; 5].
 ----------------------------------------
-Test ID: 63
-Function: ln(x) - 1
+Test ID: 172
+Function: x^2 - 22
+Method: Бісекція
+Parameters: A=-10, B=10, IG=0, Eps=1e-7, MaxIter=500
+Status: VALIDATION_REJECTED
+Time: 0 ms
+Error: На заданому інтервалі функція не змінює знак. Метод бісекції неможливий.
+----------------------------------------
+Test ID: 173
+Function: x^2 - 22
+Method: Ньютон
+Parameters: A=-10, B=10, IG=0, Eps=1e-7, MaxIter=500
+Status: FAIL_SOLVER
+Time: 2 ms
+Error: Метод Ньютона: Похідна наближається до нуля на ітерації 1. Метод розбігається.
+----------------------------------------
+Test ID: 174
+Function: x^2 - 22
 Method: Січні
-Parameters: A=0.1, B=5, IG=2, Eps=1e-15, MaxIter=500
-Status: PASS
-Root: 2,7182818284590424
-f(root): -0,0000E+000
-Iterations: 9
-Time: 6 ms
+Parameters: A=-10, B=10, IG=0, Eps=1e-7, MaxIter=500
+Status: FAIL_SOLVER
+Time: 3 ms
+Error: Метод Січних: Ділення на нуль (f(x1) ≈ f(x0)) на ітерації 1. Метод розбігається.
 ----------------------------------------
-Test ID: 64
-Function: x*sin(x) - 1
+Test ID: 175
+Function: (2*x^5) * (5*ln(x) - 3)
 Method: Бісекція
-Parameters: A=0, B=3.14, IG=1.5, Eps=1e-5, MaxIter=500
-Status: VALIDATION_REJECTED
-Time: 0 ms
-Error: На заданому інтервалі функція не змінює знак. Метод бісекції неможливий.
+Parameters: A=0.1, B=5, IG=2, Eps=1e-7, MaxIter=500
+Status: FAIL_ACCURACY
+Root: 1,8221187084913255
+f(root): -1,0130E-005
+Iterations: 25
+Time: 56 ms
+Error: f(root) = -1,013020668514342E-05 is too large for epsilon 1E-07
 ----------------------------------------
-Test ID: 65
-Function: x*sin(x) - 1
-Method: Бісекція
-Parameters: A=0, B=3.14, IG=1.5, Eps=1e-10, MaxIter=500
-Status: VALIDATION_REJECTED
-Time: 0 ms
-Error: На заданому інтервалі функція не змінює знак. Метод бісекції неможливий.
-----------------------------------------
-Test ID: 66
-Function: x*sin(x) - 1
-Method: Бісекція
-Parameters: A=0, B=3.14, IG=1.5, Eps=1e-15, MaxIter=500
-Status: VALIDATION_REJECTED
-Time: 0 ms
-Error: На заданому інтервалі функція не змінює знак. Метод бісекції неможливий.
-----------------------------------------
-Test ID: 67
-Function: x*sin(x) - 1
+Test ID: 176
+Function: (2*x^5) * (5*ln(x) - 3)
 Method: Ньютон
-Parameters: A=0, B=3.14, IG=1.5, Eps=1e-5, MaxIter=500
+Parameters: A=0.1, B=5, IG=2, Eps=1e-7, MaxIter=500
 Status: PASS
-Root: 1,1141571408719315
-f(root): 0,0000E+000
-Iterations: 4
-Time: 9 ms
-----------------------------------------
-Test ID: 68
-Function: x*sin(x) - 1
-Method: Ньютон
-Parameters: A=0, B=3.14, IG=1.5, Eps=1e-10, MaxIter=500
-Status: PASS
-Root: 1,1141571408719315
-f(root): 0,0000E+000
-Iterations: 4
-Time: 8 ms
-----------------------------------------
-Test ID: 69
-Function: x*sin(x) - 1
-Method: Ньютон
-Parameters: A=0, B=3.14, IG=1.5, Eps=1e-15, MaxIter=500
-Status: PASS
-Root: 1,1141571408719315
+Root: 1,8221188003905098
 f(root): 0,0000E+000
 Iterations: 5
-Time: 11 ms
-----------------------------------------
-Test ID: 70
-Function: x*sin(x) - 1
-Method: Січні
-Parameters: A=0, B=3.14, IG=1.5, Eps=1e-5, MaxIter=500
-Status: FAIL_SOLVER
-Time: 1 ms
-Error: Метод Січних: Метод розбігається та виходить далеко за межі допустимого інтервалу.
-----------------------------------------
-Test ID: 71
-Function: x*sin(x) - 1
-Method: Січні
-Parameters: A=0, B=3.14, IG=1.5, Eps=1e-10, MaxIter=500
-Status: FAIL_SOLVER
-Time: 1 ms
-Error: Метод Січних: Метод розбігається та виходить далеко за межі допустимого інтервалу.
-----------------------------------------
-Test ID: 72
-Function: x*sin(x) - 1
-Method: Січні
-Parameters: A=0, B=3.14, IG=1.5, Eps=1e-15, MaxIter=500
-Status: FAIL_SOLVER
-Time: 1 ms
-Error: Метод Січних: Метод розбігається та виходить далеко за межі допустимого інтервалу.
-----------------------------------------
-Test ID: 73
-Function: x^3 + sin(x) - 5
-Method: Бісекція
-Parameters: A=0, B=3.14, IG=1.5, Eps=1e-5, MaxIter=500
-Status: PASS
-Root: 1,587428207397461
-f(root): 6,6979E-005
-Iterations: 18
-Time: 11 ms
-----------------------------------------
-Test ID: 74
-Function: x^3 + sin(x) - 5
-Method: Бісекція
-Parameters: A=0, B=3.14, IG=1.5, Eps=1e-10, MaxIter=500
-Status: PASS
-Root: 1,5874193277827002
-f(root): -8,0852E-010
-Iterations: 34
-Time: 21 ms
-----------------------------------------
-Test ID: 75
-Function: x^3 + sin(x) - 5
-Method: Бісекція
-Parameters: A=0, B=3.14, IG=1.5, Eps=1e-15, MaxIter=500
-Status: PASS
-Root: 1,587419327889888
-f(root): 0,0000E+000
-Iterations: 49
 Time: 34 ms
 ----------------------------------------
-Test ID: 76
-Function: x^3 + sin(x) - 5
-Method: Ньютон
-Parameters: A=0, B=3.14, IG=1.5, Eps=1e-5, MaxIter=500
-Status: PASS
-Root: 1,5874193278898867
-f(root): 0,0000E+000
-Iterations: 4
-Time: 11 ms
-----------------------------------------
-Test ID: 77
-Function: x^3 + sin(x) - 5
-Method: Ньютон
-Parameters: A=0, B=3.14, IG=1.5, Eps=1e-10, MaxIter=500
-Status: PASS
-Root: 1,5874193278898867
-f(root): 0,0000E+000
-Iterations: 4
-Time: 9 ms
-----------------------------------------
-Test ID: 78
-Function: x^3 + sin(x) - 5
-Method: Ньютон
-Parameters: A=0, B=3.14, IG=1.5, Eps=1e-15, MaxIter=500
-Status: PASS
-Root: 1,5874193278898867
-f(root): 0,0000E+000
-Iterations: 5
-Time: 11 ms
-----------------------------------------
-Test ID: 79
-Function: x^3 + sin(x) - 5
+Test ID: 177
+Function: (2*x^5) * (5*ln(x) - 3)
 Method: Січні
-Parameters: A=0, B=3.14, IG=1.5, Eps=1e-5, MaxIter=500
-Status: PASS
-Root: 1,5874193278896258
-f(root): -1,9800E-012
-Iterations: 10
-Time: 7 ms
+Parameters: A=0.1, B=5, IG=2, Eps=1e-7, MaxIter=500
+Status: FAIL_SOLVER
+Time: 4 ms
+Error: Метод Січних: Отриманий результат не є коренем. f(x) = -2,9026E-004
 ----------------------------------------
-Test ID: 80
-Function: x^3 + sin(x) - 5
-Method: Січні
-Parameters: A=0, B=3.14, IG=1.5, Eps=1e-10, MaxIter=500
+Test ID: 178
+Function: 4*tan(x)
+Method: Бісекція
+Parameters: A=-10, B=10, IG=0, Eps=1e-7, MaxIter=500
 Status: PASS
-Root: 1,5874193278898883
+Root: 0
 f(root): 0,0000E+000
-Iterations: 11
+Iterations: 1
+Time: 2 ms
+----------------------------------------
+Test ID: 179
+Function: 4*tan(x)
+Method: Ньютон
+Parameters: A=-10, B=10, IG=0, Eps=1e-7, MaxIter=500
+Status: PASS
+Root: 0
+f(root): 0,0000E+000
+Iterations: 1
 Time: 8 ms
 ----------------------------------------
-Test ID: 81
-Function: x^3 + sin(x) - 5
+Test ID: 180
+Function: 4*tan(x)
 Method: Січні
-Parameters: A=0, B=3.14, IG=1.5, Eps=1e-15, MaxIter=500
+Parameters: A=-10, B=10, IG=0, Eps=1e-7, MaxIter=500
 Status: PASS
-Root: 1,5874193278898883
+Root: 0
 f(root): 0,0000E+000
-Iterations: 12
-Time: 9 ms
+Iterations: 2
+Time: 3 ms
 ----------------------------------------
-Test ID: 82
-Function: 1/x - 0.5
+Test ID: 181
+Function: x - ln(x)
 Method: Бісекція
-Parameters: A=0.1, B=2, IG=1, Eps=1e-5, MaxIter=500
-Status: PASS
-Root: 1,9999855041503907
-f(root): 3,6240E-006
-Iterations: 17
-Time: 10 ms
+Parameters: A=0.1, B=5, IG=2, Eps=1e-7, MaxIter=500
+Status: VALIDATION_REJECTED
+Time: 0 ms
+Error: На заданому інтервалі функція не змінює знак. Метод бісекції неможливий.
 ----------------------------------------
-Test ID: 83
-Function: 1/x - 0.5
-Method: Бісекція
-Parameters: A=0.1, B=2, IG=1, Eps=1e-10, MaxIter=500
-Status: PASS
-Root: 1,9999999998894054
-f(root): 2,7649E-011
-Iterations: 34
-Time: 17 ms
-----------------------------------------
-Test ID: 84
-Function: 1/x - 0.5
-Method: Бісекція
-Parameters: A=0.1, B=2, IG=1, Eps=1e-15, MaxIter=500
-Status: PASS
-Root: 1,999999999999973
-f(root): 0,0000E+000
-Iterations: 46
-Time: 23 ms
-----------------------------------------
-Test ID: 85
-Function: 1/x - 0.5
+Test ID: 182
+Function: x - ln(x)
 Method: Ньютон
-Parameters: A=0.1, B=2, IG=1, Eps=1e-5, MaxIter=500
+Parameters: A=0.1, B=5, IG=2, Eps=1e-7, MaxIter=500
+Status: FAIL_SOLVER
+Time: 3 ms
+Error: Помилка під час обчислення: Результат обчислення не є числом (NaN). Можливо, ділення на нуль або корінь з від'ємного числа.
+----------------------------------------
+Test ID: 183
+Function: x - ln(x)
+Method: Січні
+Parameters: A=0.1, B=5, IG=2, Eps=1e-7, MaxIter=500
+Status: FAIL_SOLVER
+Time: 1 ms
+Error: Метод Січних: Метод розбігається та виходить далеко за межі допустимого інтервалу.
+----------------------------------------
+Test ID: 184
+Function: (x * abs(x)) - (5*abs(x) - 3)
+Method: Бісекція
+Parameters: A=-10, B=10, IG=0, Eps=1e-7, MaxIter=500
 Status: PASS
-Root: 2,0000000000000018
+Root: -0,5413813889026642
+f(root): -7,5276E-007
+Iterations: 27
+Time: 35 ms
+----------------------------------------
+Test ID: 185
+Function: (x * abs(x)) - (5*abs(x) - 3)
+Method: Ньютон
+Parameters: A=-10, B=10, IG=0, Eps=1e-7, MaxIter=500
+Status: FAIL_SOLVER
+Time: 3 ms
+Error: Метод Ньютона: Метод розбігається та виходить далеко за межі допустимого інтервалу.
+----------------------------------------
+Test ID: 186
+Function: (x * abs(x)) - (5*abs(x) - 3)
+Method: Січні
+Parameters: A=-10, B=10, IG=0, Eps=1e-7, MaxIter=500
+Status: PASS
+Root: 4,302775637731997
 f(root): 0,0000E+000
-Iterations: 6
+Iterations: 7
 Time: 11 ms
 ----------------------------------------
-Test ID: 86
-Function: 1/x - 0.5
-Method: Ньютон
-Parameters: A=0.1, B=2, IG=1, Eps=1e-10, MaxIter=500
+Test ID: 187
+Function: 4*sin(x)
+Method: Бісекція
+Parameters: A=0, B=3.14, IG=1.5, Eps=1e-7, MaxIter=500
 Status: PASS
-Root: 2,0000000000000018
+Root: 1,8715858459472657E-07
+f(root): 7,4863E-007
+Iterations: 24
+Time: 17 ms
+----------------------------------------
+Test ID: 188
+Function: 4*sin(x)
+Method: Ньютон
+Parameters: A=0, B=3.14, IG=1.5, Eps=1e-7, MaxIter=500
+Status: FAIL_SOLVER
+Time: 2 ms
+Error: Метод Ньютона: Метод розбігається та виходить далеко за межі допустимого інтервалу.
+----------------------------------------
+Test ID: 189
+Function: 4*sin(x)
+Method: Січні
+Parameters: A=0, B=3.14, IG=1.5, Eps=1e-7, MaxIter=500
+Status: PASS
+Root: 0
 f(root): 0,0000E+000
+Iterations: 2
+Time: 3 ms
+----------------------------------------
+Test ID: 190
+Function: x^2 - 18
+Method: Бісекція
+Parameters: A=-10, B=10, IG=0, Eps=1e-7, MaxIter=500
+Status: VALIDATION_REJECTED
+Time: 0 ms
+Error: На заданому інтервалі функція не змінює знак. Метод бісекції неможливий.
+----------------------------------------
+Test ID: 191
+Function: x^2 - 18
+Method: Ньютон
+Parameters: A=-10, B=10, IG=0, Eps=1e-7, MaxIter=500
+Status: FAIL_SOLVER
+Time: 2 ms
+Error: Метод Ньютона: Похідна наближається до нуля на ітерації 1. Метод розбігається.
+----------------------------------------
+Test ID: 192
+Function: x^2 - 18
+Method: Січні
+Parameters: A=-10, B=10, IG=0, Eps=1e-7, MaxIter=500
+Status: FAIL_SOLVER
+Time: 7 ms
+Error: Метод Січних: Ділення на нуль (f(x1) ≈ f(x0)) на ітерації 1. Метод розбігається.
+----------------------------------------
+Test ID: 193
+Function: 3*log10(x)
+Method: Бісекція
+Parameters: A=0.1, B=5, IG=2, Eps=1e-7, MaxIter=500
+Status: PASS
+Root: 1,0000000089406968
+f(root): 1,1649E-008
+Iterations: 25
+Time: 20 ms
+----------------------------------------
+Test ID: 194
+Function: 3*log10(x)
+Method: Ньютон
+Parameters: A=0.1, B=5, IG=2, Eps=1e-7, MaxIter=500
+Status: PASS
+Root: 1
+f(root): 0,0000E+000
+Iterations: 6
+Time: 30 ms
+----------------------------------------
+Test ID: 195
+Function: 3*log10(x)
+Method: Січні
+Parameters: A=0.1, B=5, IG=2, Eps=1e-7, MaxIter=500
+Status: FAIL_SOLVER
+Time: 3 ms
+Error: Помилка під час обчислення: Результат обчислення не є числом (NaN). Можливо, ділення на нуль або корінь з від'ємного числа.
+----------------------------------------
+Test ID: 196
+Function: x^2 - 50
+Method: Бісекція
+Parameters: A=-10, B=10, IG=0, Eps=1e-7, MaxIter=500
+Status: VALIDATION_REJECTED
+Time: 0 ms
+Error: На заданому інтервалі функція не змінює знак. Метод бісекції неможливий.
+----------------------------------------
+Test ID: 197
+Function: x^2 - 50
+Method: Ньютон
+Parameters: A=-10, B=10, IG=0, Eps=1e-7, MaxIter=500
+Status: FAIL_SOLVER
+Time: 2 ms
+Error: Метод Ньютона: Похідна наближається до нуля на ітерації 1. Метод розбігається.
+----------------------------------------
+Test ID: 198
+Function: x^2 - 50
+Method: Січні
+Parameters: A=-10, B=10, IG=0, Eps=1e-7, MaxIter=500
+Status: FAIL_SOLVER
+Time: 2 ms
+Error: Метод Січних: Ділення на нуль (f(x1) ≈ f(x0)) на ітерації 1. Метод розбігається.
+----------------------------------------
+Test ID: 199
+Function: x^2 - 93
+Method: Бісекція
+Parameters: A=-10, B=10, IG=0, Eps=1e-7, MaxIter=500
+Status: VALIDATION_REJECTED
+Time: 0 ms
+Error: На заданому інтервалі функція не змінює знак. Метод бісекції неможливий.
+----------------------------------------
+Test ID: 200
+Function: x^2 - 93
+Method: Ньютон
+Parameters: A=-10, B=10, IG=0, Eps=1e-7, MaxIter=500
+Status: FAIL_SOLVER
+Time: 3 ms
+Error: Метод Ньютона: Похідна наближається до нуля на ітерації 1. Метод розбігається.
+----------------------------------------
+Test ID: 201
+Function: x^2 - 93
+Method: Січні
+Parameters: A=-10, B=10, IG=0, Eps=1e-7, MaxIter=500
+Status: FAIL_SOLVER
+Time: 1 ms
+Error: Метод Січних: Ділення на нуль (f(x1) ≈ f(x0)) на ітерації 1. Метод розбігається.
+----------------------------------------
+Test ID: 202
+Function: x^2 - 9
+Method: Бісекція
+Parameters: A=-10, B=10, IG=0, Eps=1e-7, MaxIter=500
+Status: VALIDATION_REJECTED
+Time: 0 ms
+Error: На заданому інтервалі функція не змінює знак. Метод бісекції неможливий.
+----------------------------------------
+Test ID: 203
+Function: x^2 - 9
+Method: Ньютон
+Parameters: A=-10, B=10, IG=0, Eps=1e-7, MaxIter=500
+Status: FAIL_SOLVER
+Time: 3 ms
+Error: Метод Ньютона: Похідна наближається до нуля на ітерації 1. Метод розбігається.
+----------------------------------------
+Test ID: 204
+Function: x^2 - 9
+Method: Січні
+Parameters: A=-10, B=10, IG=0, Eps=1e-7, MaxIter=500
+Status: FAIL_SOLVER
+Time: 1 ms
+Error: Метод Січних: Ділення на нуль (f(x1) ≈ f(x0)) на ітерації 1. Метод розбігається.
+----------------------------------------
+Test ID: 205
+Function: 10*x^1
+Method: Бісекція
+Parameters: A=-10, B=10, IG=0, Eps=1e-7, MaxIter=500
+Status: PASS
+Root: 0
+f(root): 0,0000E+000
+Iterations: 1
+Time: 2 ms
+----------------------------------------
+Test ID: 206
+Function: 10*x^1
+Method: Ньютон
+Parameters: A=-10, B=10, IG=0, Eps=1e-7, MaxIter=500
+Status: PASS
+Root: 0
+f(root): 0,0000E+000
+Iterations: 1
+Time: 4 ms
+----------------------------------------
+Test ID: 207
+Function: 10*x^1
+Method: Січні
+Parameters: A=-10, B=10, IG=0, Eps=1e-7, MaxIter=500
+Status: PASS
+Root: 0
+f(root): 0,0000E+000
+Iterations: 2
+Time: 7 ms
+----------------------------------------
+Test ID: 208
+Function: (4*x^5) + (3*exp(x) - 8)
+Method: Бісекція
+Parameters: A=-10, B=10, IG=0, Eps=1e-7, MaxIter=500
+Status: PASS
+Root: 0,8008502423763275
+f(root): 1,9536E-006
+Iterations: 27
+Time: 38 ms
+----------------------------------------
+Test ID: 209
+Function: (4*x^5) + (3*exp(x) - 8)
+Method: Ньютон
+Parameters: A=-10, B=10, IG=0, Eps=1e-7, MaxIter=500
+Status: PASS
+Root: 0,8008501113416103
+f(root): 2,0000E-014
+Iterations: 8
+Time: 34 ms
+----------------------------------------
+Test ID: 210
+Function: (4*x^5) + (3*exp(x) - 8)
+Method: Січні
+Parameters: A=-10, B=10, IG=0, Eps=1e-7, MaxIter=500
+Status: PASS
+Root: 0,8008501113416101
+f(root): 2,0000E-014
+Iterations: 15
+Time: 15 ms
+----------------------------------------
+Test ID: 211
+Function: 0*x^4 + 13
+Method: Бісекція
+Parameters: A=-10, B=10, IG=0, Eps=1e-7, MaxIter=500
+Status: VALIDATION_REJECTED
+Time: 0 ms
+Error: На заданому інтервалі функція не змінює знак. Метод бісекції неможливий.
+----------------------------------------
+Test ID: 212
+Function: 0*x^4 + 13
+Method: Ньютон
+Parameters: A=-10, B=10, IG=0, Eps=1e-7, MaxIter=500
+Status: FAIL_SOLVER
+Time: 2 ms
+Error: Метод Ньютона: Похідна наближається до нуля на ітерації 1. Метод розбігається.
+----------------------------------------
+Test ID: 213
+Function: 0*x^4 + 13
+Method: Січні
+Parameters: A=-10, B=10, IG=0, Eps=1e-7, MaxIter=500
+Status: FAIL_SOLVER
+Time: 1 ms
+Error: Метод Січних: Ділення на нуль (f(x1) ≈ f(x0)) на ітерації 1. Метод розбігається.
+----------------------------------------
+Test ID: 214
+Function: 3*x^2
+Method: Бісекція
+Parameters: A=-10, B=10, IG=0, Eps=1e-7, MaxIter=500
+Status: VALIDATION_REJECTED
+Time: 0 ms
+Error: На заданому інтервалі функція не змінює знак. Метод бісекції неможливий.
+----------------------------------------
+Test ID: 215
+Function: 3*x^2
+Method: Ньютон
+Parameters: A=-10, B=10, IG=0, Eps=1e-7, MaxIter=500
+Status: FAIL_SOLVER
+Time: 4 ms
+Error: Метод Ньютона: Похідна наближається до нуля на ітерації 1. Метод розбігається.
+----------------------------------------
+Test ID: 216
+Function: 3*x^2
+Method: Січні
+Parameters: A=-10, B=10, IG=0, Eps=1e-7, MaxIter=500
+Status: FAIL_SOLVER
+Time: 4 ms
+Error: Метод Січних: Ділення на нуль (f(x1) ≈ f(x0)) на ітерації 1. Метод розбігається.
+----------------------------------------
+Test ID: 217
+Function: (x^2 - 56) + (4*abs(x) - 3)
+Method: Бісекція
+Parameters: A=-10, B=10, IG=0, Eps=1e-7, MaxIter=500
+Status: VALIDATION_REJECTED
+Time: 0 ms
+Error: На заданому інтервалі функція не змінює знак. Метод бісекції неможливий.
+----------------------------------------
+Test ID: 218
+Function: (x^2 - 56) + (4*abs(x) - 3)
+Method: Ньютон
+Parameters: A=-10, B=10, IG=0, Eps=1e-7, MaxIter=500
+Status: FAIL_SOLVER
+Time: 4 ms
+Error: Метод Ньютона: Похідна наближається до нуля на ітерації 1. Метод розбігається.
+----------------------------------------
+Test ID: 219
+Function: (x^2 - 56) + (4*abs(x) - 3)
+Method: Січні
+Parameters: A=-10, B=10, IG=0, Eps=1e-7, MaxIter=500
+Status: FAIL_SOLVER
+Time: 2 ms
+Error: Метод Січних: Ділення на нуль (f(x1) ≈ f(x0)) на ітерації 1. Метод розбігається.
+----------------------------------------
+Test ID: 220
+Function: (x^2 - 44) + (x^2 - 81)
+Method: Бісекція
+Parameters: A=-10, B=10, IG=0, Eps=1e-7, MaxIter=500
+Status: VALIDATION_REJECTED
+Time: 0 ms
+Error: На заданому інтервалі функція не змінює знак. Метод бісекції неможливий.
+----------------------------------------
+Test ID: 221
+Function: (x^2 - 44) + (x^2 - 81)
+Method: Ньютон
+Parameters: A=-10, B=10, IG=0, Eps=1e-7, MaxIter=500
+Status: FAIL_SOLVER
+Time: 2 ms
+Error: Метод Ньютона: Похідна наближається до нуля на ітерації 1. Метод розбігається.
+----------------------------------------
+Test ID: 222
+Function: (x^2 - 44) + (x^2 - 81)
+Method: Січні
+Parameters: A=-10, B=10, IG=0, Eps=1e-7, MaxIter=500
+Status: FAIL_SOLVER
+Time: 5 ms
+Error: Метод Січних: Ділення на нуль (f(x1) ≈ f(x0)) на ітерації 1. Метод розбігається.
+----------------------------------------
+Test ID: 223
+Function: (x^2 - 51) / (x^2 - 46)
+Method: Бісекція
+Parameters: A=-10, B=10, IG=0, Eps=1e-7, MaxIter=500
+Status: VALIDATION_REJECTED
+Time: 0 ms
+Error: На заданому інтервалі функція не змінює знак. Метод бісекції неможливий.
+----------------------------------------
+Test ID: 224
+Function: (x^2 - 51) / (x^2 - 46)
+Method: Ньютон
+Parameters: A=-10, B=10, IG=0, Eps=1e-7, MaxIter=500
+Status: FAIL_SOLVER
+Time: 3 ms
+Error: Метод Ньютона: Похідна наближається до нуля на ітерації 1. Метод розбігається.
+----------------------------------------
+Test ID: 225
+Function: (x^2 - 51) / (x^2 - 46)
+Method: Січні
+Parameters: A=-10, B=10, IG=0, Eps=1e-7, MaxIter=500
+Status: FAIL_SOLVER
+Time: 2 ms
+Error: Метод Січних: Ділення на нуль (f(x1) ≈ f(x0)) на ітерації 1. Метод розбігається.
+----------------------------------------
+Test ID: 226
+Function: (x * cos(x)) - (-1*x^2)
+Method: Бісекція
+Parameters: A=0, B=3.14, IG=1.5, Eps=1e-7, MaxIter=500
+Status: PASS
+Root: 1,8715858459472657E-07
+f(root): 1,8716E-007
+Iterations: 24
+Time: 27 ms
+----------------------------------------
+Test ID: 227
+Function: (x * cos(x)) - (-1*x^2)
+Method: Ньютон
+Parameters: A=0, B=3.14, IG=1.5, Eps=1e-7, MaxIter=500
+Status: PASS
+Root: 2,5833341668519758E-20
+f(root): 0,0000E+000
+Iterations: 4
+Time: 19 ms
+----------------------------------------
+Test ID: 228
+Function: (x * cos(x)) - (-1*x^2)
+Method: Січні
+Parameters: A=0, B=3.14, IG=1.5, Eps=1e-7, MaxIter=500
+Status: PASS
+Root: 0
+f(root): 0,0000E+000
+Iterations: 2
+Time: 5 ms
+----------------------------------------
+Test ID: 229
+Function: 9*x^1
+Method: Бісекція
+Parameters: A=-10, B=10, IG=0, Eps=1e-7, MaxIter=500
+Status: PASS
+Root: 0
+f(root): 0,0000E+000
+Iterations: 1
+Time: 5 ms
+----------------------------------------
+Test ID: 230
+Function: 9*x^1
+Method: Ньютон
+Parameters: A=-10, B=10, IG=0, Eps=1e-7, MaxIter=500
+Status: PASS
+Root: 0
+f(root): 0,0000E+000
+Iterations: 1
+Time: 13 ms
+----------------------------------------
+Test ID: 231
+Function: 9*x^1
+Method: Січні
+Parameters: A=-10, B=10, IG=0, Eps=1e-7, MaxIter=500
+Status: PASS
+Root: 0
+f(root): 0,0000E+000
+Iterations: 2
+Time: 3 ms
+----------------------------------------
+Test ID: 232
+Function: x^2 - 20
+Method: Бісекція
+Parameters: A=-10, B=10, IG=0, Eps=1e-7, MaxIter=500
+Status: VALIDATION_REJECTED
+Time: 0 ms
+Error: На заданому інтервалі функція не змінює знак. Метод бісекції неможливий.
+----------------------------------------
+Test ID: 233
+Function: x^2 - 20
+Method: Ньютон
+Parameters: A=-10, B=10, IG=0, Eps=1e-7, MaxIter=500
+Status: FAIL_SOLVER
+Time: 2 ms
+Error: Метод Ньютона: Похідна наближається до нуля на ітерації 1. Метод розбігається.
+----------------------------------------
+Test ID: 234
+Function: x^2 - 20
+Method: Січні
+Parameters: A=-10, B=10, IG=0, Eps=1e-7, MaxIter=500
+Status: FAIL_SOLVER
+Time: 2 ms
+Error: Метод Січних: Ділення на нуль (f(x1) ≈ f(x0)) на ітерації 1. Метод розбігається.
+----------------------------------------
+Test ID: 235
+Function: (x^2 - 39) + (2*x^2)
+Method: Бісекція
+Parameters: A=-10, B=10, IG=0, Eps=1e-7, MaxIter=500
+Status: VALIDATION_REJECTED
+Time: 0 ms
+Error: На заданому інтервалі функція не змінює знак. Метод бісекції неможливий.
+----------------------------------------
+Test ID: 236
+Function: (x^2 - 39) + (2*x^2)
+Method: Ньютон
+Parameters: A=-10, B=10, IG=0, Eps=1e-7, MaxIter=500
+Status: FAIL_SOLVER
+Time: 7 ms
+Error: Метод Ньютона: Похідна наближається до нуля на ітерації 1. Метод розбігається.
+----------------------------------------
+Test ID: 237
+Function: (x^2 - 39) + (2*x^2)
+Method: Січні
+Parameters: A=-10, B=10, IG=0, Eps=1e-7, MaxIter=500
+Status: FAIL_SOLVER
+Time: 3 ms
+Error: Метод Січних: Ділення на нуль (f(x1) ≈ f(x0)) на ітерації 1. Метод розбігається.
+----------------------------------------
+Test ID: 238
+Function: 5*sin(x)
+Method: Бісекція
+Parameters: A=0, B=3.14, IG=1.5, Eps=1e-7, MaxIter=500
+Status: PASS
+Root: 1,8715858459472657E-07
+f(root): 9,3579E-007
+Iterations: 24
+Time: 17 ms
+----------------------------------------
+Test ID: 239
+Function: 5*sin(x)
+Method: Ньютон
+Parameters: A=0, B=3.14, IG=1.5, Eps=1e-7, MaxIter=500
+Status: FAIL_SOLVER
+Time: 2 ms
+Error: Метод Ньютона: Метод розбігається та виходить далеко за межі допустимого інтервалу.
+----------------------------------------
+Test ID: 240
+Function: 5*sin(x)
+Method: Січні
+Parameters: A=0, B=3.14, IG=1.5, Eps=1e-7, MaxIter=500
+Status: PASS
+Root: 0
+f(root): 0,0000E+000
+Iterations: 2
+Time: 10 ms
+----------------------------------------
+Test ID: 241
+Function: (x / cos(x)) / (1*tan(x) - 1)
+Method: Бісекція
+Parameters: A=0, B=3.14, IG=1.5, Eps=1e-7, MaxIter=500
+Status: PASS
+Root: 1,8715858459472657E-07
+f(root): -1,8716E-007
+Iterations: 24
+Time: 34 ms
+----------------------------------------
+Test ID: 242
+Function: (x / cos(x)) / (1*tan(x) - 1)
+Method: Ньютон
+Parameters: A=0, B=3.14, IG=1.5, Eps=1e-7, MaxIter=500
+Status: PASS
+Root: 3,9949647960472953E-19
+f(root): -0,0000E+000
+Iterations: 14
+Time: 57 ms
+----------------------------------------
+Test ID: 243
+Function: (x / cos(x)) / (1*tan(x) - 1)
+Method: Січні
+Parameters: A=0, B=3.14, IG=1.5, Eps=1e-7, MaxIter=500
+Status: PASS
+Root: 0
+f(root): -0,0000E+000
+Iterations: 2
+Time: 5 ms
+----------------------------------------
+Test ID: 244
+Function: 1*sin(x) - 6
+Method: Бісекція
+Parameters: A=0, B=3.14, IG=1.5, Eps=1e-7, MaxIter=500
+Status: VALIDATION_REJECTED
+Time: 0 ms
+Error: На заданому інтервалі функція не змінює знак. Метод бісекції неможливий.
+----------------------------------------
+Test ID: 245
+Function: 1*sin(x) - 6
+Method: Ньютон
+Parameters: A=0, B=3.14, IG=1.5, Eps=1e-7, MaxIter=500
+Status: FAIL_SOLVER
+Time: 7 ms
+Error: Метод Ньютона: Метод розбігається та виходить далеко за межі допустимого інтервалу.
+----------------------------------------
+Test ID: 246
+Function: 1*sin(x) - 6
+Method: Січні
+Parameters: A=0, B=3.14, IG=1.5, Eps=1e-7, MaxIter=500
+Status: FAIL_SOLVER
+Time: 2 ms
+Error: Метод Січних: Метод розбігається та виходить далеко за межі допустимого інтервалу.
+----------------------------------------
+Test ID: 247
+Function: (0*x^5) * (x^2 - 92)
+Method: Бісекція
+Parameters: A=-10, B=10, IG=0, Eps=1e-7, MaxIter=500
+Status: VALIDATION_REJECTED
+Time: 0 ms
+Error: На заданому інтервалі функція не змінює знак. Метод бісекції неможливий.
+----------------------------------------
+Test ID: 248
+Function: (0*x^5) * (x^2 - 92)
+Method: Ньютон
+Parameters: A=-10, B=10, IG=0, Eps=1e-7, MaxIter=500
+Status: FAIL_SOLVER
+Time: 2 ms
+Error: Метод Ньютона: Похідна наближається до нуля на ітерації 1. Метод розбігається.
+----------------------------------------
+Test ID: 249
+Function: (0*x^5) * (x^2 - 92)
+Method: Січні
+Parameters: A=-10, B=10, IG=0, Eps=1e-7, MaxIter=500
+Status: FAIL_SOLVER
+Time: 3 ms
+Error: Метод Січних: Ділення на нуль (f(x1) ≈ f(x0)) на ітерації 1. Метод розбігається.
+----------------------------------------
+Test ID: 250
+Function: (5*abs(x)) / (x^2 - 70)
+Method: Бісекція
+Parameters: A=-10, B=10, IG=0, Eps=1e-7, MaxIter=500
+Status: VALIDATION_REJECTED
+Time: 0 ms
+Error: На заданому інтервалі функція не змінює знак. Метод бісекції неможливий.
+----------------------------------------
+Test ID: 251
+Function: (5*abs(x)) / (x^2 - 70)
+Method: Ньютон
+Parameters: A=-10, B=10, IG=0, Eps=1e-7, MaxIter=500
+Status: FAIL_SOLVER
+Time: 2 ms
+Error: Метод Ньютона: Похідна наближається до нуля на ітерації 1. Метод розбігається.
+----------------------------------------
+Test ID: 252
+Function: (5*abs(x)) / (x^2 - 70)
+Method: Січні
+Parameters: A=-10, B=10, IG=0, Eps=1e-7, MaxIter=500
+Status: FAIL_SOLVER
+Time: 2 ms
+Error: Метод Січних: Ділення на нуль (f(x1) ≈ f(x0)) на ітерації 1. Метод розбігається.
+----------------------------------------
+Test ID: 253
+Function: 10*x^3 + -17
+Method: Бісекція
+Parameters: A=-10, B=10, IG=0, Eps=1e-7, MaxIter=500
+Status: PASS
+Root: 1,1934833228588104
+f(root): 5,5950E-006
+Iterations: 27
+Time: 26 ms
+----------------------------------------
+Test ID: 254
+Function: 10*x^3 + -17
+Method: Ньютон
+Parameters: A=-10, B=10, IG=0, Eps=1e-7, MaxIter=500
+Status: FAIL_SOLVER
+Time: 2 ms
+Error: Метод Ньютона: Похідна наближається до нуля на ітерації 1. Метод розбігається.
+----------------------------------------
+Test ID: 255
+Function: 10*x^3 + -17
+Method: Січні
+Parameters: A=-10, B=10, IG=0, Eps=1e-7, MaxIter=500
+Status: FAIL_SOLVER
+Time: 3 ms
+Error: Метод Січних: Метод розбігається та виходить далеко за межі допустимого інтервалу.
+----------------------------------------
+Test ID: 256
+Function: 2*abs(x)
+Method: Бісекція
+Parameters: A=-10, B=10, IG=0, Eps=1e-7, MaxIter=500
+Status: VALIDATION_REJECTED
+Time: 0 ms
+Error: На заданому інтервалі функція не змінює знак. Метод бісекції неможливий.
+----------------------------------------
+Test ID: 257
+Function: 2*abs(x)
+Method: Ньютон
+Parameters: A=-10, B=10, IG=0, Eps=1e-7, MaxIter=500
+Status: FAIL_SOLVER
+Time: 2 ms
+Error: Метод Ньютона: Похідна наближається до нуля на ітерації 1. Метод розбігається.
+----------------------------------------
+Test ID: 258
+Function: 2*abs(x)
+Method: Січні
+Parameters: A=-10, B=10, IG=0, Eps=1e-7, MaxIter=500
+Status: FAIL_SOLVER
+Time: 1 ms
+Error: Метод Січних: Ділення на нуль (f(x1) ≈ f(x0)) на ітерації 1. Метод розбігається.
+----------------------------------------
+Test ID: 259
+Function: x + cos(x)
+Method: Бісекція
+Parameters: A=0, B=3.14, IG=1.5, Eps=1e-7, MaxIter=500
+Status: VALIDATION_REJECTED
+Time: 0 ms
+Error: На заданому інтервалі функція не змінює знак. Метод бісекції неможливий.
+----------------------------------------
+Test ID: 260
+Function: x + cos(x)
+Method: Ньютон
+Parameters: A=0, B=3.14, IG=1.5, Eps=1e-7, MaxIter=500
+Status: FAIL_SOLVER
+Time: 2 ms
+Error: Метод Ньютона: Метод розбігається та виходить далеко за межі допустимого інтервалу.
+----------------------------------------
+Test ID: 261
+Function: x + cos(x)
+Method: Січні
+Parameters: A=0, B=3.14, IG=1.5, Eps=1e-7, MaxIter=500
+Status: FAIL_SOLVER
+Time: 24 ms
+Error: Метод Січних: Знайдений корінь -0,7391 знаходиться поза межами інтервалу [0; 3,14].
+----------------------------------------
+Test ID: 262
+Function: (3*sqrt(x) - 1) + (x^2 - 6)
+Method: Бісекція
+Parameters: A=-10, B=10, IG=0, Eps=1e-7, MaxIter=500
+Status: VALIDATION_REJECTED
+Time: 0 ms
+Error: Помилка обчислення функції на кінцях інтервалу: Результат обчислення не є числом (NaN). Можливо, ділення на нуль або корінь з від'ємного числа.
+----------------------------------------
+Test ID: 263
+Function: (3*sqrt(x) - 1) + (x^2 - 6)
+Method: Ньютон
+Parameters: A=-10, B=10, IG=0, Eps=1e-7, MaxIter=500
+Status: FAIL_SOLVER
+Time: 3 ms
+Error: Помилка під час обчислення: Результат обчислення не є числом (NaN). Можливо, ділення на нуль або корінь з від'ємного числа.
+----------------------------------------
+Test ID: 264
+Function: (3*sqrt(x) - 1) + (x^2 - 6)
+Method: Січні
+Parameters: A=-10, B=10, IG=0, Eps=1e-7, MaxIter=500
+Status: FAIL_SOLVER
+Time: 2 ms
+Error: Помилка під час обчислення: Результат обчислення не є числом (NaN). Можливо, ділення на нуль або корінь з від'ємного числа.
+----------------------------------------
+Test ID: 265
+Function: (2*sqrt(x) - 5) - (3*ln(x) - 8)
+Method: Бісекція
+Parameters: A=0.1, B=5, IG=2, Eps=1e-7, MaxIter=500
+Status: VALIDATION_REJECTED
+Time: 0 ms
+Error: На заданому інтервалі функція не змінює знак. Метод бісекції неможливий.
+----------------------------------------
+Test ID: 266
+Function: (2*sqrt(x) - 5) - (3*ln(x) - 8)
+Method: Ньютон
+Parameters: A=0.1, B=5, IG=2, Eps=1e-7, MaxIter=500
+Status: FAIL_SOLVER
+Time: 8 ms
+Error: Метод Ньютона: Метод розбігається та виходить далеко за межі допустимого інтервалу.
+----------------------------------------
+Test ID: 267
+Function: (2*sqrt(x) - 5) - (3*ln(x) - 8)
+Method: Січні
+Parameters: A=0.1, B=5, IG=2, Eps=1e-7, MaxIter=500
+Status: FAIL_SOLVER
+Time: 9 ms
+Error: Метод Січних: Метод розбігається та виходить далеко за межі допустимого інтервалу.
+----------------------------------------
+Test ID: 268
+Function: (-7*x^1 + 20) - (-2*x^3 + -6)
+Method: Бісекція
+Parameters: A=-10, B=10, IG=0, Eps=1e-7, MaxIter=500
+Status: PASS
+Root: -2,841626852750778
+f(root): 5,6005E-006
+Iterations: 27
+Time: 26 ms
+----------------------------------------
+Test ID: 269
+Function: (-7*x^1 + 20) - (-2*x^3 + -6)
+Method: Ньютон
+Parameters: A=-10, B=10, IG=0, Eps=1e-7, MaxIter=500
+Status: PASS
+Root: -2,841626987867233
+f(root): -2,0000E-013
+Iterations: 22
+Time: 88 ms
+----------------------------------------
+Test ID: 270
+Function: (-7*x^1 + 20) - (-2*x^3 + -6)
+Method: Січні
+Parameters: A=-10, B=10, IG=0, Eps=1e-7, MaxIter=500
+Status: PASS
+Root: -2,8416269878672304
+f(root): 0,0000E+000
+Iterations: 12
+Time: 12 ms
+----------------------------------------
+Test ID: 271
+Function: (x^2 - 48) / (x - sin(x))
+Method: Бісекція
+Parameters: A=0, B=3.14, IG=1.5, Eps=1e-7, MaxIter=500
+Status: VALIDATION_REJECTED
+Time: 0 ms
+Error: Помилка обчислення функції на кінцях інтервалу: Результат обчислення не є числом (NaN). Можливо, ділення на нуль або корінь з від'ємного числа.
+----------------------------------------
+Test ID: 272
+Function: (x^2 - 48) / (x - sin(x))
+Method: Ньютон
+Parameters: A=0, B=3.14, IG=1.5, Eps=1e-7, MaxIter=500
+Status: FAIL_SOLVER
+Time: 37 ms
+Error: Метод Ньютона: Знайдений корінь 6,9282 знаходиться поза межами інтервалу [0; 3,14].
+----------------------------------------
+Test ID: 273
+Function: (x^2 - 48) / (x - sin(x))
+Method: Січні
+Parameters: A=0, B=3.14, IG=1.5, Eps=1e-7, MaxIter=500
+Status: FAIL_SOLVER
+Time: 1 ms
+Error: Помилка під час обчислення: Результат обчислення не є числом (NaN). Можливо, ділення на нуль або корінь з від'ємного числа.
+----------------------------------------
+Test ID: 274
+Function: x * ln(x)
+Method: Бісекція
+Parameters: A=0.1, B=5, IG=2, Eps=1e-7, MaxIter=500
+Status: PASS
+Root: 1,0000000089406968
+f(root): 8,9407E-009
+Iterations: 25
+Time: 23 ms
+----------------------------------------
+Test ID: 275
+Function: x * ln(x)
+Method: Ньютон
+Parameters: A=0.1, B=5, IG=2, Eps=1e-7, MaxIter=500
+Status: PASS
+Root: 1
+f(root): 0,0000E+000
+Iterations: 5
+Time: 15 ms
+----------------------------------------
+Test ID: 276
+Function: x * ln(x)
+Method: Січні
+Parameters: A=0.1, B=5, IG=2, Eps=1e-7, MaxIter=500
+Status: FAIL_SOLVER
+Time: 9 ms
+Error: Помилка під час обчислення: Результат обчислення не є числом (NaN). Можливо, ділення на нуль або корінь з від'ємного числа.
+----------------------------------------
+Test ID: 277
+Function: -3*x^2
+Method: Бісекція
+Parameters: A=-10, B=10, IG=0, Eps=1e-7, MaxIter=500
+Status: VALIDATION_REJECTED
+Time: 0 ms
+Error: На заданому інтервалі функція не змінює знак. Метод бісекції неможливий.
+----------------------------------------
+Test ID: 278
+Function: -3*x^2
+Method: Ньютон
+Parameters: A=-10, B=10, IG=0, Eps=1e-7, MaxIter=500
+Status: FAIL_SOLVER
+Time: 1 ms
+Error: Метод Ньютона: Похідна наближається до нуля на ітерації 1. Метод розбігається.
+----------------------------------------
+Test ID: 279
+Function: -3*x^2
+Method: Січні
+Parameters: A=-10, B=10, IG=0, Eps=1e-7, MaxIter=500
+Status: FAIL_SOLVER
+Time: 1 ms
+Error: Метод Січних: Ділення на нуль (f(x1) ≈ f(x0)) на ітерації 1. Метод розбігається.
+----------------------------------------
+Test ID: 280
+Function: (-7*x^4) + (3*cos(x) - 6)
+Method: Бісекція
+Parameters: A=0, B=3.14, IG=1.5, Eps=1e-7, MaxIter=500
+Status: VALIDATION_REJECTED
+Time: 0 ms
+Error: На заданому інтервалі функція не змінює знак. Метод бісекції неможливий.
+----------------------------------------
+Test ID: 281
+Function: (-7*x^4) + (3*cos(x) - 6)
+Method: Ньютон
+Parameters: A=0, B=3.14, IG=1.5, Eps=1e-7, MaxIter=500
+Status: FAIL_SOLVER
+Time: 44 ms
+Error: Метод Ньютона: Метод розбігається та виходить далеко за межі допустимого інтервалу.
+----------------------------------------
+Test ID: 282
+Function: (-7*x^4) + (3*cos(x) - 6)
+Method: Січні
+Parameters: A=0, B=3.14, IG=1.5, Eps=1e-7, MaxIter=500
+Status: FAIL_SOLVER
+Time: 4 ms
+Error: Метод Січних: Метод розбігається та виходить далеко за межі допустимого інтервалу.
+----------------------------------------
+Test ID: 283
+Function: (-5*x^3) / (x^2 - 66)
+Method: Бісекція
+Parameters: A=-10, B=10, IG=0, Eps=1e-7, MaxIter=500
+Status: PASS
+Root: 0
+f(root): 0,0000E+000
+Iterations: 1
+Time: 4 ms
+----------------------------------------
+Test ID: 284
+Function: (-5*x^3) / (x^2 - 66)
+Method: Ньютон
+Parameters: A=-10, B=10, IG=0, Eps=1e-7, MaxIter=500
+Status: FAIL_SOLVER
+Time: 3 ms
+Error: Метод Ньютона: Похідна наближається до нуля на ітерації 1. Метод розбігається.
+----------------------------------------
+Test ID: 285
+Function: (-5*x^3) / (x^2 - 66)
+Method: Січні
+Parameters: A=-10, B=10, IG=0, Eps=1e-7, MaxIter=500
+Status: PASS
+Root: 0
+f(root): 0,0000E+000
+Iterations: 2
+Time: 9 ms
+----------------------------------------
+Test ID: 286
+Function: (x^2 - 66) * (5*x^2)
+Method: Бісекція
+Parameters: A=-10, B=10, IG=0, Eps=1e-7, MaxIter=500
+Status: VALIDATION_REJECTED
+Time: 0 ms
+Error: На заданому інтервалі функція не змінює знак. Метод бісекції неможливий.
+----------------------------------------
+Test ID: 287
+Function: (x^2 - 66) * (5*x^2)
+Method: Ньютон
+Parameters: A=-10, B=10, IG=0, Eps=1e-7, MaxIter=500
+Status: FAIL_SOLVER
+Time: 3 ms
+Error: Метод Ньютона: Похідна наближається до нуля на ітерації 1. Метод розбігається.
+----------------------------------------
+Test ID: 288
+Function: (x^2 - 66) * (5*x^2)
+Method: Січні
+Parameters: A=-10, B=10, IG=0, Eps=1e-7, MaxIter=500
+Status: FAIL_SOLVER
+Time: 2 ms
+Error: Метод Січних: Ділення на нуль (f(x1) ≈ f(x0)) на ітерації 1. Метод розбігається.
+----------------------------------------
+Test ID: 289
+Function: x - tan(x)
+Method: Бісекція
+Parameters: A=-10, B=10, IG=0, Eps=1e-7, MaxIter=500
+Status: PASS
+Root: 0
+f(root): 0,0000E+000
+Iterations: 1
+Time: 3 ms
+----------------------------------------
+Test ID: 290
+Function: x - tan(x)
+Method: Ньютон
+Parameters: A=-10, B=10, IG=0, Eps=1e-7, MaxIter=500
+Status: FAIL_SOLVER
+Time: 2 ms
+Error: Метод Ньютона: Похідна наближається до нуля на ітерації 1. Метод розбігається.
+----------------------------------------
+Test ID: 291
+Function: x - tan(x)
+Method: Січні
+Parameters: A=-10, B=10, IG=0, Eps=1e-7, MaxIter=500
+Status: PASS
+Root: 0
+f(root): 0,0000E+000
+Iterations: 2
+Time: 4 ms
+----------------------------------------
+Test ID: 292
+Function: x^2 - 35
+Method: Бісекція
+Parameters: A=-10, B=10, IG=0, Eps=1e-7, MaxIter=500
+Status: VALIDATION_REJECTED
+Time: 0 ms
+Error: На заданому інтервалі функція не змінює знак. Метод бісекції неможливий.
+----------------------------------------
+Test ID: 293
+Function: x^2 - 35
+Method: Ньютон
+Parameters: A=-10, B=10, IG=0, Eps=1e-7, MaxIter=500
+Status: FAIL_SOLVER
+Time: 3 ms
+Error: Метод Ньютона: Похідна наближається до нуля на ітерації 1. Метод розбігається.
+----------------------------------------
+Test ID: 294
+Function: x^2 - 35
+Method: Січні
+Parameters: A=-10, B=10, IG=0, Eps=1e-7, MaxIter=500
+Status: FAIL_SOLVER
+Time: 5 ms
+Error: Метод Січних: Ділення на нуль (f(x1) ≈ f(x0)) на ітерації 1. Метод розбігається.
+----------------------------------------
+Test ID: 295
+Function: x^2 - 28
+Method: Бісекція
+Parameters: A=-10, B=10, IG=0, Eps=1e-7, MaxIter=500
+Status: VALIDATION_REJECTED
+Time: 0 ms
+Error: На заданому інтервалі функція не змінює знак. Метод бісекції неможливий.
+----------------------------------------
+Test ID: 296
+Function: x^2 - 28
+Method: Ньютон
+Parameters: A=-10, B=10, IG=0, Eps=1e-7, MaxIter=500
+Status: FAIL_SOLVER
+Time: 2 ms
+Error: Метод Ньютона: Похідна наближається до нуля на ітерації 1. Метод розбігається.
+----------------------------------------
+Test ID: 297
+Function: x^2 - 28
+Method: Січні
+Parameters: A=-10, B=10, IG=0, Eps=1e-7, MaxIter=500
+Status: FAIL_SOLVER
+Time: 2 ms
+Error: Метод Січних: Ділення на нуль (f(x1) ≈ f(x0)) на ітерації 1. Метод розбігається.
+----------------------------------------
+Test ID: 298
+Function: (4*exp(x) - 7) - (x^2 - 44)
+Method: Бісекція
+Parameters: A=-10, B=10, IG=0, Eps=1e-7, MaxIter=500
+Status: PASS
+Root: -6,083512157201767
+f(root): 4,5043E-007
+Iterations: 27
+Time: 31 ms
+----------------------------------------
+Test ID: 299
+Function: (4*exp(x) - 7) - (x^2 - 44)
+Method: Ньютон
+Parameters: A=-10, B=10, IG=0, Eps=1e-7, MaxIter=500
+Status: PASS
+Root: -6,083512194194589
+f(root): -3,0000E-014
+Iterations: 6
+Time: 25 ms
+----------------------------------------
+Test ID: 300
+Function: (4*exp(x) - 7) - (x^2 - 44)
+Method: Січні
+Parameters: A=-10, B=10, IG=0, Eps=1e-7, MaxIter=500
+Status: PASS
+Root: -6,083512194194591
+f(root): -3,0000E-014
+Iterations: 9
+Time: 14 ms
+----------------------------------------
+Test ID: 301
+Function: (4*x^1) * (x^2 - 26)
+Method: Бісекція
+Parameters: A=-10, B=10, IG=0, Eps=1e-7, MaxIter=500
+Status: PASS
+Root: 0
+f(root): -0,0000E+000
+Iterations: 1
+Time: 2 ms
+----------------------------------------
+Test ID: 302
+Function: (4*x^1) * (x^2 - 26)
+Method: Ньютон
+Parameters: A=-10, B=10, IG=0, Eps=1e-7, MaxIter=500
+Status: PASS
+Root: 0
+f(root): -0,0000E+000
+Iterations: 1
+Time: 4 ms
+----------------------------------------
+Test ID: 303
+Function: (4*x^1) * (x^2 - 26)
+Method: Січні
+Parameters: A=-10, B=10, IG=0, Eps=1e-7, MaxIter=500
+Status: PASS
+Root: 0
+f(root): -0,0000E+000
+Iterations: 2
+Time: 12 ms
+----------------------------------------
+Test ID: 304
+Function: x^2 - 17
+Method: Бісекція
+Parameters: A=-10, B=10, IG=0, Eps=1e-7, MaxIter=500
+Status: VALIDATION_REJECTED
+Time: 0 ms
+Error: На заданому інтервалі функція не змінює знак. Метод бісекції неможливий.
+----------------------------------------
+Test ID: 305
+Function: x^2 - 17
+Method: Ньютон
+Parameters: A=-10, B=10, IG=0, Eps=1e-7, MaxIter=500
+Status: FAIL_SOLVER
+Time: 2 ms
+Error: Метод Ньютона: Похідна наближається до нуля на ітерації 1. Метод розбігається.
+----------------------------------------
+Test ID: 306
+Function: x^2 - 17
+Method: Січні
+Parameters: A=-10, B=10, IG=0, Eps=1e-7, MaxIter=500
+Status: FAIL_SOLVER
+Time: 2 ms
+Error: Метод Січних: Ділення на нуль (f(x1) ≈ f(x0)) на ітерації 1. Метод розбігається.
+----------------------------------------
+Test ID: 307
+Function: (2*x^2 + 11) + (x^2 - 55)
+Method: Бісекція
+Parameters: A=-10, B=10, IG=0, Eps=1e-7, MaxIter=500
+Status: VALIDATION_REJECTED
+Time: 0 ms
+Error: На заданому інтервалі функція не змінює знак. Метод бісекції неможливий.
+----------------------------------------
+Test ID: 308
+Function: (2*x^2 + 11) + (x^2 - 55)
+Method: Ньютон
+Parameters: A=-10, B=10, IG=0, Eps=1e-7, MaxIter=500
+Status: FAIL_SOLVER
+Time: 3 ms
+Error: Метод Ньютона: Похідна наближається до нуля на ітерації 1. Метод розбігається.
+----------------------------------------
+Test ID: 309
+Function: (2*x^2 + 11) + (x^2 - 55)
+Method: Січні
+Parameters: A=-10, B=10, IG=0, Eps=1e-7, MaxIter=500
+Status: FAIL_SOLVER
+Time: 2 ms
+Error: Метод Січних: Ділення на нуль (f(x1) ≈ f(x0)) на ітерації 1. Метод розбігається.
+----------------------------------------
+Test ID: 310
+Function: 3*sin(x)
+Method: Бісекція
+Parameters: A=0, B=3.14, IG=1.5, Eps=1e-7, MaxIter=500
+Status: PASS
+Root: 1,8715858459472657E-07
+f(root): 5,6148E-007
+Iterations: 24
+Time: 41 ms
+----------------------------------------
+Test ID: 311
+Function: 3*sin(x)
+Method: Ньютон
+Parameters: A=0, B=3.14, IG=1.5, Eps=1e-7, MaxIter=500
+Status: FAIL_SOLVER
+Time: 3 ms
+Error: Метод Ньютона: Метод розбігається та виходить далеко за межі допустимого інтервалу.
+----------------------------------------
+Test ID: 312
+Function: 3*sin(x)
+Method: Січні
+Parameters: A=0, B=3.14, IG=1.5, Eps=1e-7, MaxIter=500
+Status: PASS
+Root: 0
+f(root): 0,0000E+000
+Iterations: 2
+Time: 6 ms
+----------------------------------------
+Test ID: 313
+Function: (x^2 - 87) * (3*exp(x) - 6)
+Method: Бісекція
+Parameters: A=-10, B=10, IG=0, Eps=1e-7, MaxIter=500
+Status: PASS
+Root: -9,327379018068314
+f(root): 3,9196E-006
+Iterations: 27
+Time: 33 ms
+----------------------------------------
+Test ID: 314
+Function: (x^2 - 87) * (3*exp(x) - 6)
+Method: Ньютон
+Parameters: A=-10, B=10, IG=0, Eps=1e-7, MaxIter=500
+Status: PASS
+Root: 0,6931471805599433
+f(root): 0,0000E+000
+Iterations: 6
+Time: 24 ms
+----------------------------------------
+Test ID: 315
+Function: (x^2 - 87) * (3*exp(x) - 6)
+Method: Січні
+Parameters: A=-10, B=10, IG=0, Eps=1e-7, MaxIter=500
+Status: PASS
+Root: -9,327379053088812
+f(root): 6,0000E-013
 Iterations: 7
 Time: 14 ms
 ----------------------------------------
-Test ID: 87
-Function: 1/x - 0.5
+Test ID: 316
+Function: x^2 - 34
+Method: Бісекція
+Parameters: A=-10, B=10, IG=0, Eps=1e-7, MaxIter=500
+Status: VALIDATION_REJECTED
+Time: 0 ms
+Error: На заданому інтервалі функція не змінює знак. Метод бісекції неможливий.
+----------------------------------------
+Test ID: 317
+Function: x^2 - 34
 Method: Ньютон
-Parameters: A=0.1, B=2, IG=1, Eps=1e-15, MaxIter=500
-Status: PASS
-Root: 2,0000000000000018
-f(root): 0,0000E+000
-Iterations: 7
-Time: 14 ms
-----------------------------------------
-Test ID: 88
-Function: 1/x - 0.5
-Method: Січні
-Parameters: A=0.1, B=2, IG=1, Eps=1e-5, MaxIter=500
-Status: PASS
-Root: 2
-f(root): 0,0000E+000
-Iterations: 1
-Time: 1 ms
-----------------------------------------
-Test ID: 89
-Function: 1/x - 0.5
-Method: Січні
-Parameters: A=0.1, B=2, IG=1, Eps=1e-10, MaxIter=500
-Status: PASS
-Root: 2
-f(root): 0,0000E+000
-Iterations: 1
+Parameters: A=-10, B=10, IG=0, Eps=1e-7, MaxIter=500
+Status: FAIL_SOLVER
 Time: 2 ms
+Error: Метод Ньютона: Похідна наближається до нуля на ітерації 1. Метод розбігається.
 ----------------------------------------
-Test ID: 90
-Function: 1/x - 0.5
+Test ID: 318
+Function: x^2 - 34
 Method: Січні
-Parameters: A=0.1, B=2, IG=1, Eps=1e-15, MaxIter=500
-Status: PASS
-Root: 2
-f(root): 0,0000E+000
-Iterations: 1
-Time: 1 ms
-----------------------------------------
-Test ID: 91
-Function: tan(x) - x
-Method: Бісекція
-Parameters: A=-10, B=10, IG=0, Eps=1e-5, MaxIter=500
-Status: PASS
-Root: 0
-f(root): 0,0000E+000
-Iterations: 1
-Time: 1 ms
-----------------------------------------
-Test ID: 92
-Function: tan(x) - x
-Method: Бісекція
-Parameters: A=-10, B=10, IG=0, Eps=1e-10, MaxIter=500
-Status: PASS
-Root: 0
-f(root): 0,0000E+000
-Iterations: 1
-Time: 1 ms
-----------------------------------------
-Test ID: 93
-Function: tan(x) - x
-Method: Бісекція
-Parameters: A=-10, B=10, IG=0, Eps=1e-15, MaxIter=500
-Status: PASS
-Root: 0
-f(root): 0,0000E+000
-Iterations: 1
-Time: 1 ms
-----------------------------------------
-Test ID: 94
-Function: tan(x) - x
-Method: Ньютон
-Parameters: A=-10, B=10, IG=0, Eps=1e-5, MaxIter=500
+Parameters: A=-10, B=10, IG=0, Eps=1e-7, MaxIter=500
 Status: FAIL_SOLVER
 Time: 1 ms
-Error: Метод Ньютона: Похідна наближається до нуля на ітерації 1. Метод розбігається.
+Error: Метод Січних: Ділення на нуль (f(x1) ≈ f(x0)) на ітерації 1. Метод розбігається.
 ----------------------------------------
-Test ID: 95
-Function: tan(x) - x
+Test ID: 319
+Function: x * ln(x)
+Method: Бісекція
+Parameters: A=0.1, B=5, IG=2, Eps=1e-7, MaxIter=500
+Status: PASS
+Root: 1,0000000089406968
+f(root): 8,9407E-009
+Iterations: 25
+Time: 23 ms
+----------------------------------------
+Test ID: 320
+Function: x * ln(x)
 Method: Ньютон
-Parameters: A=-10, B=10, IG=0, Eps=1e-10, MaxIter=500
-Status: FAIL_SOLVER
-Time: 1 ms
-Error: Метод Ньютона: Похідна наближається до нуля на ітерації 1. Метод розбігається.
+Parameters: A=0.1, B=5, IG=2, Eps=1e-7, MaxIter=500
+Status: PASS
+Root: 1
+f(root): 0,0000E+000
+Iterations: 5
+Time: 17 ms
 ----------------------------------------
-Test ID: 96
-Function: tan(x) - x
-Method: Ньютон
-Parameters: A=-10, B=10, IG=0, Eps=1e-15, MaxIter=500
-Status: FAIL_SOLVER
-Time: 1 ms
-Error: Метод Ньютона: Похідна наближається до нуля на ітерації 1. Метод розбігається.
-----------------------------------------
-Test ID: 97
-Function: tan(x) - x
+Test ID: 321
+Function: x * ln(x)
 Method: Січні
-Parameters: A=-10, B=10, IG=0, Eps=1e-5, MaxIter=500
+Parameters: A=0.1, B=5, IG=2, Eps=1e-7, MaxIter=500
+Status: FAIL_SOLVER
+Time: 5 ms
+Error: Помилка під час обчислення: Результат обчислення не є числом (NaN). Можливо, ділення на нуль або корінь з від'ємного числа.
+----------------------------------------
+Test ID: 322
+Function: 8*x^1 + -2
+Method: Бісекція
+Parameters: A=-10, B=10, IG=0, Eps=1e-7, MaxIter=500
+Status: PASS
+Root: 0,24999991059303284
+f(root): -7,1526E-007
+Iterations: 27
+Time: 32 ms
+----------------------------------------
+Test ID: 323
+Function: 8*x^1 + -2
+Method: Ньютон
+Parameters: A=-10, B=10, IG=0, Eps=1e-7, MaxIter=500
+Status: PASS
+Root: 0,24999999999999983
+f(root): 0,0000E+000
+Iterations: 2
+Time: 7 ms
+----------------------------------------
+Test ID: 324
+Function: 8*x^1 + -2
+Method: Січні
+Parameters: A=-10, B=10, IG=0, Eps=1e-7, MaxIter=500
+Status: PASS
+Root: 0,25
+f(root): 0,0000E+000
+Iterations: 2
+Time: 12 ms
+----------------------------------------
+Test ID: 325
+Function: x - exp(x)
+Method: Бісекція
+Parameters: A=-10, B=10, IG=0, Eps=1e-7, MaxIter=500
+Status: VALIDATION_REJECTED
+Time: 0 ms
+Error: На заданому інтервалі функція не змінює знак. Метод бісекції неможливий.
+----------------------------------------
+Test ID: 326
+Function: x - exp(x)
+Method: Ньютон
+Parameters: A=-10, B=10, IG=0, Eps=1e-7, MaxIter=500
+Status: FAIL_SOLVER
+Time: 3 ms
+Error: Метод Ньютона: Похідна наближається до нуля на ітерації 1. Метод розбігається.
+----------------------------------------
+Test ID: 327
+Function: x - exp(x)
+Method: Січні
+Parameters: A=-10, B=10, IG=0, Eps=1e-7, MaxIter=500
+Status: FAIL_SOLVER
+Time: 34 ms
+Error: Метод Січних: Отриманий результат не є коренем. f(x) = -2,3126E+000
+----------------------------------------
+Test ID: 328
+Function: (3*sin(x)) + (1*x^5)
+Method: Бісекція
+Parameters: A=0, B=3.14, IG=1.5, Eps=1e-7, MaxIter=500
+Status: PASS
+Root: 1,8715858459472657E-07
+f(root): 5,6148E-007
+Iterations: 24
+Time: 26 ms
+----------------------------------------
+Test ID: 329
+Function: (3*sin(x)) + (1*x^5)
+Method: Ньютон
+Parameters: A=0, B=3.14, IG=1.5, Eps=1e-7, MaxIter=500
+Status: PASS
+Root: 8,432975319569089E-17
+f(root): 0,0000E+000
+Iterations: 6
+Time: 48 ms
+----------------------------------------
+Test ID: 330
+Function: (3*sin(x)) + (1*x^5)
+Method: Січні
+Parameters: A=0, B=3.14, IG=1.5, Eps=1e-7, MaxIter=500
 Status: PASS
 Root: 0
 f(root): 0,0000E+000
 Iterations: 2
-Time: 2 ms
+Time: 12 ms
 ----------------------------------------
-Test ID: 98
-Function: tan(x) - x
+Test ID: 331
+Function: (-10*x^4 + -7) - (x / sin(x))
+Method: Бісекція
+Parameters: A=0, B=3.14, IG=1.5, Eps=1e-7, MaxIter=500
+Status: VALIDATION_REJECTED
+Time: 0 ms
+Error: Помилка обчислення функції на кінцях інтервалу: Результат обчислення не є числом (NaN). Можливо, ділення на нуль або корінь з від'ємного числа.
+----------------------------------------
+Test ID: 332
+Function: (-10*x^4 + -7) - (x / sin(x))
+Method: Ньютон
+Parameters: A=0, B=3.14, IG=1.5, Eps=1e-7, MaxIter=500
+Status: FAIL_SOLVER
+Time: 75 ms
+Error: Метод Ньютона: Метод розбігається та виходить далеко за межі допустимого інтервалу.
+----------------------------------------
+Test ID: 333
+Function: (-10*x^4 + -7) - (x / sin(x))
 Method: Січні
-Parameters: A=-10, B=10, IG=0, Eps=1e-10, MaxIter=500
+Parameters: A=0, B=3.14, IG=1.5, Eps=1e-7, MaxIter=500
+Status: FAIL_SOLVER
+Time: 2 ms
+Error: Помилка під час обчислення: Результат обчислення не є числом (NaN). Можливо, ділення на нуль або корінь з від'ємного числа.
+----------------------------------------
+Test ID: 334
+Function: (x / tan(x)) - (5*x^5)
+Method: Бісекція
+Parameters: A=-10, B=10, IG=0, Eps=1e-7, MaxIter=500
+Status: FAIL_SOLVER
+Time: 3 ms
+Error: Помилка під час обчислення: Результат обчислення не є числом (NaN). Можливо, ділення на нуль або корінь з від'ємного числа.
+----------------------------------------
+Test ID: 335
+Function: (x / tan(x)) - (5*x^5)
+Method: Ньютон
+Parameters: A=-10, B=10, IG=0, Eps=1e-7, MaxIter=500
+Status: FAIL_SOLVER
+Time: 1 ms
+Error: Помилка під час обчислення: Результат обчислення не є числом (NaN). Можливо, ділення на нуль або корінь з від'ємного числа.
+----------------------------------------
+Test ID: 336
+Function: (x / tan(x)) - (5*x^5)
+Method: Січні
+Parameters: A=-10, B=10, IG=0, Eps=1e-7, MaxIter=500
+Status: FAIL_SOLVER
+Time: 3 ms
+Error: Метод Січних: Метод розбігається та виходить далеко за межі допустимого інтервалу.
+----------------------------------------
+Test ID: 337
+Function: 5*x^5 + -1
+Method: Бісекція
+Parameters: A=-10, B=10, IG=0, Eps=1e-7, MaxIter=500
+Status: PASS
+Root: 0,7247795164585114
+f(root): -1,0156E-006
+Iterations: 27
+Time: 21 ms
+----------------------------------------
+Test ID: 338
+Function: 5*x^5 + -1
+Method: Ньютон
+Parameters: A=-10, B=10, IG=0, Eps=1e-7, MaxIter=500
+Status: FAIL_SOLVER
+Time: 9 ms
+Error: Метод Ньютона: Похідна наближається до нуля на ітерації 1. Метод розбігається.
+----------------------------------------
+Test ID: 339
+Function: 5*x^5 + -1
+Method: Січні
+Parameters: A=-10, B=10, IG=0, Eps=1e-7, MaxIter=500
+Status: FAIL_SOLVER
+Time: 5 ms
+Error: Метод Січних: Ділення на нуль (f(x1) ≈ f(x0)) на ітерації 3. Метод розбігається.
+----------------------------------------
+Test ID: 340
+Function: (10*x^2 + 3) / (x - sqrt(x))
+Method: Бісекція
+Parameters: A=-10, B=10, IG=0, Eps=1e-7, MaxIter=500
+Status: VALIDATION_REJECTED
+Time: 0 ms
+Error: Помилка обчислення функції на кінцях інтервалу: Результат обчислення не є числом (NaN). Можливо, ділення на нуль або корінь з від'ємного числа.
+----------------------------------------
+Test ID: 341
+Function: (10*x^2 + 3) / (x - sqrt(x))
+Method: Ньютон
+Parameters: A=-10, B=10, IG=0, Eps=1e-7, MaxIter=500
+Status: FAIL_SOLVER
+Time: 3 ms
+Error: Помилка під час обчислення: Результат обчислення не є числом (NaN). Можливо, ділення на нуль або корінь з від'ємного числа.
+----------------------------------------
+Test ID: 342
+Function: (10*x^2 + 3) / (x - sqrt(x))
+Method: Січні
+Parameters: A=-10, B=10, IG=0, Eps=1e-7, MaxIter=500
+Status: FAIL_SOLVER
+Time: 1 ms
+Error: Помилка під час обчислення: Результат обчислення не є числом (NaN). Можливо, ділення на нуль або корінь з від'ємного числа.
+----------------------------------------
+Test ID: 343
+Function: (2*ln(x) - 5) + (x + abs(x))
+Method: Бісекція
+Parameters: A=0.1, B=5, IG=2, Eps=1e-7, MaxIter=500
+Status: PASS
+Root: 1,8726470261812207
+f(root): -4,3674E-008
+Iterations: 25
+Time: 71 ms
+----------------------------------------
+Test ID: 344
+Function: (2*ln(x) - 5) + (x + abs(x))
+Method: Ньютон
+Parameters: A=0.1, B=5, IG=2, Eps=1e-7, MaxIter=500
+Status: PASS
+Root: 1,872647040416592
+f(root): -0,0000E+000
+Iterations: 4
+Time: 33 ms
+----------------------------------------
+Test ID: 345
+Function: (2*ln(x) - 5) + (x + abs(x))
+Method: Січні
+Parameters: A=0.1, B=5, IG=2, Eps=1e-7, MaxIter=500
+Status: PASS
+Root: 1,872647040417072
+f(root): 1,4600E-012
+Iterations: 6
+Time: 21 ms
+----------------------------------------
+Test ID: 346
+Function: -4*x^1
+Method: Бісекція
+Parameters: A=-10, B=10, IG=0, Eps=1e-7, MaxIter=500
 Status: PASS
 Root: 0
-f(root): 0,0000E+000
-Iterations: 2
-Time: 2 ms
+f(root): -0,0000E+000
+Iterations: 1
+Time: 5 ms
 ----------------------------------------
-Test ID: 99
-Function: tan(x) - x
-Method: Січні
-Parameters: A=-10, B=10, IG=0, Eps=1e-15, MaxIter=500
+Test ID: 347
+Function: -4*x^1
+Method: Ньютон
+Parameters: A=-10, B=10, IG=0, Eps=1e-7, MaxIter=500
 Status: PASS
 Root: 0
-f(root): 0,0000E+000
+f(root): -0,0000E+000
+Iterations: 1
+Time: 7 ms
+----------------------------------------
+Test ID: 348
+Function: -4*x^1
+Method: Січні
+Parameters: A=-10, B=10, IG=0, Eps=1e-7, MaxIter=500
+Status: PASS
+Root: 0
+f(root): -0,0000E+000
 Iterations: 2
+Time: 9 ms
+----------------------------------------
+Test ID: 349
+Function: x^2 - 33
+Method: Бісекція
+Parameters: A=-10, B=10, IG=0, Eps=1e-7, MaxIter=500
+Status: VALIDATION_REJECTED
+Time: 0 ms
+Error: На заданому інтервалі функція не змінює знак. Метод бісекції неможливий.
+----------------------------------------
+Test ID: 350
+Function: x^2 - 33
+Method: Ньютон
+Parameters: A=-10, B=10, IG=0, Eps=1e-7, MaxIter=500
+Status: FAIL_SOLVER
+Time: 8 ms
+Error: Метод Ньютона: Похідна наближається до нуля на ітерації 1. Метод розбігається.
+----------------------------------------
+Test ID: 351
+Function: x^2 - 33
+Method: Січні
+Parameters: A=-10, B=10, IG=0, Eps=1e-7, MaxIter=500
+Status: FAIL_SOLVER
+Time: 4 ms
+Error: Метод Січних: Ділення на нуль (f(x1) ≈ f(x0)) на ітерації 1. Метод розбігається.
+----------------------------------------
+Test ID: 352
+Function: -7*x^5
+Method: Бісекція
+Parameters: A=-10, B=10, IG=0, Eps=1e-7, MaxIter=500
+Status: PASS
+Root: 0
+f(root): -0,0000E+000
+Iterations: 1
+Time: 5 ms
+----------------------------------------
+Test ID: 353
+Function: -7*x^5
+Method: Ньютон
+Parameters: A=-10, B=10, IG=0, Eps=1e-7, MaxIter=500
+Status: FAIL_SOLVER
+Time: 6 ms
+Error: Метод Ньютона: Похідна наближається до нуля на ітерації 1. Метод розбігається.
+----------------------------------------
+Test ID: 354
+Function: -7*x^5
+Method: Січні
+Parameters: A=-10, B=10, IG=0, Eps=1e-7, MaxIter=500
+Status: PASS
+Root: 0
+f(root): -0,0000E+000
+Iterations: 2
+Time: 11 ms
+----------------------------------------
+Test ID: 355
+Function: 1*abs(x)
+Method: Бісекція
+Parameters: A=-10, B=10, IG=0, Eps=1e-7, MaxIter=500
+Status: VALIDATION_REJECTED
+Time: 0 ms
+Error: На заданому інтервалі функція не змінює знак. Метод бісекції неможливий.
+----------------------------------------
+Test ID: 356
+Function: 1*abs(x)
+Method: Ньютон
+Parameters: A=-10, B=10, IG=0, Eps=1e-7, MaxIter=500
+Status: FAIL_SOLVER
+Time: 3 ms
+Error: Метод Ньютона: Похідна наближається до нуля на ітерації 1. Метод розбігається.
+----------------------------------------
+Test ID: 357
+Function: 1*abs(x)
+Method: Січні
+Parameters: A=-10, B=10, IG=0, Eps=1e-7, MaxIter=500
+Status: FAIL_SOLVER
+Time: 6 ms
+Error: Метод Січних: Ділення на нуль (f(x1) ≈ f(x0)) на ітерації 1. Метод розбігається.
+----------------------------------------
+Test ID: 358
+Function: x - log10(x)
+Method: Бісекція
+Parameters: A=0.1, B=5, IG=2, Eps=1e-7, MaxIter=500
+Status: VALIDATION_REJECTED
+Time: 0 ms
+Error: На заданому інтервалі функція не змінює знак. Метод бісекції неможливий.
+----------------------------------------
+Test ID: 359
+Function: x - log10(x)
+Method: Ньютон
+Parameters: A=0.1, B=5, IG=2, Eps=1e-7, MaxIter=500
+Status: FAIL_SOLVER
+Time: 4 ms
+Error: Помилка під час обчислення: Результат обчислення не є числом (NaN). Можливо, ділення на нуль або корінь з від'ємного числа.
+----------------------------------------
+Test ID: 360
+Function: x - log10(x)
+Method: Січні
+Parameters: A=0.1, B=5, IG=2, Eps=1e-7, MaxIter=500
+Status: FAIL_SOLVER
+Time: 3 ms
+Error: Помилка під час обчислення: Результат обчислення не є числом (NaN). Можливо, ділення на нуль або корінь з від'ємного числа.
+----------------------------------------
+Test ID: 361
+Function: (4*x^4) * (x^2 - 30)
+Method: Бісекція
+Parameters: A=-10, B=10, IG=0, Eps=1e-7, MaxIter=500
+Status: VALIDATION_REJECTED
+Time: 0 ms
+Error: На заданому інтервалі функція не змінює знак. Метод бісекції неможливий.
+----------------------------------------
+Test ID: 362
+Function: (4*x^4) * (x^2 - 30)
+Method: Ньютон
+Parameters: A=-10, B=10, IG=0, Eps=1e-7, MaxIter=500
+Status: FAIL_SOLVER
 Time: 2 ms
+Error: Метод Ньютона: Похідна наближається до нуля на ітерації 1. Метод розбігається.
 ----------------------------------------
-Test ID: 100
-Function: x^2 - 10^5
+Test ID: 363
+Function: (4*x^4) * (x^2 - 30)
+Method: Січні
+Parameters: A=-10, B=10, IG=0, Eps=1e-7, MaxIter=500
+Status: FAIL_SOLVER
+Time: 1 ms
+Error: Метод Січних: Ділення на нуль (f(x1) ≈ f(x0)) на ітерації 1. Метод розбігається.
+----------------------------------------
+Test ID: 364
+Function: 5*cos(x) - 8
 Method: Бісекція
-Parameters: A=-10, B=10, IG=0, Eps=1e-5, MaxIter=500
+Parameters: A=0, B=3.14, IG=1.5, Eps=1e-7, MaxIter=500
 Status: VALIDATION_REJECTED
 Time: 0 ms
 Error: На заданому інтервалі функція не змінює знак. Метод бісекції неможливий.
 ----------------------------------------
-Test ID: 101
-Function: x^2 - 10^5
-Method: Бісекція
-Parameters: A=-10, B=10, IG=0, Eps=1e-10, MaxIter=500
-Status: VALIDATION_REJECTED
-Time: 0 ms
-Error: На заданому інтервалі функція не змінює знак. Метод бісекції неможливий.
-----------------------------------------
-Test ID: 102
-Function: x^2 - 10^5
-Method: Бісекція
-Parameters: A=-10, B=10, IG=0, Eps=1e-15, MaxIter=500
-Status: VALIDATION_REJECTED
-Time: 0 ms
-Error: На заданому інтервалі функція не змінює знак. Метод бісекції неможливий.
-----------------------------------------
-Test ID: 103
-Function: x^2 - 10^5
+Test ID: 365
+Function: 5*cos(x) - 8
 Method: Ньютон
-Parameters: A=-10, B=10, IG=0, Eps=1e-5, MaxIter=500
+Parameters: A=0, B=3.14, IG=1.5, Eps=1e-7, MaxIter=500
+Status: FAIL_SOLVER
+Time: 6 ms
+Error: Метод Ньютона: Метод розбігається та виходить далеко за межі допустимого інтервалу.
+----------------------------------------
+Test ID: 366
+Function: 5*cos(x) - 8
+Method: Січні
+Parameters: A=0, B=3.14, IG=1.5, Eps=1e-7, MaxIter=500
+Status: FAIL_SOLVER
+Time: 442 ms
+Error: Метод Січних: Перевищено максимальну кількість ітерацій. Метод не збігається.
+----------------------------------------
+Test ID: 367
+Function: x^2 - 89
+Method: Бісекція
+Parameters: A=-10, B=10, IG=0, Eps=1e-7, MaxIter=500
+Status: VALIDATION_REJECTED
+Time: 0 ms
+Error: На заданому інтервалі функція не змінює знак. Метод бісекції неможливий.
+----------------------------------------
+Test ID: 368
+Function: x^2 - 89
+Method: Ньютон
+Parameters: A=-10, B=10, IG=0, Eps=1e-7, MaxIter=500
+Status: FAIL_SOLVER
+Time: 3 ms
+Error: Метод Ньютона: Похідна наближається до нуля на ітерації 1. Метод розбігається.
+----------------------------------------
+Test ID: 369
+Function: x^2 - 89
+Method: Січні
+Parameters: A=-10, B=10, IG=0, Eps=1e-7, MaxIter=500
+Status: FAIL_SOLVER
+Time: 1 ms
+Error: Метод Січних: Ділення на нуль (f(x1) ≈ f(x0)) на ітерації 1. Метод розбігається.
+----------------------------------------
+Test ID: 370
+Function: (x^2 - 44) + (x^2 - 1)
+Method: Бісекція
+Parameters: A=-10, B=10, IG=0, Eps=1e-7, MaxIter=500
+Status: VALIDATION_REJECTED
+Time: 0 ms
+Error: На заданому інтервалі функція не змінює знак. Метод бісекції неможливий.
+----------------------------------------
+Test ID: 371
+Function: (x^2 - 44) + (x^2 - 1)
+Method: Ньютон
+Parameters: A=-10, B=10, IG=0, Eps=1e-7, MaxIter=500
+Status: FAIL_SOLVER
+Time: 3 ms
+Error: Метод Ньютона: Похідна наближається до нуля на ітерації 1. Метод розбігається.
+----------------------------------------
+Test ID: 372
+Function: (x^2 - 44) + (x^2 - 1)
+Method: Січні
+Parameters: A=-10, B=10, IG=0, Eps=1e-7, MaxIter=500
 Status: FAIL_SOLVER
 Time: 2 ms
-Error: Метод Ньютона: Похідна наближається до нуля на ітерації 1. Метод розбігається.
-----------------------------------------
-Test ID: 104
-Function: x^2 - 10^5
-Method: Ньютон
-Parameters: A=-10, B=10, IG=0, Eps=1e-10, MaxIter=500
-Status: FAIL_SOLVER
-Time: 1 ms
-Error: Метод Ньютона: Похідна наближається до нуля на ітерації 1. Метод розбігається.
-----------------------------------------
-Test ID: 105
-Function: x^2 - 10^5
-Method: Ньютон
-Parameters: A=-10, B=10, IG=0, Eps=1e-15, MaxIter=500
-Status: FAIL_SOLVER
-Time: 1 ms
-Error: Метод Ньютона: Похідна наближається до нуля на ітерації 1. Метод розбігається.
-----------------------------------------
-Test ID: 106
-Function: x^2 - 10^5
-Method: Січні
-Parameters: A=-10, B=10, IG=0, Eps=1e-5, MaxIter=500
-Status: FAIL_SOLVER
-Time: 1 ms
 Error: Метод Січних: Ділення на нуль (f(x1) ≈ f(x0)) на ітерації 1. Метод розбігається.
 ----------------------------------------
-Test ID: 107
-Function: x^2 - 10^5
-Method: Січні
-Parameters: A=-10, B=10, IG=0, Eps=1e-10, MaxIter=500
-Status: FAIL_SOLVER
-Time: 2 ms
-Error: Метод Січних: Ділення на нуль (f(x1) ≈ f(x0)) на ітерації 1. Метод розбігається.
-----------------------------------------
-Test ID: 108
-Function: x^2 - 10^5
-Method: Січні
-Parameters: A=-10, B=10, IG=0, Eps=1e-15, MaxIter=500
-Status: FAIL_SOLVER
-Time: 1 ms
-Error: Метод Січних: Ділення на нуль (f(x1) ≈ f(x0)) на ітерації 1. Метод розбігається.
-----------------------------------------
-Test ID: 109
-Function: x^10 - 1
+Test ID: 373
+Function: (x^2 - 99) + (-9*x^5)
 Method: Бісекція
-Parameters: A=-10, B=10, IG=0, Eps=1e-5, MaxIter=500
+Parameters: A=-10, B=10, IG=0, Eps=1e-7, MaxIter=500
+Status: FAIL_ACCURACY
+Root: -1,6068784892559052
+f(root): -3,5662E-005
+Iterations: 27
+Time: 31 ms
+Error: f(root) = -3,56623822E-05 is too large for epsilon 1E-07
+----------------------------------------
+Test ID: 374
+Function: (x^2 - 99) + (-9*x^5)
+Method: Ньютон
+Parameters: A=-10, B=10, IG=0, Eps=1e-7, MaxIter=500
+Status: FAIL_SOLVER
+Time: 4 ms
+Error: Метод Ньютона: Похідна наближається до нуля на ітерації 1. Метод розбігається.
+----------------------------------------
+Test ID: 375
+Function: (x^2 - 99) + (-9*x^5)
+Method: Січні
+Parameters: A=-10, B=10, IG=0, Eps=1e-7, MaxIter=500
+Status: FAIL_SOLVER
+Time: 6 ms
+Error: Метод Січних: Метод розбігається та виходить далеко за межі допустимого інтервалу.
+----------------------------------------
+Test ID: 376
+Function: (x * cos(x)) - (4*cos(x) - 1)
+Method: Бісекція
+Parameters: A=0, B=3.14, IG=1.5, Eps=1e-7, MaxIter=500
+Status: PASS
+Root: 1,204916299581528
+f(root): -4,7890E-007
+Iterations: 24
+Time: 28 ms
+----------------------------------------
+Test ID: 377
+Function: (x * cos(x)) - (4*cos(x) - 1)
+Method: Ньютон
+Parameters: A=0, B=3.14, IG=1.5, Eps=1e-7, MaxIter=500
+Status: PASS
+Root: 1,2049164609433798
+f(root): -0,0000E+000
+Iterations: 4
+Time: 24 ms
+----------------------------------------
+Test ID: 378
+Function: (x * cos(x)) - (4*cos(x) - 1)
+Method: Січні
+Parameters: A=0, B=3.14, IG=1.5, Eps=1e-7, MaxIter=500
+Status: FAIL_SOLVER
+Time: 6 ms
+Error: Метод Січних: Метод розбігається та виходить далеко за межі допустимого інтервалу.
+----------------------------------------
+Test ID: 379
+Function: (x * log10(x)) / (x^2 - 8)
+Method: Бісекція
+Parameters: A=0.1, B=5, IG=2, Eps=1e-7, MaxIter=500
 Status: VALIDATION_REJECTED
 Time: 0 ms
 Error: На заданому інтервалі функція не змінює знак. Метод бісекції неможливий.
 ----------------------------------------
-Test ID: 110
-Function: x^10 - 1
-Method: Бісекція
-Parameters: A=-10, B=10, IG=0, Eps=1e-10, MaxIter=500
-Status: VALIDATION_REJECTED
-Time: 0 ms
-Error: На заданому інтервалі функція не змінює знак. Метод бісекції неможливий.
-----------------------------------------
-Test ID: 111
-Function: x^10 - 1
-Method: Бісекція
-Parameters: A=-10, B=10, IG=0, Eps=1e-15, MaxIter=500
-Status: VALIDATION_REJECTED
-Time: 0 ms
-Error: На заданому інтервалі функція не змінює знак. Метод бісекції неможливий.
-----------------------------------------
-Test ID: 112
-Function: x^10 - 1
+Test ID: 380
+Function: (x * log10(x)) / (x^2 - 8)
 Method: Ньютон
-Parameters: A=-10, B=10, IG=0, Eps=1e-5, MaxIter=500
-Status: FAIL_SOLVER
-Time: 1 ms
-Error: Метод Ньютона: Похідна наближається до нуля на ітерації 1. Метод розбігається.
+Parameters: A=0.1, B=5, IG=2, Eps=1e-7, MaxIter=500
+Status: PASS
+Root: 1,0000000000000062
+f(root): -0,0000E+000
+Iterations: 6
+Time: 37 ms
 ----------------------------------------
-Test ID: 113
-Function: x^10 - 1
-Method: Ньютон
-Parameters: A=-10, B=10, IG=0, Eps=1e-10, MaxIter=500
-Status: FAIL_SOLVER
-Time: 1 ms
-Error: Метод Ньютона: Похідна наближається до нуля на ітерації 1. Метод розбігається.
-----------------------------------------
-Test ID: 114
-Function: x^10 - 1
-Method: Ньютон
-Parameters: A=-10, B=10, IG=0, Eps=1e-15, MaxIter=500
-Status: FAIL_SOLVER
-Time: 1 ms
-Error: Метод Ньютона: Похідна наближається до нуля на ітерації 1. Метод розбігається.
-----------------------------------------
-Test ID: 115
-Function: x^10 - 1
+Test ID: 381
+Function: (x * log10(x)) / (x^2 - 8)
 Method: Січні
-Parameters: A=-10, B=10, IG=0, Eps=1e-5, MaxIter=500
+Parameters: A=0.1, B=5, IG=2, Eps=1e-7, MaxIter=500
 Status: FAIL_SOLVER
-Time: 1 ms
-Error: Метод Січних: Ділення на нуль (f(x1) ≈ f(x0)) на ітерації 1. Метод розбігається.
+Time: 4 ms
+Error: Помилка під час обчислення: Результат обчислення не є числом (NaN). Можливо, ділення на нуль або корінь з від'ємного числа.
 ----------------------------------------
-Test ID: 116
-Function: x^10 - 1
-Method: Січні
-Parameters: A=-10, B=10, IG=0, Eps=1e-10, MaxIter=500
-Status: FAIL_SOLVER
-Time: 1 ms
-Error: Метод Січних: Ділення на нуль (f(x1) ≈ f(x0)) на ітерації 1. Метод розбігається.
-----------------------------------------
-Test ID: 117
-Function: x^10 - 1
-Method: Січні
-Parameters: A=-10, B=10, IG=0, Eps=1e-15, MaxIter=500
-Status: FAIL_SOLVER
-Time: 1 ms
-Error: Метод Січних: Ділення на нуль (f(x1) ≈ f(x0)) на ітерації 1. Метод розбігається.
-----------------------------------------
-Test ID: 118
+Test ID: 382
 Function: x - 1e-15
 Method: Бісекція
 Parameters: A=0, B=1, IG=0.5, Eps=1e-15, MaxIter=1000
@@ -1113,9 +3292,9 @@ Status: PASS
 Root: 7,105427357601002E-15
 f(root): 0,0000E+000
 Iterations: 47
-Time: 23 ms
+Time: 43 ms
 ----------------------------------------
-Test ID: 119
+Test ID: 383
 Function: x - 1e-15
 Method: Ньютон
 Parameters: A=0, B=1, IG=0.5, Eps=1e-15, MaxIter=1000
@@ -1123,9 +3302,9 @@ Status: PASS
 Root: 9,541799610471246E-16
 f(root): -0,0000E+000
 Iterations: 3
-Time: 6 ms
+Time: 13 ms
 ----------------------------------------
-Test ID: 120
+Test ID: 384
 Function: x - 1e-15
 Method: Січні
 Parameters: A=0, B=1, IG=0.5, Eps=1e-15, MaxIter=1000
@@ -1133,9 +3312,9 @@ Status: PASS
 Root: 0
 f(root): -0,0000E+000
 Iterations: 2
-Time: 1 ms
+Time: 4 ms
 ----------------------------------------
-Test ID: 121
+Test ID: 385
 Function: x - 1000000
 Method: Бісекція
 Parameters: A=999000, B=1000000, IG=999500, Eps=1e-5, MaxIter=1000
@@ -1143,9 +3322,9 @@ Status: PASS
 Root: 999999,9999850988
 f(root): -1,4901E-005
 Iterations: 26
-Time: 13 ms
+Time: 34 ms
 ----------------------------------------
-Test ID: 122
+Test ID: 386
 Function: x - 1000000
 Method: Ньютон
 Parameters: A=999000, B=1000000, IG=999500, Eps=1e-5, MaxIter=1000
@@ -1153,9 +3332,9 @@ Status: PASS
 Root: 999999,9999999995
 f(root): 0,0000E+000
 Iterations: 3
-Time: 5 ms
+Time: 11 ms
 ----------------------------------------
-Test ID: 123
+Test ID: 387
 Function: x - 1000000
 Method: Січні
 Parameters: A=999000, B=1000000, IG=999500, Eps=1e-5, MaxIter=1000
@@ -1163,9 +3342,9 @@ Status: PASS
 Root: 1000000
 f(root): 0,0000E+000
 Iterations: 1
-Time: 1 ms
+Time: 3 ms
 ----------------------------------------
-Test ID: 124
+Test ID: 388
 Function: x^2 - 2
 Method: Бісекція
 Parameters: A=1, B=2, IG=1.5, Eps=1e-100, MaxIter=1000
@@ -1173,7 +3352,7 @@ Status: VALIDATION_REJECTED
 Time: 0 ms
 Error: Точність (Epsilon) повинна бути в діапазоні від 1E-15 до 1.
 ----------------------------------------
-Test ID: 125
+Test ID: 389
 Function: x^2 - 2
 Method: Ньютон
 Parameters: A=1, B=2, IG=1.5, Eps=1e-100, MaxIter=1000
@@ -1181,7 +3360,7 @@ Status: VALIDATION_REJECTED
 Time: 0 ms
 Error: Точність (Epsilon) повинна бути в діапазоні від 1E-15 до 1.
 ----------------------------------------
-Test ID: 126
+Test ID: 390
 Function: x^2 - 2
 Method: Січні
 Parameters: A=1, B=2, IG=1.5, Eps=1e-100, MaxIter=1000
@@ -1189,7 +3368,7 @@ Status: VALIDATION_REJECTED
 Time: 0 ms
 Error: Точність (Epsilon) повинна бути в діапазоні від 1E-15 до 1.
 ----------------------------------------
-Test ID: 127
+Test ID: 391
 Function: x^3
 Method: Бісекція
 Parameters: A=0, B=1000000, IG=1, Eps=1e-5, MaxIter=1000
@@ -1197,7 +3376,7 @@ Status: VALIDATION_REJECTED
 Time: 0 ms
 Error: Різниця між a та b не повинна перевищувати 10 000. Поточна різниця: 1 000 000.
 ----------------------------------------
-Test ID: 128
+Test ID: 392
 Function: x^3
 Method: Ньютон
 Parameters: A=0, B=1000000, IG=1, Eps=1e-5, MaxIter=1000
@@ -1205,7 +3384,7 @@ Status: VALIDATION_REJECTED
 Time: 0 ms
 Error: Різниця між a та b не повинна перевищувати 10 000. Поточна різниця: 1 000 000.
 ----------------------------------------
-Test ID: 129
+Test ID: 393
 Function: x^3
 Method: Січні
 Parameters: A=0, B=1000000, IG=1, Eps=1e-5, MaxIter=1000
@@ -1213,7 +3392,7 @@ Status: VALIDATION_REJECTED
 Time: 0 ms
 Error: Різниця між a та b не повинна перевищувати 10 000. Поточна різниця: 1 000 000.
 ----------------------------------------
-Test ID: 130
+Test ID: 394
 Function: x^2 ++ 1
 Method: Бісекція
 Parameters: A=0, B=1, IG=0.5, Eps=1e-5, MaxIter=100
@@ -1221,7 +3400,7 @@ Status: VALIDATION_REJECTED
 Time: 0 ms
 Error: Некоректний синтаксис: подвійний оператор '++'.
 ----------------------------------------
-Test ID: 131
+Test ID: 395
 Function: x^2 ++ 1
 Method: Ньютон
 Parameters: A=0, B=1, IG=0.5, Eps=1e-5, MaxIter=100
@@ -1229,7 +3408,7 @@ Status: VALIDATION_REJECTED
 Time: 0 ms
 Error: Некоректний синтаксис: подвійний оператор '++'.
 ----------------------------------------
-Test ID: 132
+Test ID: 396
 Function: x^2 ++ 1
 Method: Січні
 Parameters: A=0, B=1, IG=0.5, Eps=1e-5, MaxIter=100
@@ -1237,7 +3416,7 @@ Status: VALIDATION_REJECTED
 Time: 0 ms
 Error: Некоректний синтаксис: подвійний оператор '++'.
 ----------------------------------------
-Test ID: 133
+Test ID: 397
 Function: (x+1
 Method: Бісекція
 Parameters: A=0, B=1, IG=0.5, Eps=1e-5, MaxIter=100
@@ -1245,7 +3424,7 @@ Status: VALIDATION_REJECTED
 Time: 0 ms
 Error: Помилка у виразі: присутні незакриті дужки.
 ----------------------------------------
-Test ID: 134
+Test ID: 398
 Function: (x+1
 Method: Ньютон
 Parameters: A=0, B=1, IG=0.5, Eps=1e-5, MaxIter=100
@@ -1253,7 +3432,7 @@ Status: VALIDATION_REJECTED
 Time: 0 ms
 Error: Помилка у виразі: присутні незакриті дужки.
 ----------------------------------------
-Test ID: 135
+Test ID: 399
 Function: (x+1
 Method: Січні
 Parameters: A=0, B=1, IG=0.5, Eps=1e-5, MaxIter=100
@@ -1261,7 +3440,7 @@ Status: VALIDATION_REJECTED
 Time: 0 ms
 Error: Помилка у виразі: присутні незакриті дужки.
 ----------------------------------------
-Test ID: 136
+Test ID: 400
 Function: x^2 - 4
 Method: Бісекція
 Parameters: A=2, B=1, IG=1.5, Eps=1e-5, MaxIter=100
@@ -1269,7 +3448,7 @@ Status: VALIDATION_REJECTED
 Time: 0 ms
 Error: Значення 'a' повинно бути меншим за 'b'.
 ----------------------------------------
-Test ID: 137
+Test ID: 401
 Function: x^2 - 4
 Method: Ньютон
 Parameters: A=2, B=1, IG=1.5, Eps=1e-5, MaxIter=100
@@ -1277,7 +3456,7 @@ Status: VALIDATION_REJECTED
 Time: 0 ms
 Error: Значення 'a' повинно бути меншим за 'b'.
 ----------------------------------------
-Test ID: 138
+Test ID: 402
 Function: x^2 - 4
 Method: Січні
 Parameters: A=2, B=1, IG=1.5, Eps=1e-5, MaxIter=100
@@ -1285,7 +3464,7 @@ Status: VALIDATION_REJECTED
 Time: 0 ms
 Error: Значення 'a' повинно бути меншим за 'b'.
 ----------------------------------------
-Test ID: 139
+Test ID: 403
 Function: x^2 + 4
 Method: Бісекція
 Parameters: A=0, B=5, IG=1, Eps=1e-5, MaxIter=100
@@ -1293,23 +3472,23 @@ Status: VALIDATION_REJECTED
 Time: 0 ms
 Error: На заданому інтервалі функція не змінює знак. Метод бісекції неможливий.
 ----------------------------------------
-Test ID: 140
+Test ID: 404
 Function: x^2 + 4
 Method: Ньютон
 Parameters: A=0, B=5, IG=1, Eps=1e-5, MaxIter=100
 Status: FAIL_SOLVER
-Time: 24 ms
+Time: 45 ms
 Error: Метод Ньютона: Метод розбігається та виходить далеко за межі допустимого інтервалу.
 ----------------------------------------
-Test ID: 141
+Test ID: 405
 Function: x^2 + 4
 Method: Січні
 Parameters: A=0, B=5, IG=1, Eps=1e-5, MaxIter=100
 Status: FAIL_SOLVER
-Time: 6 ms
+Time: 14 ms
 Error: Метод Січних: Метод розбігається та виходить далеко за межі допустимого інтервалу.
 ----------------------------------------
-Test ID: 142
+Test ID: 406
 Function: x^2 - 4
 Method: Бісекція
 Parameters: A=1, B=2, IG=1.5, Eps=1e-5, MaxIter=10000000
@@ -1317,7 +3496,7 @@ Status: VALIDATION_REJECTED
 Time: 0 ms
 Error: Максимальна кількість ітерацій повинна бути в межах від 1 до 1 000 000.
 ----------------------------------------
-Test ID: 143
+Test ID: 407
 Function: x^2 - 4
 Method: Ньютон
 Parameters: A=1, B=2, IG=1.5, Eps=1e-5, MaxIter=10000000
@@ -1325,7 +3504,7 @@ Status: VALIDATION_REJECTED
 Time: 0 ms
 Error: Максимальна кількість ітерацій повинна бути в межах від 1 до 1 000 000.
 ----------------------------------------
-Test ID: 144
+Test ID: 408
 Function: x^2 - 4
 Method: Січні
 Parameters: A=1, B=2, IG=1.5, Eps=1e-5, MaxIter=10000000
@@ -1335,10 +3514,10 @@ Error: Максимальна кількість ітерацій повинна
 ----------------------------------------
 
 === SUMMARY ===
-Total Tests: 144
-Passed: 90
-Validation Rejected: 28
-Failed: 26
+Total Tests: 408
+Passed: 119
+Validation Rejected: 97
+Failed: 192
 Crashes: 0
-Average Time (Pass): 21,10 ms
-Average Iterations (Pass): 14,3
+Average Time (Pass): 31,82 ms
+Average Iterations (Pass): 10,1

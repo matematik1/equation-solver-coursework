@@ -3,8 +3,9 @@
         xmlns:dg="clr-namespace:Avalonia.Controls;assembly=Avalonia.Controls.DataGrid"
         xmlns:oxy="http://oxyplot.org/avalonia"
         x:Class="EquationSolver.Views.MainWindow"
-        Title="Розв'язання нелінійних рівнянь" Width="1050" Height="750"
-        MinWidth="800" MinHeight="600">
+        Title="Розв'язання нелінійних рівнянь" Width="1050" Height="785"
+        MinWidth="800" MinHeight="600"
+        Icon="/ico/app.ico">
 
     <Window.Styles>
         <Style Selector="TextBlock.Header">
@@ -33,6 +34,17 @@
             <Setter Property="TextWrapping" Value="Wrap"/>
             <Setter Property="Margin" Value="0,10,0,0"/>
         </Style>
+        <Style Selector="Button.Math">
+            <Setter Property="Width" Value="45"/>
+            <Setter Property="Height" Value="30"/>
+            <Setter Property="Padding" Value="0"/>
+            <Setter Property="Margin" Value="0,0,5,5"/>
+            <Setter Property="FontSize" Value="12"/>
+            <Setter Property="HorizontalContentAlignment" Value="Center"/>
+            <Setter Property="VerticalContentAlignment" Value="Center"/>
+            <Setter Property="Background" Value="#2D2D2D"/>
+            <Setter Property="CornerRadius" Value="4"/>
+        </Style>
     </Window.Styles>
 
     <Grid ColumnDefinitions="350, *" RowDefinitions="*, Auto">
@@ -45,11 +57,24 @@
                             <TextBlock Text="Налаштування" Classes="Header" Margin="0,0,0,15"/>
 
                         <TextBlock Text="Функція f(x):" Classes="Label"/>
-                        <Grid ColumnDefinitions="*, Auto">
-                            <TextBox Grid.Column="0" Name="FunctionInput" Text="{Binding Equation.Expression}" Watermark="Напр: x^2 - 4"/>
-                            <Button Grid.Column="1" Content="^" Click="InsertPowerSymbol_Click" ToolTip.Tip="Вставити символ степеня" Width="30" Padding="0" Margin="5,0,0,0" VerticalAlignment="Stretch" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
-                        </Grid>
-                        <TextBlock Text="Для степеня використовуйте ^ (кнопка ^ або Ctrl+E)" Classes="Hint"/>
+                        <TextBox Name="FunctionInput" Text="{Binding Equation.Expression}" Watermark="Напр: x^2 - 4"/>
+                        
+                        <WrapPanel Margin="0,5,0,0">
+                            <Button Content="^" Classes="Math" Tag="^" Click="MathButton_Click" ToolTip.Tip="Степінь"/>
+                            <Button Content="√" Classes="Math" Tag="sqrt()" Click="MathButton_Click" ToolTip.Tip="Квадратний корінь"/>
+                            <Button Content="sin" Classes="Math" Tag="sin()" Click="MathButton_Click"/>
+                            <Button Content="cos" Classes="Math" Tag="cos()" Click="MathButton_Click"/>
+                            <Button Content="tan" Classes="Math" Tag="tan()" Click="MathButton_Click"/>
+                            <Button Content="ln" Classes="Math" Tag="ln()" Click="MathButton_Click" ToolTip.Tip="Натуральний логарифм"/>
+                            <Button Content="log" Classes="Math" Tag="log10()" Click="MathButton_Click" ToolTip.Tip="Десятковий логарифм"/>
+                            <Button Content="abs" Classes="Math" Tag="abs()" Click="MathButton_Click" ToolTip.Tip="Модуль"/>
+                            <Button Content="exp" Classes="Math" Tag="exp()" Click="MathButton_Click"/>
+                            <Button Content="π" Classes="Math" Tag="pi" Click="MathButton_Click"/>
+                            <Button Content="e" Classes="Math" Tag="e" Click="MathButton_Click"/>
+                        </WrapPanel>
+                        
+                        <TextBlock Text="Використовуйте панель для швидкої вставки функцій" Classes="Hint" FontStyle="Italic"/>
+                        <TextBlock Text="Підтримуються: ^, sqrt(), sin(), cos(), tan(), ln(), log(), abs(), exp(), pi, e" Classes="Hint"/>
 
                         <TextBlock Text="Інтервал [a, b]:" Classes="Label"/>
                         <Grid ColumnDefinitions="*,15,*">

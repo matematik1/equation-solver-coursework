@@ -12,29 +12,18 @@ namespace EquationSolver.Views
         {
             InitializeComponent();
             System.Console.WriteLine("MainWindow created");
-
-            // Add global key down handler for shortcut support
-            this.AddHandler(KeyDownEvent, OnPreviewKeyDown, Avalonia.Interactivity.RoutingStrategies.Tunnel);
         }
 
-        private void OnPreviewKeyDown(object? sender, KeyEventArgs e)
+        public void MathButton_Click(object? sender, Avalonia.Interactivity.RoutedEventArgs e)
         {
-            // Reliable Shortcut for '^': Ctrl + E (Exponent)
-            if (e.Key == Key.E && e.KeyModifiers.HasFlag(KeyModifiers.Control))
+            if (sender is Button button && button.Tag is string template)
             {
-                InsertPowerSymbol();
-                e.Handled = true;
+                InsertAtCursor(template);
             }
         }
 
-        public void InsertPowerSymbol_Click(object? sender, Avalonia.Interactivity.RoutedEventArgs e)
+        private void InsertAtCursor(string text)
         {
-            InsertPowerSymbol();
-        }
-
-        private void InsertPowerSymbol()
-        {
-            // Find the TextBox by name if possible, or use focus
             var textBox = this.FindControl<TextBox>("FunctionInput");
             
             if (textBox == null)
@@ -48,9 +37,19 @@ namespace EquationSolver.Views
             {
                 int caretIndex = textBox.CaretIndex;
                 string currentText = textBox.Text ?? string.Empty;
-                textBox.Text = currentText.Insert(caretIndex, "^");
-                textBox.CaretIndex = caretIndex + 1;
-                textBox.Focus(); // Ensure focus stays or returns to the textbox
+                textBox.Text = currentText.Insert(caretIndex, text);
+                
+                // If it's a function with brackets, place cursor inside
+                if (text.EndsWith("()"))
+                {
+                    textBox.CaretIndex = caretIndex + text.Length - 1;
+                }
+                else
+                {
+                    textBox.CaretIndex = caretIndex + text.Length;
+                }
+                
+                textBox.Focus(); 
             }
         }
 

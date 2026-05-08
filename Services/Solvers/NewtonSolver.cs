@@ -95,6 +95,27 @@ namespace EquationSolver.Services.Solvers
                         return ResultModel.Error("Метод Ньютона: Перевищено максимальну кількість ітерацій. Метод не збігається.");
                     }
 
+                    // Strict Post-Solver Validation
+                    if (!double.IsFinite(x0))
+                    {
+                        return ResultModel.Error("Метод Ньютона: Отримано нескінченне значення.");
+                    }
+
+                    try
+                    {
+                        double fFinal = _parser.Evaluate(equation.Expression, x0);
+                        if (Math.Abs(fFinal) > epsilon * 1000) // allowing some margin for numerical stability
+                        {
+                            return ResultModel.Error($"Метод Ньютона: Отриманий результат не є коренем. f(x) = {fFinal:E4}");
+                        }
+                    }
+                    catch { return ResultModel.Error("Метод Ньютона: Помилка перевірки результату."); }
+
+                    if (x0 < a - 1e-9 || x0 > b + 1e-9)
+                    {
+                        return ResultModel.Error($"Метод Ньютона: Знайдений корінь {x0:F4} знаходиться поза межами інтервалу [{a}; {b}].");
+                    }
+
                     return ResultModel.Success(x0, iterations, stopwatch.ElapsedMilliseconds, iterationCount);
                 }
                 catch (OperationCanceledException) { throw; }

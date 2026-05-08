@@ -95,6 +95,27 @@ namespace EquationSolver.Services.Solvers
                         return ResultModel.Error("Метод Січних: Перевищено максимальну кількість ітерацій. Метод не збігається.");
                     }
 
+                    // Strict Post-Solver Validation
+                    if (!double.IsFinite(x1))
+                    {
+                        return ResultModel.Error("Метод Січних: Отримано нескінченне значення.");
+                    }
+
+                    try
+                    {
+                        double fFinal = _parser.Evaluate(equation.Expression, x1);
+                        if (Math.Abs(fFinal) > epsilon * 1000)
+                        {
+                            return ResultModel.Error($"Метод Січних: Отриманий результат не є коренем. f(x) = {fFinal:E4}");
+                        }
+                    }
+                    catch { return ResultModel.Error("Метод Січних: Помилка перевірки результату."); }
+
+                    if (x1 < a - 1e-9 || x1 > b + 1e-9)
+                    {
+                        return ResultModel.Error($"Метод Січних: Знайдений корінь {x1:F4} знаходиться поза межами інтервалу [{a}; {b}].");
+                    }
+
                     return ResultModel.Success(x1, iterations, stopwatch.ElapsedMilliseconds, iterationCount);
                 }
                 catch (OperationCanceledException) { throw; }
