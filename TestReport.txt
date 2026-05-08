@@ -1,5 +1,5 @@
 === EquationSolver Mass Testing Report ===
-Generated on: 08.05.2026 12:19:14
+Generated on: 08.05.2026 13:39:03
 
 Test ID: 1
 Function: x^2 - 4
@@ -9,7 +9,7 @@ Status: PASS
 Root: 1,9999885559082031
 f(root): -4,5776E-005
 Iterations: 18
-Time: 34 ms
+Time: 52 ms
 ----------------------------------------
 Test ID: 2
 Function: x^2 - 4
@@ -19,7 +19,7 @@ Status: PASS
 Root: 1,9999999999708962
 f(root): -1,1642E-010
 Iterations: 35
-Time: 45 ms
+Time: 60 ms
 ----------------------------------------
 Test ID: 3
 Function: x^2 - 4
@@ -29,7 +29,7 @@ Status: PASS
 Root: 2,0000000000000018
 f(root): 0,0000E+000
 Iterations: 49
-Time: 55 ms
+Time: 72 ms
 ----------------------------------------
 Test ID: 4
 Function: x^2 - 4
@@ -39,7 +39,7 @@ Status: PASS
 Root: 1,9999999999999991
 f(root): 0,0000E+000
 Iterations: 5
-Time: 23 ms
+Time: 32 ms
 ----------------------------------------
 Test ID: 5
 Function: x^2 - 4
@@ -49,7 +49,7 @@ Status: PASS
 Root: 1,9999999999999991
 f(root): 0,0000E+000
 Iterations: 5
-Time: 24 ms
+Time: 29 ms
 ----------------------------------------
 Test ID: 6
 Function: x^2 - 4
@@ -59,7 +59,7 @@ Status: PASS
 Root: 1,9999999999999991
 f(root): 0,0000E+000
 Iterations: 6
-Time: 25 ms
+Time: 30 ms
 ----------------------------------------
 Test ID: 7
 Function: x^2 - 4
@@ -69,7 +69,7 @@ Status: PASS
 Root: 2,0000000000873386
 f(root): 3,4935E-010
 Iterations: 8
-Time: 12 ms
+Time: 15 ms
 ----------------------------------------
 Test ID: 8
 Function: x^2 - 4
@@ -79,7 +79,7 @@ Status: PASS
 Root: 2,0000000000001044
 f(root): 4,0000E-013
 Iterations: 9
-Time: 13 ms
+Time: 15 ms
 ----------------------------------------
 Test ID: 9
 Function: x^2 - 4
@@ -89,7 +89,7 @@ Status: PASS
 Root: 2,0000000000000044
 f(root): 0,0000E+000
 Iterations: 11
-Time: 16 ms
+Time: 17 ms
 ----------------------------------------
 Test ID: 10
 Function: x^3 - x - 2
@@ -99,7 +99,7 @@ Status: PASS
 Root: 1,5213775634765625
 f(root): -1,2739E-005
 Iterations: 16
-Time: 21 ms
+Time: 26 ms
 ----------------------------------------
 Test ID: 11
 Function: x^3 - x - 2
@@ -109,7 +109,7 @@ Status: PASS
 Root: 1,5213797067990527
 f(root): -3,2780E-011
 Iterations: 33
-Time: 75 ms
+Time: 56 ms
 ----------------------------------------
 Test ID: 12
 Function: x^3 - x - 2
@@ -119,7 +119,7 @@ Status: PASS
 Root: 1,5213797068045665
 f(root): -0,0000E+000
 Iterations: 44
-Time: 75 ms
+Time: 62 ms
 ----------------------------------------
 Test ID: 13
 Function: x^3 - x - 2
@@ -129,7 +129,7 @@ Status: PASS
 Root: 1,521379706804576
 f(root): 7,0000E-014
 Iterations: 3
-Time: 14 ms
+Time: 13 ms
 ----------------------------------------
 Test ID: 14
 Function: x^3 - x - 2
@@ -139,7 +139,7 @@ Status: PASS
 Root: 1,5213797068045642
 f(root): -2,0000E-014
 Iterations: 4
-Time: 20 ms
+Time: 28 ms
 ----------------------------------------
 Test ID: 15
 Function: x^3 - x - 2
@@ -149,7 +149,7 @@ Status: PASS
 Root: 1,5213797068045676
 f(root): 0,0000E+000
 Iterations: 6
-Time: 30 ms
+Time: 33 ms
 ----------------------------------------
 Test ID: 16
 Function: x^3 - x - 2
@@ -159,7 +159,7 @@ Status: PASS
 Root: 1,5213797079848763
 f(root): 7,0155E-009
 Iterations: 6
-Time: 10 ms
+Time: 9 ms
 ----------------------------------------
 Test ID: 17
 Function: x^3 - x - 2
@@ -189,7 +189,7 @@ Status: PASS
 Root: -1,3887977600097656
 f(root): -9,0102E-005
 Iterations: 20
-Time: 25 ms
+Time: 32 ms
 ----------------------------------------
 Test ID: 20
 Function: x^5 - 3x + 1
@@ -199,7 +199,7 @@ Status: PASS
 Root: -1,3887919845001306
 f(root): -1,4489E-009
 Iterations: 37
-Time: 50 ms
+Time: 62 ms
 ----------------------------------------
 Test ID: 21
 Function: x^5 - 3x + 1
@@ -209,7 +209,7 @@ Status: PASS
 Root: -1,3887919844072538
 f(root): -0,0000E+000
 Iterations: 51
-Time: 74 ms
+Time: 113 ms
 ----------------------------------------
 Test ID: 22
 Function: x^5 - 3x + 1
@@ -219,7 +219,7 @@ Status: PASS
 Root: 0,33473414194334533
 f(root): 1,8000E-014
 Iterations: 3
-Time: 15 ms
+Time: 18 ms
 ----------------------------------------
 Test ID: 23
 Function: x^5 - 3x + 1
@@ -229,7 +229,7 @@ Status: PASS
 Root: 0,33473414194335144
 f(root): 0,0000E+000
 Iterations: 4
-Time: 18 ms
+Time: 26 ms
 ----------------------------------------
 Test ID: 24
 Function: x^5 - 3x + 1
@@ -239,7 +239,7 @@ Status: PASS
 Root: 0,33473414194335144
 f(root): 0,0000E+000
 Iterations: 5
-Time: 24 ms
+Time: 30 ms
 ----------------------------------------
 Test ID: 25
 Function: x^5 - 3x + 1
@@ -249,7 +249,7 @@ Status: PASS
 Root: 0,3347341419433392
 f(root): 3,7000E-014
 Iterations: 6
-Time: 9 ms
+Time: 12 ms
 ----------------------------------------
 Test ID: 26
 Function: x^5 - 3x + 1
@@ -259,7 +259,7 @@ Status: PASS
 Root: 0,3347341419433518
 f(root): -0,0000E+000
 Iterations: 7
-Time: 10 ms
+Time: 14 ms
 ----------------------------------------
 Test ID: 27
 Function: x^5 - 3x + 1
@@ -269,7 +269,7 @@ Status: PASS
 Root: 0,3347341419433518
 f(root): -0,0000E+000
 Iterations: 8
-Time: 11 ms
+Time: 12 ms
 ----------------------------------------
 Test ID: 28
 Function: sin(x)
@@ -279,7 +279,7 @@ Status: PASS
 Root: 1,19781494140625E-05
 f(root): 1,1978E-005
 Iterations: 18
-Time: 22 ms
+Time: 28 ms
 ----------------------------------------
 Test ID: 29
 Function: sin(x)
@@ -289,7 +289,7 @@ Status: PASS
 Root: 1,8277205526828767E-10
 f(root): 1,8277E-010
 Iterations: 34
-Time: 39 ms
+Time: 69 ms
 ----------------------------------------
 Test ID: 30
 Function: sin(x)
@@ -299,14 +299,14 @@ Status: PASS
 Root: 8,924416761146859E-14
 f(root): 0,0000E+000
 Iterations: 45
-Time: 53 ms
+Time: 76 ms
 ----------------------------------------
 Test ID: 31
 Function: sin(x)
 Method: Ньютон
 Parameters: A=0, B=3.14, IG=1.5, Eps=1e-5, MaxIter=500
 Status: FAIL_SOLVER
-Time: 5 ms
+Time: 7 ms
 Error: Метод Ньютона: Метод розбігається та виходить далеко за межі допустимого інтервалу.
 ----------------------------------------
 Test ID: 32
@@ -314,7 +314,7 @@ Function: sin(x)
 Method: Ньютон
 Parameters: A=0, B=3.14, IG=1.5, Eps=1e-10, MaxIter=500
 Status: FAIL_SOLVER
-Time: 4 ms
+Time: 6 ms
 Error: Метод Ньютона: Метод розбігається та виходить далеко за межі допустимого інтервалу.
 ----------------------------------------
 Test ID: 33
@@ -322,7 +322,7 @@ Function: sin(x)
 Method: Ньютон
 Parameters: A=0, B=3.14, IG=1.5, Eps=1e-15, MaxIter=500
 Status: FAIL_SOLVER
-Time: 3 ms
+Time: 5 ms
 Error: Метод Ньютона: Метод розбігається та виходить далеко за межі допустимого інтервалу.
 ----------------------------------------
 Test ID: 34
@@ -333,7 +333,7 @@ Status: PASS
 Root: 0
 f(root): 0,0000E+000
 Iterations: 2
-Time: 4 ms
+Time: 5 ms
 ----------------------------------------
 Test ID: 35
 Function: sin(x)
@@ -343,7 +343,7 @@ Status: PASS
 Root: 0
 f(root): 0,0000E+000
 Iterations: 2
-Time: 4 ms
+Time: 5 ms
 ----------------------------------------
 Test ID: 36
 Function: sin(x)
@@ -353,7 +353,7 @@ Status: PASS
 Root: 0
 f(root): 0,0000E+000
 Iterations: 2
-Time: 4 ms
+Time: 6 ms
 ----------------------------------------
 Test ID: 37
 Function: cos(x) - x
@@ -363,7 +363,7 @@ Status: PASS
 Root: 0,7390877532958984
 f(root): -4,3850E-006
 Iterations: 18
-Time: 22 ms
+Time: 26 ms
 ----------------------------------------
 Test ID: 38
 Function: cos(x) - x
@@ -373,7 +373,7 @@ Status: PASS
 Root: 0,739085133258486
 f(root): -7,2510E-011
 Iterations: 34
-Time: 42 ms
+Time: 51 ms
 ----------------------------------------
 Test ID: 39
 Function: cos(x) - x
@@ -383,7 +383,7 @@ Status: PASS
 Root: 0,739085133215158
 f(root): 0,0000E+000
 Iterations: 46
-Time: 58 ms
+Time: 69 ms
 ----------------------------------------
 Test ID: 40
 Function: cos(x) - x
@@ -393,7 +393,7 @@ Status: PASS
 Root: 0,7390851332151609
 f(root): -0,0000E+000
 Iterations: 4
-Time: 18 ms
+Time: 27 ms
 ----------------------------------------
 Test ID: 41
 Function: cos(x) - x
@@ -403,7 +403,7 @@ Status: PASS
 Root: 0,7390851332151609
 f(root): -0,0000E+000
 Iterations: 5
-Time: 23 ms
+Time: 29 ms
 ----------------------------------------
 Test ID: 42
 Function: cos(x) - x
@@ -413,7 +413,7 @@ Status: PASS
 Root: 0,7390851332151609
 f(root): -0,0000E+000
 Iterations: 5
-Time: 22 ms
+Time: 28 ms
 ----------------------------------------
 Test ID: 43
 Function: cos(x) - x
@@ -423,7 +423,7 @@ Status: PASS
 Root: 0,7390851331992189
 f(root): 2,6680E-011
 Iterations: 5
-Time: 8 ms
+Time: 9 ms
 ----------------------------------------
 Test ID: 44
 Function: cos(x) - x
@@ -433,7 +433,7 @@ Status: PASS
 Root: 0,7390851332151605
 f(root): 0,0000E+000
 Iterations: 6
-Time: 8 ms
+Time: 10 ms
 ----------------------------------------
 Test ID: 45
 Function: cos(x) - x
@@ -443,7 +443,7 @@ Status: PASS
 Root: 0,7390851332151605
 f(root): 0,0000E+000
 Iterations: 7
-Time: 11 ms
+Time: 14 ms
 ----------------------------------------
 Test ID: 46
 Function: e^x - 2
@@ -453,7 +453,7 @@ Status: PASS
 Root: 0,6931495666503906
 f(root): 4,7722E-006
 Iterations: 20
-Time: 13 ms
+Time: 16 ms
 ----------------------------------------
 Test ID: 47
 Function: e^x - 2
@@ -473,7 +473,7 @@ Status: PASS
 Root: 0,6931471805599454
 f(root): 0,0000E+000
 Iterations: 51
-Time: 33 ms
+Time: 35 ms
 ----------------------------------------
 Test ID: 49
 Function: e^x - 2
@@ -493,7 +493,7 @@ Status: PASS
 Root: 0,6931471805599454
 f(root): 0,0000E+000
 Iterations: 6
-Time: 15 ms
+Time: 16 ms
 ----------------------------------------
 Test ID: 51
 Function: e^x - 2
@@ -510,7 +510,7 @@ Function: e^x - 2
 Method: Січні
 Parameters: A=-10, B=10, IG=0, Eps=1e-5, MaxIter=500
 Status: FAIL_SOLVER
-Time: 2 ms
+Time: 3 ms
 Error: Метод Січних: Метод розбігається та виходить далеко за межі допустимого інтервалу.
 ----------------------------------------
 Test ID: 53
@@ -518,7 +518,7 @@ Function: e^x - 2
 Method: Січні
 Parameters: A=-10, B=10, IG=0, Eps=1e-10, MaxIter=500
 Status: FAIL_SOLVER
-Time: 3 ms
+Time: 2 ms
 Error: Метод Січних: Метод розбігається та виходить далеко за межі допустимого інтервалу.
 ----------------------------------------
 Test ID: 54
@@ -537,7 +537,7 @@ Status: PASS
 Root: 2,718284225463867
 f(root): 8,8181E-007
 Iterations: 18
-Time: 15 ms
+Time: 13 ms
 ----------------------------------------
 Test ID: 56
 Function: ln(x) - 1
@@ -547,7 +547,7 @@ Status: PASS
 Root: 2,7182818283530645
 f(root): -3,8988E-011
 Iterations: 35
-Time: 26 ms
+Time: 27 ms
 ----------------------------------------
 Test ID: 57
 Function: ln(x) - 1
@@ -557,7 +557,7 @@ Status: PASS
 Root: 2,7182818284590455
 f(root): 0,0000E+000
 Iterations: 45
-Time: 35 ms
+Time: 33 ms
 ----------------------------------------
 Test ID: 58
 Function: ln(x) - 1
@@ -567,7 +567,7 @@ Status: PASS
 Root: 2,7182818284589465
 f(root): -3,6000E-014
 Iterations: 4
-Time: 11 ms
+Time: 12 ms
 ----------------------------------------
 Test ID: 59
 Function: ln(x) - 1
@@ -587,7 +587,7 @@ Status: PASS
 Root: 2,718281828459044
 f(root): -0,0000E+000
 Iterations: 6
-Time: 16 ms
+Time: 14 ms
 ----------------------------------------
 Test ID: 61
 Function: ln(x) - 1
@@ -597,7 +597,7 @@ Status: PASS
 Root: 2,7182818285216443
 f(root): 2,3030E-011
 Iterations: 7
-Time: 6 ms
+Time: 5 ms
 ----------------------------------------
 Test ID: 62
 Function: ln(x) - 1
@@ -607,7 +607,7 @@ Status: PASS
 Root: 2,7182818284590424
 f(root): -0,0000E+000
 Iterations: 8
-Time: 7 ms
+Time: 5 ms
 ----------------------------------------
 Test ID: 63
 Function: ln(x) - 1
@@ -617,7 +617,7 @@ Status: PASS
 Root: 2,7182818284590424
 f(root): -0,0000E+000
 Iterations: 9
-Time: 7 ms
+Time: 6 ms
 ----------------------------------------
 Test ID: 64
 Function: x*sin(x) - 1
@@ -651,7 +651,7 @@ Status: PASS
 Root: 1,1141571408719315
 f(root): 0,0000E+000
 Iterations: 4
-Time: 12 ms
+Time: 9 ms
 ----------------------------------------
 Test ID: 68
 Function: x*sin(x) - 1
@@ -661,7 +661,7 @@ Status: PASS
 Root: 1,1141571408719315
 f(root): 0,0000E+000
 Iterations: 4
-Time: 10 ms
+Time: 8 ms
 ----------------------------------------
 Test ID: 69
 Function: x*sin(x) - 1
@@ -671,7 +671,7 @@ Status: PASS
 Root: 1,1141571408719315
 f(root): 0,0000E+000
 Iterations: 5
-Time: 14 ms
+Time: 11 ms
 ----------------------------------------
 Test ID: 70
 Function: x*sin(x) - 1
@@ -705,7 +705,7 @@ Status: PASS
 Root: 1,587428207397461
 f(root): 6,6979E-005
 Iterations: 18
-Time: 15 ms
+Time: 11 ms
 ----------------------------------------
 Test ID: 74
 Function: x^3 + sin(x) - 5
@@ -715,7 +715,7 @@ Status: PASS
 Root: 1,5874193277827002
 f(root): -8,0852E-010
 Iterations: 34
-Time: 28 ms
+Time: 21 ms
 ----------------------------------------
 Test ID: 75
 Function: x^3 + sin(x) - 5
@@ -725,7 +725,7 @@ Status: PASS
 Root: 1,587419327889888
 f(root): 0,0000E+000
 Iterations: 49
-Time: 37 ms
+Time: 34 ms
 ----------------------------------------
 Test ID: 76
 Function: x^3 + sin(x) - 5
@@ -735,7 +735,7 @@ Status: PASS
 Root: 1,5874193278898867
 f(root): 0,0000E+000
 Iterations: 4
-Time: 12 ms
+Time: 11 ms
 ----------------------------------------
 Test ID: 77
 Function: x^3 + sin(x) - 5
@@ -745,7 +745,7 @@ Status: PASS
 Root: 1,5874193278898867
 f(root): 0,0000E+000
 Iterations: 4
-Time: 13 ms
+Time: 9 ms
 ----------------------------------------
 Test ID: 78
 Function: x^3 + sin(x) - 5
@@ -755,7 +755,7 @@ Status: PASS
 Root: 1,5874193278898867
 f(root): 0,0000E+000
 Iterations: 5
-Time: 16 ms
+Time: 11 ms
 ----------------------------------------
 Test ID: 79
 Function: x^3 + sin(x) - 5
@@ -765,7 +765,7 @@ Status: PASS
 Root: 1,5874193278896258
 f(root): -1,9800E-012
 Iterations: 10
-Time: 10 ms
+Time: 7 ms
 ----------------------------------------
 Test ID: 80
 Function: x^3 + sin(x) - 5
@@ -775,7 +775,7 @@ Status: PASS
 Root: 1,5874193278898883
 f(root): 0,0000E+000
 Iterations: 11
-Time: 10 ms
+Time: 8 ms
 ----------------------------------------
 Test ID: 81
 Function: x^3 + sin(x) - 5
@@ -785,7 +785,7 @@ Status: PASS
 Root: 1,5874193278898883
 f(root): 0,0000E+000
 Iterations: 12
-Time: 11 ms
+Time: 9 ms
 ----------------------------------------
 Test ID: 82
 Function: 1/x - 0.5
@@ -795,7 +795,7 @@ Status: PASS
 Root: 1,9999855041503907
 f(root): 3,6240E-006
 Iterations: 17
-Time: 14 ms
+Time: 10 ms
 ----------------------------------------
 Test ID: 83
 Function: 1/x - 0.5
@@ -805,7 +805,7 @@ Status: PASS
 Root: 1,9999999998894054
 f(root): 2,7649E-011
 Iterations: 34
-Time: 23 ms
+Time: 17 ms
 ----------------------------------------
 Test ID: 84
 Function: 1/x - 0.5
@@ -815,7 +815,7 @@ Status: PASS
 Root: 1,999999999999973
 f(root): 0,0000E+000
 Iterations: 46
-Time: 31 ms
+Time: 23 ms
 ----------------------------------------
 Test ID: 85
 Function: 1/x - 0.5
@@ -825,7 +825,7 @@ Status: PASS
 Root: 2,0000000000000018
 f(root): 0,0000E+000
 Iterations: 6
-Time: 19 ms
+Time: 11 ms
 ----------------------------------------
 Test ID: 86
 Function: 1/x - 0.5
@@ -835,7 +835,7 @@ Status: PASS
 Root: 2,0000000000000018
 f(root): 0,0000E+000
 Iterations: 7
-Time: 19 ms
+Time: 14 ms
 ----------------------------------------
 Test ID: 87
 Function: 1/x - 0.5
@@ -845,7 +845,7 @@ Status: PASS
 Root: 2,0000000000000018
 f(root): 0,0000E+000
 Iterations: 7
-Time: 17 ms
+Time: 14 ms
 ----------------------------------------
 Test ID: 88
 Function: 1/x - 0.5
@@ -855,7 +855,7 @@ Status: PASS
 Root: 2
 f(root): 0,0000E+000
 Iterations: 1
-Time: 2 ms
+Time: 1 ms
 ----------------------------------------
 Test ID: 89
 Function: 1/x - 0.5
@@ -865,7 +865,7 @@ Status: PASS
 Root: 2
 f(root): 0,0000E+000
 Iterations: 1
-Time: 1 ms
+Time: 2 ms
 ----------------------------------------
 Test ID: 90
 Function: 1/x - 0.5
@@ -875,7 +875,7 @@ Status: PASS
 Root: 2
 f(root): 0,0000E+000
 Iterations: 1
-Time: 3 ms
+Time: 1 ms
 ----------------------------------------
 Test ID: 91
 Function: tan(x) - x
@@ -885,7 +885,7 @@ Status: PASS
 Root: 0
 f(root): 0,0000E+000
 Iterations: 1
-Time: 2 ms
+Time: 1 ms
 ----------------------------------------
 Test ID: 92
 Function: tan(x) - x
@@ -895,7 +895,7 @@ Status: PASS
 Root: 0
 f(root): 0,0000E+000
 Iterations: 1
-Time: 2 ms
+Time: 1 ms
 ----------------------------------------
 Test ID: 93
 Function: tan(x) - x
@@ -905,14 +905,14 @@ Status: PASS
 Root: 0
 f(root): 0,0000E+000
 Iterations: 1
-Time: 3 ms
+Time: 1 ms
 ----------------------------------------
 Test ID: 94
 Function: tan(x) - x
 Method: Ньютон
 Parameters: A=-10, B=10, IG=0, Eps=1e-5, MaxIter=500
 Status: FAIL_SOLVER
-Time: 2 ms
+Time: 1 ms
 Error: Метод Ньютона: Похідна наближається до нуля на ітерації 1. Метод розбігається.
 ----------------------------------------
 Test ID: 95
@@ -920,7 +920,7 @@ Function: tan(x) - x
 Method: Ньютон
 Parameters: A=-10, B=10, IG=0, Eps=1e-10, MaxIter=500
 Status: FAIL_SOLVER
-Time: 2 ms
+Time: 1 ms
 Error: Метод Ньютона: Похідна наближається до нуля на ітерації 1. Метод розбігається.
 ----------------------------------------
 Test ID: 96
@@ -928,7 +928,7 @@ Function: tan(x) - x
 Method: Ньютон
 Parameters: A=-10, B=10, IG=0, Eps=1e-15, MaxIter=500
 Status: FAIL_SOLVER
-Time: 2 ms
+Time: 1 ms
 Error: Метод Ньютона: Похідна наближається до нуля на ітерації 1. Метод розбігається.
 ----------------------------------------
 Test ID: 97
@@ -949,7 +949,7 @@ Status: PASS
 Root: 0
 f(root): 0,0000E+000
 Iterations: 2
-Time: 3 ms
+Time: 2 ms
 ----------------------------------------
 Test ID: 99
 Function: tan(x) - x
@@ -998,7 +998,7 @@ Function: x^2 - 10^5
 Method: Ньютон
 Parameters: A=-10, B=10, IG=0, Eps=1e-10, MaxIter=500
 Status: FAIL_SOLVER
-Time: 2 ms
+Time: 1 ms
 Error: Метод Ньютона: Похідна наближається до нуля на ітерації 1. Метод розбігається.
 ----------------------------------------
 Test ID: 105
@@ -1006,7 +1006,7 @@ Function: x^2 - 10^5
 Method: Ньютон
 Parameters: A=-10, B=10, IG=0, Eps=1e-15, MaxIter=500
 Status: FAIL_SOLVER
-Time: 2 ms
+Time: 1 ms
 Error: Метод Ньютона: Похідна наближається до нуля на ітерації 1. Метод розбігається.
 ----------------------------------------
 Test ID: 106
@@ -1022,7 +1022,7 @@ Function: x^2 - 10^5
 Method: Січні
 Parameters: A=-10, B=10, IG=0, Eps=1e-10, MaxIter=500
 Status: FAIL_SOLVER
-Time: 1 ms
+Time: 2 ms
 Error: Метод Січних: Ділення на нуль (f(x1) ≈ f(x0)) на ітерації 1. Метод розбігається.
 ----------------------------------------
 Test ID: 108
@@ -1062,7 +1062,7 @@ Function: x^10 - 1
 Method: Ньютон
 Parameters: A=-10, B=10, IG=0, Eps=1e-5, MaxIter=500
 Status: FAIL_SOLVER
-Time: 2 ms
+Time: 1 ms
 Error: Метод Ньютона: Похідна наближається до нуля на ітерації 1. Метод розбігається.
 ----------------------------------------
 Test ID: 113
@@ -1070,7 +1070,7 @@ Function: x^10 - 1
 Method: Ньютон
 Parameters: A=-10, B=10, IG=0, Eps=1e-10, MaxIter=500
 Status: FAIL_SOLVER
-Time: 2 ms
+Time: 1 ms
 Error: Метод Ньютона: Похідна наближається до нуля на ітерації 1. Метод розбігається.
 ----------------------------------------
 Test ID: 114
@@ -1078,7 +1078,7 @@ Function: x^10 - 1
 Method: Ньютон
 Parameters: A=-10, B=10, IG=0, Eps=1e-15, MaxIter=500
 Status: FAIL_SOLVER
-Time: 2 ms
+Time: 1 ms
 Error: Метод Ньютона: Похідна наближається до нуля на ітерації 1. Метод розбігається.
 ----------------------------------------
 Test ID: 115
@@ -1113,7 +1113,7 @@ Status: PASS
 Root: 7,105427357601002E-15
 f(root): 0,0000E+000
 Iterations: 47
-Time: 29 ms
+Time: 23 ms
 ----------------------------------------
 Test ID: 119
 Function: x - 1e-15
@@ -1133,7 +1133,7 @@ Status: PASS
 Root: 0
 f(root): -0,0000E+000
 Iterations: 2
-Time: 2 ms
+Time: 1 ms
 ----------------------------------------
 Test ID: 121
 Function: x - 1000000
@@ -1143,7 +1143,7 @@ Status: PASS
 Root: 999999,9999850988
 f(root): -1,4901E-005
 Iterations: 26
-Time: 21 ms
+Time: 13 ms
 ----------------------------------------
 Test ID: 122
 Function: x - 1000000
@@ -1153,7 +1153,7 @@ Status: PASS
 Root: 999999,9999999995
 f(root): 0,0000E+000
 Iterations: 3
-Time: 7 ms
+Time: 5 ms
 ----------------------------------------
 Test ID: 123
 Function: x - 1000000
@@ -1201,9 +1201,9 @@ Test ID: 128
 Function: x^3
 Method: Ньютон
 Parameters: A=0, B=1000000, IG=1, Eps=1e-5, MaxIter=1000
-Status: FAIL_SOLVER
-Time: 65 ms
-Error: Метод Ньютона: Похідна наближається до нуля на ітерації 28. Метод розбігається.
+Status: VALIDATION_REJECTED
+Time: 0 ms
+Error: Різниця між a та b не повинна перевищувати 10 000. Поточна різниця: 1 000 000.
 ----------------------------------------
 Test ID: 129
 Function: x^3
@@ -1273,11 +1273,9 @@ Test ID: 137
 Function: x^2 - 4
 Method: Ньютон
 Parameters: A=2, B=1, IG=1.5, Eps=1e-5, MaxIter=100
-Status: PASS
-Root: 2,0000000000001226
-f(root): 4,9000E-013
-Iterations: 4
-Time: 10 ms
+Status: VALIDATION_REJECTED
+Time: 0 ms
+Error: Значення 'a' повинно бути меншим за 'b'.
 ----------------------------------------
 Test ID: 138
 Function: x^2 - 4
@@ -1300,7 +1298,7 @@ Function: x^2 + 4
 Method: Ньютон
 Parameters: A=0, B=5, IG=1, Eps=1e-5, MaxIter=100
 Status: FAIL_SOLVER
-Time: 30 ms
+Time: 24 ms
 Error: Метод Ньютона: Метод розбігається та виходить далеко за межі допустимого інтервалу.
 ----------------------------------------
 Test ID: 141
@@ -1308,7 +1306,7 @@ Function: x^2 + 4
 Method: Січні
 Parameters: A=0, B=5, IG=1, Eps=1e-5, MaxIter=100
 Status: FAIL_SOLVER
-Time: 7 ms
+Time: 6 ms
 Error: Метод Січних: Метод розбігається та виходить далеко за межі допустимого інтервалу.
 ----------------------------------------
 Test ID: 142
@@ -1338,9 +1336,9 @@ Error: Максимальна кількість ітерацій повинна
 
 === SUMMARY ===
 Total Tests: 144
-Passed: 91
-Validation Rejected: 26
-Failed: 27
+Passed: 90
+Validation Rejected: 28
+Failed: 26
 Crashes: 0
-Average Time (Pass): 19,27 ms
-Average Iterations (Pass): 14,1
+Average Time (Pass): 21,10 ms
+Average Iterations (Pass): 14,3

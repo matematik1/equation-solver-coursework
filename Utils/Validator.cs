@@ -194,7 +194,7 @@ namespace EquationSolver.Utils
             if (dIter < 1 || dIter > AbsoluteMaxIterations)
                 return $"Максимальна кількість ітерацій повинна бути в межах від 1 до {AbsoluteMaxIterations:N0}.";
 
-            if (methodName == "Бісекція" || methodName == "Січні")
+            if (methodName == "Бісекція" || methodName == "Січні" || methodName == "Ньютон")
             {
                 double a = ParseDouble(model.A, out bool aSuccess);
                 double b = ParseDouble(model.B, out bool bSuccess);

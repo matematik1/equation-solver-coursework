@@ -3,71 +3,130 @@
         xmlns:dg="clr-namespace:Avalonia.Controls;assembly=Avalonia.Controls.DataGrid"
         xmlns:oxy="http://oxyplot.org/avalonia"
         x:Class="EquationSolver.Views.MainWindow"
-        Title="Розв'язання нелінійних рівнянь" Width="1000" Height="700">
+        Title="Розв'язання нелінійних рівнянь" Width="1050" Height="750"
+        MinWidth="800" MinHeight="600">
 
-    <Grid ColumnDefinitions="320, *" RowDefinitions="5*, 4*">
+    <Window.Styles>
+        <Style Selector="TextBlock.Header">
+            <Setter Property="FontSize" Value="18"/>
+            <Setter Property="FontWeight" Value="Bold"/>
+            <Setter Property="Foreground" Value="White"/>
+        </Style>
+        <Style Selector="TextBlock.Label">
+            <Setter Property="FontWeight" Value="SemiBold"/>
+            <Setter Property="Margin" Value="0,10,0,5"/>
+        </Style>
+        <Style Selector="TextBlock.Hint">
+            <Setter Property="FontSize" Value="10"/>
+            <Setter Property="Foreground" Value="#A0A0A0"/>
+            <Setter Property="Margin" Value="0,2,0,0"/>
+        </Style>
+        <Style Selector="TextBlock.Error">
+            <Setter Property="Foreground" Value="#FF5555"/>
+            <Setter Property="FontWeight" Value="SemiBold"/>
+            <Setter Property="TextWrapping" Value="Wrap"/>
+            <Setter Property="Margin" Value="0,15,0,0"/>
+        </Style>
+        <Style Selector="TextBlock.Warning">
+            <Setter Property="Foreground" Value="#FFAA00"/>
+            <Setter Property="FontWeight" Value="SemiBold"/>
+            <Setter Property="TextWrapping" Value="Wrap"/>
+            <Setter Property="Margin" Value="0,10,0,0"/>
+        </Style>
+    </Window.Styles>
+
+    <Grid ColumnDefinitions="350, *" RowDefinitions="*, Auto">
         <!-- Left Panel: Inputs -->
-        <Border Grid.Column="0" Grid.RowSpan="2" Padding="15" Background="Black" BorderBrush="#545454" BorderThickness="0,0,1,0">
-            <ScrollViewer VerticalScrollBarVisibility="Auto">
-                <StackPanel Spacing="10">
-                    <TextBlock Text="Налаштування" FontWeight="Bold" FontSize="18" Margin="0,0,0,10"/>
+        <Border Grid.Column="0" Grid.Row="0" Background="#1E1E1E" BorderBrush="#333333" BorderThickness="0,0,1,0">
+            <Grid RowDefinitions="*, Auto">
+                <ScrollViewer Grid.Row="0" VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Disabled">
+                    <Border Padding="20">
+                        <StackPanel Spacing="5">
+                            <TextBlock Text="Налаштування" Classes="Header" Margin="0,0,0,15"/>
 
-                    <TextBlock Text="Функція f(x):" FontWeight="SemiBold"/>
-                    <TextBox Text="{Binding Equation.Expression}" />
+                        <TextBlock Text="Функція f(x):" Classes="Label"/>
+                        <TextBox Text="{Binding Equation.Expression}" Watermark="Напр: x^2 - 4"/>
+                        <TextBlock Text="Для степеня використовуйте ^ (Ctrl+E)" Classes="Hint"/>
 
-                    <TextBlock Text="Інтервал [a, b]:" FontWeight="SemiBold" Margin="0,10,0,0"/>
-                    <Grid ColumnDefinitions="*,10,*">
-                        <TextBox Grid.Column="0" Text="{Binding Equation.A}" />
-                        <TextBlock Grid.Column="1" Text="-" VerticalAlignment="Center" HorizontalAlignment="Center"/>
-                        <TextBox Grid.Column="2" Text="{Binding Equation.B}" />
-                    </Grid>
+                        <TextBlock Text="Інтервал [a, b]:" Classes="Label"/>
+                        <Grid ColumnDefinitions="*,15,*">
+                            <TextBox Grid.Column="0" Text="{Binding Equation.A}" Watermark="a" />
+                            <TextBlock Grid.Column="1" Text="-" VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="Gray"/>
+                            <TextBox Grid.Column="2" Text="{Binding Equation.B}" Watermark="b" />
+                        </Grid>
+                        <TextBlock Text="Макс. різниця: 10 000 | До 15 знаків" Classes="Hint"/>
 
-                    <StackPanel IsVisible="{Binding IsNewtonMethod}">
-                        <TextBlock Text="Початкове наближення:" FontWeight="SemiBold" Margin="0,10,0,0"/>
-                        <TextBox Text="{Binding Equation.InitialGuess}" Margin="0,10,0,0"/>
+                        <StackPanel IsVisible="{Binding IsNewtonMethod}">
+                            <TextBlock Text="Початкове наближення:" Classes="Label"/>
+                            <TextBox Text="{Binding Equation.InitialGuess}" Watermark="x0"/>
+                        </StackPanel>
+
+                        <TextBlock Text="Точність (Epsilon):" Classes="Label"/>
+                        <TextBox Text="{Binding Equation.Epsilon}" Watermark="1e-5"/>
+                        <TextBlock Text="Від 1e-15 до 1" Classes="Hint"/>
+
+                        <TextBlock Text="Макс. ітерацій:" Classes="Label"/>
+                        <TextBox Text="{Binding Equation.MaxIterations}" Watermark="100"/>
+                        <TextBlock Text="Від 1 до 1 000 000" Classes="Hint"/>
+
+                        <TextBlock Text="Метод розв'язання:" Classes="Label"/>
+                        <ComboBox ItemsSource="{Binding AvailableMethods}" SelectedItem="{Binding SelectedMethod}" HorizontalAlignment="Stretch" />
+
+                        <Button Content="Розв'язати" Command="{Binding SolveCommand}" IsEnabled="{Binding !IsBusy}"
+                                HorizontalAlignment="Stretch" HorizontalContentAlignment="Center" 
+                                Background="#007acc" Foreground="White" FontWeight="Bold" Margin="0,20,0,0"/>
+
+                        <Button Content="Скасувати" Command="{Binding CancelCommand}" IsEnabled="{Binding IsBusy}"
+                                HorizontalAlignment="Stretch" HorizontalContentAlignment="Center" Margin="0,5,0,0"/>
+
+                        <Button Content="Зберегти результати" Command="{Binding SaveCommand}" IsEnabled="{Binding !IsBusy}"
+                                HorizontalAlignment="Stretch" HorizontalContentAlignment="Center" Margin="0,5,0,0"/>
+
+                        <TextBlock Text="{Binding ErrorMessage}" IsVisible="{Binding IsErrorVisible}" Classes="Error"/>
+                        <TextBlock Text="{Binding WarningMessage}" IsVisible="{Binding IsWarningVisible}" Classes="Warning"/>
                     </StackPanel>
+                </Border>
+                </ScrollViewer>
 
-                    <TextBlock Text="Точність (Epsilon):" FontWeight="SemiBold" Margin="0,10,0,0"/>
-                    <TextBox Text="{Binding Equation.Epsilon}" />
+                <!-- Calculation Status Overlay/Bar -->
+                <Border Grid.Row="1" IsVisible="{Binding IsBusy}" Background="#007acc" Padding="10">
+                    <StackPanel Orientation="Horizontal" Spacing="10" HorizontalAlignment="Center">
+                        <ProgressBar IsIndeterminate="True" Width="100" Height="4" Foreground="White" VerticalAlignment="Center"/>
+                        <TextBlock Text="Обчислення..." Foreground="White" FontWeight="Bold" VerticalAlignment="Center"/>
+                    </StackPanel>
+                </Border>
+            </Grid>
+        </Border>
 
-                    <TextBlock Text="Макс. ітерацій:" FontWeight="SemiBold" Margin="0,10,0,0"/>
-                    <TextBox Text="{Binding Equation.MaxIterations}" />
+        <!-- Right Panel: Graph and Results -->
+        <Grid Grid.Column="1" Grid.Row="0" RowDefinitions="3*, 2*">
+            <!-- Top: Graph -->
+            <Border Grid.Row="0" Margin="15" Background="#FFFFFF" BorderBrush="#DDDDDD" BorderThickness="1" CornerRadius="8" BoxShadow="0 2 5 0 #20000000">
+                <oxy:PlotView Model="{Binding PlotModel}" MinHeight="250"/>
+            </Border>
 
-                    <TextBlock Text="Метод розв'язання:" FontWeight="SemiBold" Margin="0,10,0,0"/>
-                    <ComboBox ItemsSource="{Binding AvailableMethods}" SelectedItem="{Binding SelectedMethod}" HorizontalAlignment="Stretch" />
-
-                    <Button Content="Розв'язати" Command="{Binding SolveCommand}" HorizontalAlignment="Stretch" HorizontalContentAlignment="Center" Background="#007acc" Foreground="White" FontWeight="Bold" Margin="0,15,0,0"/>
-                    <Button Content="Скасувати" Command="{Binding CancelCommand}" HorizontalAlignment="Stretch" HorizontalContentAlignment="Center" IsEnabled="{Binding IsBusy}"/>
-                    <Button Content="Зберегти результати" Command="{Binding SaveCommand}" HorizontalAlignment="Stretch" HorizontalContentAlignment="Center"/>
-                    
-                    <TextBlock Text="{Binding ErrorMessage}" Foreground="Red" TextWrapping="Wrap" IsVisible="{Binding IsErrorVisible}" FontWeight="SemiBold" Margin="0,10,0,0"/>
-                    <TextBlock Text="{Binding WarningMessage}" Foreground="Orange" TextWrapping="Wrap" IsVisible="{Binding IsWarningVisible}" FontWeight="SemiBold" Margin="0,10,0,0"/>
+            <!-- Bottom: Results -->
+            <Grid Grid.Row="1" Margin="15,0,15,15" RowDefinitions="Auto, *">
+                <StackPanel Grid.Row="0" Margin="0,0,0,10" IsVisible="{Binding IsRootVisible}">
+                    <TextBlock Text="Знайдений корінь:" FontWeight="Bold" FontSize="16" Foreground="#007acc"/>
+                    <Border Background="Black" CornerRadius="4" Padding="10" Margin="0,5,0,0">
+                        <TextBlock Text="{Binding RootCoordinates}" FontSize="15" FontWeight="Medium" Foreground="White"/>
+                    </Border>
                 </StackPanel>
-            </ScrollViewer>
-        </Border>
 
-        <!-- Right Panel Top: Graph -->
-        <Border Grid.Column="1" Grid.Row="0" Margin="10" BorderBrush="#d0d0d0" BorderThickness="1" CornerRadius="5">
-            <oxy:PlotView Model="{Binding PlotModel}" />
-        </Border>
-
-        <!-- Right Panel Bottom: Results -->
-        <Grid Grid.Column="1" Grid.Row="1" Margin="10,0,10,10" RowDefinitions="Auto, Auto, *">
-            <ProgressBar Grid.Row="0" IsIndeterminate="True" IsVisible="{Binding IsBusy}" Margin="0,0,0,10"/>
-            
-            <StackPanel Grid.Row="1" Margin="0,0,0,10" IsVisible="{Binding IsRootVisible}">
-                <TextBlock Text="Знайдений корінь:" FontWeight="Bold" FontSize="14" Foreground="#007acc"/>
-                <TextBlock Text="{Binding RootCoordinates}" FontSize="14" FontWeight="SemiBold"/>
-            </StackPanel>
-            
-            <dg:DataGrid Grid.Row="2" ItemsSource="{Binding Iterations}" AutoGenerateColumns="False" IsReadOnly="True" MinHeight="100">
-                <dg:DataGrid.Columns>
-                    <dg:DataGridTextColumn Header="№" Binding="{Binding IterationNumber}" />
-                    <dg:DataGridTextColumn Header="Xn" Binding="{Binding Xn}" />
-                    <dg:DataGridTextColumn Header="f(Xn)" Binding="{Binding FXn}" />
-                    <dg:DataGridTextColumn Header="Похибка" Binding="{Binding Error}" />
-                </dg:DataGrid.Columns>
-            </dg:DataGrid>
+                <Border Grid.Row="1" BorderBrush="Black" BorderThickness="1" CornerRadius="4">
+                    <dg:DataGrid ItemsSource="{Binding Iterations}" AutoGenerateColumns="False" IsReadOnly="True"
+                                 CanUserSortColumns="True" GridLinesVisibility="All" 
+                                 HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto">
+                        <dg:DataGrid.Columns>
+                            <dg:DataGridTextColumn Header="№" Binding="{Binding IterationNumber}" Width="50" />
+                            <dg:DataGridTextColumn Header="Xn" Binding="{Binding Xn}" Width="*" />
+                            <dg:DataGridTextColumn Header="f(Xn)" Binding="{Binding FXn}" Width="*" />
+                            <dg:DataGridTextColumn Header="Похибка" Binding="{Binding Error}" Width="*" />
+                        </dg:DataGrid.Columns>
+                    </dg:DataGrid>
+                </Border>
+            </Grid>
         </Grid>
     </Grid>
 </Window>
