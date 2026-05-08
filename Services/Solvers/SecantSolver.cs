@@ -22,61 +22,79 @@ namespace EquationSolver.Services.Solvers
         {
             return await Task.Run(() =>
             {
-                var stopwatch = Stopwatch.StartNew();
-                var iterations = new List<IterationData>();
-
-                double x0 = Validator.ParseDouble(equation.A, out _); // First guess
-                double x1 = Validator.ParseDouble(equation.B, out _); // Second guess
-                double epsilon = Validator.ParseDouble(equation.Epsilon, out _);
-                int maxIterations = Validator.ParseInt(equation.MaxIterations, out _);
-                
-                // For secant method, we could use A and B as initial guesses,
-                // or use InitialGuess and another point. Let's use A and B.
-
-                int iterationCount = 0;
-                double error = double.MaxValue;
-
-                double fx0 = _parser.Evaluate(equation.Expression, x0);
-                double fx1 = _parser.Evaluate(equation.Expression, x1);
-
-                while (error > epsilon && iterationCount < maxIterations)
+                try
                 {
-                    cancellationToken.ThrowIfCancellationRequested();
-                    iterationCount++;
+                    var stopwatch = Stopwatch.StartNew();
+                    var iterations = new List<IterationData>();
 
-                    double denominator = fx1 - fx0;
-                    if (Math.Abs(denominator) < 1e-12)
+                    double x0 = Validator.ParseDouble(equation.A, out _); // First guess
+                    double x1 = Validator.ParseDouble(equation.B, out _); // Second guess
+                    double epsilon = Validator.ParseDouble(equation.Epsilon, out _);
+                    int maxIterations = Validator.ParseInt(equation.MaxIterations, out _);
+                    
+                    int iterationCount = 0;
+                    double error = double.MaxValue;
+
+                    double fx0 = _parser.Evaluate(equation.Expression, x0);
+                    double fx1 = _parser.Evaluate(equation.Expression, x1);
+
+                    while (error > epsilon && iterationCount < maxIterations)
                     {
-                        return ResultModel.Error($"Ділення на нуль на ітерації {iterationCount}. Метод розбігається.");
+                        cancellationToken.ThrowIfCancellationRequested();
+                        iterationCount++;
+
+                        double denominator = fx1 - fx0;
+                        if (Math.Abs(denominator) < 1e-15)
+                        {
+                            return ResultModel.Error($"Метод Січних: Ділення на нуль (f(x1) ≈ f(x0)) на ітерації {iterationCount}. Метод розбігається.");
+                        }
+
+                        double x2 = x1 - fx1 * (x1 - x0) / denominator;
+                        
+                        if (!double.IsFinite(x2))
+                        {
+                            return ResultModel.Error($"Метод Січних: Отримано нескінченне значення або NaN на ітерації {iterationCount}.");
+                        }
+
+                        error = Math.Abs(x2 - x1);
+
+                        double fx2 = _parser.Evaluate(equation.Expression, x2);
+
+                        iterations.Add(new IterationData
+                        {
+                            IterationNumber = iterationCount,
+                            Xn = x2,
+                            FXn = fx2,
+                            Error = error
+                        });
+
+                        x0 = x1;
+                        fx0 = fx1;
+                        x1 = x2;
+                        fx1 = fx2;
+
+                        // Check for divergence
+                        if (error > 1e20)
+                        {
+                            return ResultModel.Error($"Метод Січних: Метод розбігається (помилка занадто велика).");
+                        }
                     }
 
-                    double x2 = x1 - fx1 * (x1 - x0) / denominator;
-                    error = Math.Abs(x2 - x1);
+                    stopwatch.Stop();
 
-                    double fx2 = _parser.Evaluate(equation.Expression, x2);
-
-                    iterations.Add(new IterationData
+                    if (iterationCount >= maxIterations)
                     {
-                        IterationNumber = iterationCount,
-                        Xn = x2,
-                        FXn = fx2,
-                        Error = error
-                    });
+                        return ResultModel.Error("Метод Січних: Перевищено максимальну кількість ітерацій. Метод не збігається.");
+                    }
 
-                    x0 = x1;
-                    fx0 = fx1;
-                    x1 = x2;
-                    fx1 = fx2;
+                    return ResultModel.Success(x1, iterations, stopwatch.ElapsedMilliseconds, iterationCount);
                 }
-
-                stopwatch.Stop();
-
-                if (iterationCount >= maxIterations)
+                catch (OperationCanceledException) { throw; }
+                catch (Exception ex)
                 {
-                    return ResultModel.Error("Перевищено максимальну кількість ітерацій.");
+                    Console.WriteLine($"Secant Error: {ex}");
+                    return ResultModel.Error($"Помилка під час обчислення: {ex.Message}");
                 }
-
-                return ResultModel.Success(x1, iterations, stopwatch.ElapsedMilliseconds, iterationCount);
             }, cancellationToken);
         }
     }

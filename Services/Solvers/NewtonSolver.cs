@@ -24,55 +24,78 @@ namespace EquationSolver.Services.Solvers
         {
             return await Task.Run(() =>
             {
-                var stopwatch = Stopwatch.StartNew();
-                var iterations = new List<IterationData>();
-
-                double x0 = Validator.ParseDouble(equation.InitialGuess, out _);
-                double epsilon = Validator.ParseDouble(equation.Epsilon, out _);
-                int maxIterations = Validator.ParseInt(equation.MaxIterations, out _);
-
-                int iterationCount = 0;
-                double error = double.MaxValue;
-
-                while (error > epsilon && iterationCount < maxIterations)
+                try
                 {
-                    cancellationToken.ThrowIfCancellationRequested();
-                    iterationCount++;
+                    var stopwatch = Stopwatch.StartNew();
+                    var iterations = new List<IterationData>();
 
-                    double fx0 = _parser.Evaluate(equation.Expression, x0);
-                    
-                    // Numerical derivative: f'(x) ≈ (f(x + dx) - f(x - dx)) / (2 * dx)
-                    double fx0PlusDx = _parser.Evaluate(equation.Expression, x0 + Dx);
-                    double fx0MinusDx = _parser.Evaluate(equation.Expression, x0 - Dx);
-                    double derivative = (fx0PlusDx - fx0MinusDx) / (2 * Dx);
+                    double x0 = Validator.ParseDouble(equation.InitialGuess, out _);
+                    double epsilon = Validator.ParseDouble(equation.Epsilon, out _);
+                    int maxIterations = Validator.ParseInt(equation.MaxIterations, out _);
 
-                    if (Math.Abs(derivative) < 1e-12)
+                    int iterationCount = 0;
+                    double error = double.MaxValue;
+
+                    while (error > epsilon && iterationCount < maxIterations)
                     {
-                        return ResultModel.Error($"Похідна наближається до нуля на ітерації {iterationCount}. Метод розбігається.");
+                        cancellationToken.ThrowIfCancellationRequested();
+                        iterationCount++;
+
+                        double fx0 = _parser.Evaluate(equation.Expression, x0);
+                        
+                        // Numerical derivative: f'(x) ≈ (f(x + dx) - f(x - dx)) / (2 * dx)
+                        double fx0PlusDx = _parser.Evaluate(equation.Expression, x0 + Dx);
+                        double fx0MinusDx = _parser.Evaluate(equation.Expression, x0 - Dx);
+                        double derivative = (fx0PlusDx - fx0MinusDx) / (2 * Dx);
+
+                        if (Math.Abs(derivative) < 1e-12)
+                        {
+                            return ResultModel.Error($"Метод Ньютона: Похідна наближається до нуля на ітерації {iterationCount}. Метод розбігається.");
+                        }
+
+                        double x1 = x0 - fx0 / derivative;
+                        
+                        if (!double.IsFinite(x1))
+                        {
+                            return ResultModel.Error($"Метод Ньютона: Отримано нескінченне значення або NaN на ітерації {iterationCount}.");
+                        }
+
+                        error = Math.Abs(x1 - x0);
+
+                        double fx1 = _parser.Evaluate(equation.Expression, x1);
+
+                        iterations.Add(new IterationData
+                        {
+                            IterationNumber = iterationCount,
+                            Xn = x1,
+                            FXn = fx1,
+                            Error = error
+                        });
+
+                        x0 = x1;
+
+                        // Check for divergence
+                        if (error > 1e20)
+                        {
+                             return ResultModel.Error($"Метод Ньютона: Метод розбігається (помилка занадто велика).");
+                        }
                     }
 
-                    double x1 = x0 - fx0 / derivative;
-                    error = Math.Abs(x1 - x0);
+                    stopwatch.Stop();
 
-                    iterations.Add(new IterationData
+                    if (iterationCount >= maxIterations)
                     {
-                        IterationNumber = iterationCount,
-                        Xn = x1,
-                        FXn = _parser.Evaluate(equation.Expression, x1),
-                        Error = error
-                    });
+                        return ResultModel.Error("Метод Ньютона: Перевищено максимальну кількість ітерацій. Метод не збігається.");
+                    }
 
-                    x0 = x1;
+                    return ResultModel.Success(x0, iterations, stopwatch.ElapsedMilliseconds, iterationCount);
                 }
-
-                stopwatch.Stop();
-
-                if (iterationCount >= maxIterations)
+                catch (OperationCanceledException) { throw; }
+                catch (Exception ex)
                 {
-                    return ResultModel.Error("Перевищено максимальну кількість ітерацій. Метод міг розбігтися.");
+                    Console.WriteLine($"Newton Error: {ex}");
+                    return ResultModel.Error($"Помилка під час обчислення: {ex.Message}");
                 }
-
-                return ResultModel.Success(x0, iterations, stopwatch.ElapsedMilliseconds, iterationCount);
             }, cancellationToken);
         }
     }

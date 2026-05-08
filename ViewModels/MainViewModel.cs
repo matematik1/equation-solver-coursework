@@ -1,5 +1,6 @@
 using System;
 using System.Collections.ObjectModel;
+using System.Globalization;
 using System.Threading;
 using System.Threading.Tasks;
 using CommunityToolkit.Mvvm.ComponentModel;
@@ -91,14 +92,24 @@ namespace EquationSolver.ViewModels
 
         private string FormatValue(double value, string epsilonStr)
         {
-            int decimals = 5; // default
-            double eps = Validator.ParseDouble(epsilonStr, out bool epsSuccess);
-            if (epsSuccess && eps > 0 && eps < 1)
+            try
             {
-                decimals = (int)Math.Ceiling(Math.Abs(Math.Log10(eps)));
-                if (decimals > 15) decimals = 15;
+                if (!double.IsFinite(value)) return value.ToString();
+
+                int decimals = 5; // default
+                double eps = Validator.ParseDouble(epsilonStr, out bool epsSuccess);
+                if (epsSuccess && eps > 0 && eps <= 1)
+                {
+                    decimals = (int)Math.Ceiling(Math.Abs(Math.Log10(eps)));
+                    if (decimals > 15) decimals = 15;
+                    if (decimals < 0) decimals = 0;
+                }
+                return value.ToString($"F{decimals}", CultureInfo.CurrentCulture);
             }
-            return value.ToString($"F{decimals}");
+            catch
+            {
+                return value.ToString("G10");
+            }
         }
 
         [RelayCommand]
@@ -106,20 +117,20 @@ namespace EquationSolver.ViewModels
         {
             ClearErrors();
             
-            var validationError = Validator.ValidateEquationModel(Equation, SelectedMethod, _parser);
-            if (validationError != null)
-            {
-                ShowError(validationError);
-                IsRootVisible = false;
-                return;
-            }
-
-            IsBusy = true;
-            Iterations.Clear();
-            _cancellationTokenSource = new CancellationTokenSource();
-
             try
             {
+                var validationError = Validator.ValidateEquationModel(Equation, SelectedMethod, _parser);
+                if (validationError != null)
+                {
+                    ShowError(validationError);
+                    IsRootVisible = false;
+                    return;
+                }
+
+                IsBusy = true;
+                Iterations.Clear();
+                _cancellationTokenSource = new CancellationTokenSource();
+
                 var solver = _solverFactory.CreateSolver(SelectedMethod);
                 CurrentResult = await solver.SolveAsync(Equation, _cancellationTokenSource.Token);
 
@@ -135,7 +146,10 @@ namespace EquationSolver.ViewModels
                     
                     IsRootVisible = true;
                     string formattedX = FormatValue(CurrentResult.Root!.Value, Equation.Epsilon);
-                    double rootY = _parser.Evaluate(Equation.Expression, CurrentResult.Root.Value);
+                    
+                    double rootY = 0;
+                    try { rootY = _parser.Evaluate(Equation.Expression, CurrentResult.Root.Value); } catch { }
+                    
                     string formattedY = FormatValue(rootY, Equation.Epsilon);
                     RootCoordinates = $"X = {formattedX}\nf(X) = {formattedY}";
 
@@ -154,20 +168,28 @@ namespace EquationSolver.ViewModels
             }
             catch (Exception ex)
             {
+                Console.WriteLine($"Solve Error: {ex}");
                 ShowError($"Критична помилка: {ex.Message}");
             }
             finally
             {
                 IsBusy = false;
-                _cancellationTokenSource.Dispose();
-                _cancellationTokenSource = null;
+                if (_cancellationTokenSource != null)
+                {
+                    _cancellationTokenSource.Dispose();
+                    _cancellationTokenSource = null;
+                }
             }
         }
 
         [RelayCommand]
         private void Cancel()
         {
-            _cancellationTokenSource?.Cancel();
+            try
+            {
+                _cancellationTokenSource?.Cancel();
+            }
+            catch (ObjectDisposedException) { }
         }
 
         [RelayCommand]
@@ -175,17 +197,25 @@ namespace EquationSolver.ViewModels
         {
             if (CurrentResult == null || !CurrentResult.IsSuccess)
             {
-                ShowError("Немає успішних результатів одного методу для збереження.");
+                ShowError("Немає успішних результатів для збереження.");
                 return;
             }
 
-            if (RequestSaveFilePathAsync != null)
+            try
             {
-                var filePath = await RequestSaveFilePathAsync();
-                if (!string.IsNullOrEmpty(filePath))
+                if (RequestSaveFilePathAsync != null)
                 {
-                    await _fileService.SaveResultsAsync(filePath, CurrentResult, Equation.Expression, SelectedMethod);
+                    var filePath = await RequestSaveFilePathAsync();
+                    if (!string.IsNullOrEmpty(filePath))
+                    {
+                        await _fileService.SaveResultsAsync(filePath, CurrentResult, Equation.Expression, SelectedMethod);
+                    }
                 }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Save Error: {ex}");
+                ShowError($"Помилка при збереженні файлу: {ex.Message}");
             }
         }
 
@@ -203,78 +233,103 @@ namespace EquationSolver.ViewModels
 
         private void UpdatePlot(string expression, double a, double b, double? root)
         {
-            PlotModel.Series.Clear();
-            PlotModel.Annotations.Clear();
-            PlotModel.Title = $"Графік f(x) = {expression}";
-
-            var lineSeries = new LineSeries
+            try
             {
-                Title = "f(x)",
-                Color = OxyColors.Blue,
-                StrokeThickness = 2
-            };
+                PlotModel.Series.Clear();
+                PlotModel.Annotations.Clear();
+                PlotModel.Title = $"Графік f(x) = {expression}";
 
-            // Expand interval slightly for better visual
-            double minX = Math.Min(a, b) - Math.Abs(b - a) * 0.2;
-            double maxX = Math.Max(a, b) + Math.Abs(b - a) * 0.2;
-            
-            // If the user interval is too small or inverted
-            if (minX >= maxX)
-            {
-                minX = -10; maxX = 10;
-            }
-
-            int pointsCount = 500;
-            double step = (maxX - minX) / pointsCount;
-
-            for (double x = minX; x <= maxX; x += step)
-            {
-                try
+                var lineSeries = new LineSeries
                 {
-                    double y = _parser.Evaluate(expression, x);
-                    if (double.IsFinite(y))
+                    Title = "f(x)",
+                    Color = OxyColors.Blue,
+                    StrokeThickness = 2
+                };
+
+                // Expand interval slightly for better visual
+                double minX = Math.Min(a, b);
+                double maxX = Math.Max(a, b);
+                double diff = Math.Abs(maxX - minX);
+                
+                if (diff < 1e-9)
+                {
+                    minX -= 5;
+                    maxX += 5;
+                }
+                else
+                {
+                    minX -= diff * 0.2;
+                    maxX += diff * 0.2;
+                }
+
+                int pointsCount = 500;
+                double step = (maxX - minX) / pointsCount;
+                bool hasPoints = false;
+
+                for (double x = minX; x <= maxX; x += step)
+                {
+                    try
                     {
-                        lineSeries.Points.Add(new DataPoint(x, y));
+                        double y = _parser.Evaluate(expression, x);
+                        if (double.IsFinite(y))
+                        {
+                            lineSeries.Points.Add(new DataPoint(x, y));
+                            hasPoints = true;
+                        }
+                    }
+                    catch
+                    {
+                        // Ignore math errors for specific points
                     }
                 }
-                catch
+
+                if (!hasPoints)
                 {
-                    // Ignore math errors for specific points (like division by zero)
+                    ShowError("Неможливо побудувати графік для заданої функції (всі значення NaN або нескінченні).");
                 }
-            }
 
-            PlotModel.Series.Add(lineSeries);
+                PlotModel.Series.Add(lineSeries);
 
-            // Add X-axis line (Y=0)
-            PlotModel.Annotations.Add(new LineAnnotation
-            {
-                Type = LineAnnotationType.Horizontal,
-                Y = 0,
-                Color = OxyColors.Black,
-                StrokeThickness = 1,
-                LineStyle = LineStyle.Solid
-            });
-
-            // Mark the root if found
-            if (root.HasValue)
-            {
-                double rootY = _parser.Evaluate(expression, root.Value);
-                if (double.IsFinite(rootY))
+                // Add X-axis line (Y=0)
+                PlotModel.Annotations.Add(new LineAnnotation
                 {
-                     var rootPoint = new ScatterSeries
-                     {
-                         MarkerType = MarkerType.Circle,
-                         MarkerSize = 6,
-                         MarkerFill = OxyColors.Red,
-                         Title = "Знайдений корінь"
-                     };
-                     rootPoint.Points.Add(new ScatterPoint(root.Value, rootY));
-                     PlotModel.Series.Add(rootPoint);
-                }
-            }
+                    Type = LineAnnotationType.Horizontal,
+                    Y = 0,
+                    Color = OxyColors.Black,
+                    StrokeThickness = 1,
+                    LineStyle = LineStyle.Solid
+                });
 
-            PlotModel.ResetAllAxes(); // IMPORTANT: resets scaling to fit the new data
-            PlotModel.InvalidatePlot(true);
+                // Mark the root if found
+                if (root.HasValue)
+                {
+                    try
+                    {
+                        double rootY = _parser.Evaluate(expression, root.Value);
+                        if (double.IsFinite(rootY))
+                        {
+                             var rootPoint = new ScatterSeries
+                             {
+                                 MarkerType = MarkerType.Circle,
+                                 MarkerSize = 6,
+                                 MarkerFill = OxyColors.Red,
+                                 Title = "Знайдений корінь"
+                             };
+                             rootPoint.Points.Add(new ScatterPoint(root.Value, rootY));
+                             PlotModel.Series.Add(rootPoint);
+                        }
+                    }
+                    catch { }
+                }
+
+                PlotModel.ResetAllAxes(); 
+                PlotModel.InvalidatePlot(true);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Plot Error: {ex}");
+                ShowError("Неможливо побудувати графік для заданої функції.");
+            }
         }
     }
 }
