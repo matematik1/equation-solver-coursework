@@ -25,7 +25,6 @@ namespace EquationSolver.Services
             }
             else
             {
-                // Save as TXT with professional formatting
                 var sb = new StringBuilder();
                 sb.AppendLine("============================================================");
                 sb.AppendLine("         ЗВІТ ПРО РОЗВ'ЯЗАННЯ НЕЛІНІЙНОГО РІВНЯННЯ         ");
@@ -40,7 +39,6 @@ namespace EquationSolver.Services
                 {
                     sb.AppendLine($"Знайдений корінь X: {result.Root:F15}");
                     
-                    // Evaluate f(root) for the report
                     double fRoot = 0;
                     try 
                     { 
