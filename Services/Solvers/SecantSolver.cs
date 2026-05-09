@@ -94,7 +94,6 @@ namespace EquationSolver.Services.Solvers
                         return ResultModel.Error("Метод Січних: Перевищено максимальну кількість ітерацій. Метод не збігається.");
                     }
 
-                    // Strict Post-Solver Validation
                     if (!double.IsFinite(x1))
                     {
                         return ResultModel.Error("Метод Січних: Отримано нескінченне значення.");
