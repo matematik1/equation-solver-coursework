@@ -4,7 +4,6 @@ namespace EquationSolver.Models
     {
         public string Expression { get; set; } = string.Empty;
         
-        // Interval endpoints
         public string A { get; set; } = "1";
         public string B { get; set; } = "2";
         
