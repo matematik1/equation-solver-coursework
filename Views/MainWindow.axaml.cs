@@ -39,7 +39,6 @@ namespace EquationSolver.Views
                 string currentText = textBox.Text ?? string.Empty;
                 textBox.Text = currentText.Insert(caretIndex, text);
                 
-                // If it's a function with brackets, place cursor inside
                 if (text.EndsWith("()"))
                 {
                     textBox.CaretIndex = caretIndex + text.Length - 1;
