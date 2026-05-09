@@ -28,8 +28,8 @@ namespace EquationSolver.Services.Solvers
                     var stopwatch = Stopwatch.StartNew();
                     var iterations = new List<IterationData>();
 
-                    double x0 = Validator.ParseDouble(equation.A, out _); // First guess
-                    double x1 = Validator.ParseDouble(equation.B, out _); // Second guess
+                    double x0 = Validator.ParseDouble(equation.A, out _); 
+                    double x1 = Validator.ParseDouble(equation.B, out _); 
                     double epsilon = Validator.ParseDouble(equation.Epsilon, out _);
                     int maxIterations = Validator.ParseInt(equation.MaxIterations, out _);
                     
@@ -79,7 +79,6 @@ namespace EquationSolver.Services.Solvers
                         x1 = x2;
                         fx1 = fx2;
 
-                        // Check for divergence
                         if (error > 1e20)
                         {
                             Console.WriteLine($"[SecantSolver] Massive divergence detected");

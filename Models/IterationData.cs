@@ -1,8 +1,5 @@
 namespace EquationSolver.Models
 {
-    /// <summary>
-    /// Represents a single iteration step during the solving process.
-    /// </summary>
     public class IterationData
     {
         public int IterationNumber { get; set; }

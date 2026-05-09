@@ -2,9 +2,6 @@ using System.Collections.Generic;
 
 namespace EquationSolver.Models
 {
-    /// <summary>
-    /// Encapsulates the results of the equation solving process.
-    /// </summary>
     public class ResultModel
     {
         public double? Root { get; set; }

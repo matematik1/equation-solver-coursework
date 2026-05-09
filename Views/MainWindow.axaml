@@ -48,7 +48,6 @@
     </Window.Styles>
 
     <Grid ColumnDefinitions="350, *" RowDefinitions="*, Auto">
-        <!-- Left Panel: Inputs -->
         <Border Grid.Column="0" Grid.Row="0" Background="#1E1E1E" BorderBrush="#333333" BorderThickness="0,0,1,0">
             <Grid RowDefinitions="*, Auto">
                 <ScrollViewer Grid.Row="0" VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Disabled">
@@ -117,7 +116,6 @@
                 </Border>
                 </ScrollViewer>
 
-                <!-- Calculation Status Overlay/Bar -->
                 <Border Grid.Row="1" IsVisible="{Binding IsBusy}" Background="#007acc" Padding="10">
                     <StackPanel Orientation="Horizontal" Spacing="10" HorizontalAlignment="Center">
                         <ProgressBar IsIndeterminate="True" Width="100" Height="4" Foreground="White" VerticalAlignment="Center"/>
@@ -127,14 +125,11 @@
             </Grid>
         </Border>
 
-        <!-- Right Panel: Graph and Results -->
         <Grid Grid.Column="1" Grid.Row="0" RowDefinitions="3*, 2*">
-            <!-- Top: Graph -->
             <Border Grid.Row="0" Margin="15" Background="White" BorderBrush="#DDDDDD" BorderThickness="1" CornerRadius="8" ClipToBounds="True" BoxShadow="0 2 5 0 #20000000">
                 <oxy:PlotView Model="{Binding PlotModel}" MinHeight="250"/>
             </Border>
 
-            <!-- Bottom: Results -->
             <Grid Grid.Row="1" Margin="15,0,15,15" RowDefinitions="Auto, *">
                 <StackPanel Grid.Row="0" Margin="0,0,0,10" IsVisible="{Binding IsRootVisible}">
                     <TextBlock Text="Знайдений корінь:" FontWeight="Bold" FontSize="16" Foreground="#007acc"/>

@@ -65,7 +65,6 @@ namespace EquationSolver.ViewModels
 
         public bool IsNewtonMethod => SelectedMethod == "Ньютон";
 
-        // An action to request a file save path from the View (handled in code-behind)
         public Func<Task<string?>>? RequestSaveFilePathAsync { get; set; }
 
         public MainViewModel(SolverFactory solverFactory, IFunctionParser parser, IFileService fileService)
@@ -78,7 +77,6 @@ namespace EquationSolver.ViewModels
 
         public MainViewModel()
         {
-            // Designer parameterless constructor
             _parser = new FunctionParser();
             _solverFactory = new SolverFactory(_parser);
             _fileService = new FileService();
@@ -271,7 +269,6 @@ namespace EquationSolver.ViewModels
                     StrokeThickness = 2
                 };
 
-                // Expand interval slightly for better visual
                 double minX = Math.Min(a, b);
                 double maxX = Math.Max(a, b);
                 double diff = Math.Abs(maxX - minX);
@@ -307,7 +304,6 @@ namespace EquationSolver.ViewModels
                             else
                             {
                                 hasExtremeValues = true;
-                                // Add a break in the line if Y is too extreme
                                 lineSeries.Points.Add(DataPoint.Undefined);
                             }
                         }
@@ -335,7 +331,6 @@ namespace EquationSolver.ViewModels
 
                 PlotModel.Series.Add(lineSeries);
 
-                // Add X-axis line (Y=0)
                 PlotModel.Annotations.Add(new LineAnnotation
                 {
                     Type = LineAnnotationType.Horizontal,
@@ -345,7 +340,6 @@ namespace EquationSolver.ViewModels
                     LineStyle = LineStyle.Solid
                 });
 
-                // Mark the root if found
                 if (root.HasValue)
                 {
                     try

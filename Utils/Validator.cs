@@ -41,7 +41,7 @@ namespace EquationSolver.Utils
         {
             if (string.IsNullOrWhiteSpace(input)) return false;
             string s = input.Replace(',', '.').Trim();
-            if (s.Contains('e', StringComparison.OrdinalIgnoreCase)) return false; // Allow scientific notation as is
+            if (s.Contains('e', StringComparison.OrdinalIgnoreCase)) return false; 
             int dotIndex = s.IndexOf('.');
             if (dotIndex == -1) return false;
             return (s.Length - dotIndex - 1) > MaxDecimalPlaces;
@@ -52,7 +52,6 @@ namespace EquationSolver.Utils
             if (string.IsNullOrWhiteSpace(expression))
                 return "Введіть функцію.";
 
-            // Заборона подвійних операторів
             string[] forbidden = { "++", "--", "**", "//", "^^", "+*", "+/", "-*", "-/", "*+", "/+", "*^", "/^", "^*", "^/" };
             foreach (var op in forbidden)
             {
@@ -60,7 +59,6 @@ namespace EquationSolver.Utils
                     return $"Некоректний синтаксис: подвійний оператор '{op}'.";
             }
 
-            // Перевірка дужок
             int brackets = 0;
             foreach (char c in expression)
             {
@@ -105,7 +103,7 @@ namespace EquationSolver.Utils
             }
 
             double range = Math.Abs(b - a);
-            double buffer = range * 2.0; // Allow 2x range buffer instead of 0.5 for better convergence paths
+            double buffer = range * 2.0;
             if (x < a - buffer || x > b + buffer)
             {
                 errorMessage = "Метод розбігається та виходить далеко за межі допустимого інтервалу.";
@@ -141,7 +139,7 @@ namespace EquationSolver.Utils
                         warnings.Add("Початкове наближення знаходиться близько до точки, де похідна близька до нуля. Метод Ньютона може розбігатися.");
                     }
                 }
-                catch { /* Ignore parser errors during warning check */ }
+                catch { }
             }
 
             if (methodName == "Січні")
@@ -168,19 +166,16 @@ namespace EquationSolver.Utils
             var exprError = ValidateExpression(model.Expression, parser);
             if (exprError != null) return exprError;
 
-            // Перевірка кількості знаків після коми
             if (HasTooManyDecimalPlaces(model.A) || HasTooManyDecimalPlaces(model.B) || 
                 HasTooManyDecimalPlaces(model.InitialGuess) || HasTooManyDecimalPlaces(model.Epsilon))
                 return "Допустимо не більше 15 знаків після коми.";
 
-            // Валідація Epsilon
             double epsilon = ParseDouble(model.Epsilon, out bool epsilonSuccess);
             if (!epsilonSuccess)
                 return "Точність (Epsilon) повинна бути коректним числом.";
             if (epsilon < MinAbsoluteValue || epsilon > 1)
                 return $"Точність (Epsilon) повинна бути в діапазоні від {MinAbsoluteValue:G} до 1.";
 
-            // Валідація MaxIterations
             string? iterInput = model.MaxIterations?.Trim();
             if (string.IsNullOrWhiteSpace(iterInput))
                 return "Введіть кількість ітерацій.";
@@ -205,13 +200,11 @@ namespace EquationSolver.Utils
                 if (!double.IsFinite(a) || !double.IsFinite(b))
                     return "Межі інтервалу повинні бути скінченними числами.";
 
-                // Перевірка на занадто малі значення (крім 0)
                 var aStability = ValidateNumberStability(a, "a");
                 if (aStability != null) return aStability;
                 var bStability = ValidateNumberStability(b, "b");
                 if (bStability != null) return bStability;
 
-                // Hard Limits
                 if (Math.Abs(a) > MaxBoundary || Math.Abs(b) > MaxBoundary)
                     return $"Значення інтервалу виходять за допустимі межі (±{MaxBoundary:N0}).";
 
@@ -222,7 +215,6 @@ namespace EquationSolver.Utils
                 if (diff < MinAbsoluteValue)
                     return "Межі інтервалу 'a' та 'b' занадто близькі.";
 
-                // Dynamic/Smart Validation for Graph readability
                 if (diff > MaxIntervalWidth)
                     return $"Різниця між a та b не повинна перевищувати {MaxIntervalWidth:N0}. Поточна різниця: {diff:N0}.";
 
@@ -262,7 +254,7 @@ namespace EquationSolver.Utils
                     return $"Початкове наближення виходить за допустимі межі (±{MaxBoundary:N0}).";
             }
 
-            return null; // All good
+            return null;
         }
     }
 }

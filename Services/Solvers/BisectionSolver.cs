@@ -66,7 +66,7 @@ namespace EquationSolver.Services.Solvers
                             Error = (b - a) / 2.0
                         });
 
-                        if (Math.Abs(fc) < 1e-15) // exact root found
+                        if (Math.Abs(fc) < 1e-15)
                             break;
 
                         if (Math.Sign(fc) == Math.Sign(fa))

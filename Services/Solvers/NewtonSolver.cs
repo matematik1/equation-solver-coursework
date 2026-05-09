@@ -12,7 +12,6 @@ namespace EquationSolver.Services.Solvers
     public class NewtonSolver : IEquationSolver
     {
         private readonly IFunctionParser _parser;
-        // Small dx for numerical differentiation
         private const double Dx = 1e-7;
 
         public NewtonSolver(IFunctionParser parser)
@@ -47,7 +46,6 @@ namespace EquationSolver.Services.Solvers
 
                         double fx0 = _parser.Evaluate(equation.Expression, x0);
                         
-                        // Numerical derivative: f'(x) ≈ (f(x + dx) - f(x - dx)) / (2 * dx)
                         double fx0PlusDx = _parser.Evaluate(equation.Expression, x0 + Dx);
                         double fx0MinusDx = _parser.Evaluate(equation.Expression, x0 - Dx);
                         double derivative = (fx0PlusDx - fx0MinusDx) / (2 * Dx);
@@ -95,7 +93,6 @@ namespace EquationSolver.Services.Solvers
                         return ResultModel.Error("Метод Ньютона: Перевищено максимальну кількість ітерацій. Метод не збігається.");
                     }
 
-                    // Strict Post-Solver Validation
                     if (!double.IsFinite(x0))
                     {
                         return ResultModel.Error("Метод Ньютона: Отримано нескінченне значення.");
@@ -104,7 +101,7 @@ namespace EquationSolver.Services.Solvers
                     try
                     {
                         double fFinal = _parser.Evaluate(equation.Expression, x0);
-                        if (Math.Abs(fFinal) > epsilon * 1000) // allowing some margin for numerical stability
+                        if (Math.Abs(fFinal) > epsilon * 1000) 
                         {
                             return ResultModel.Error($"Метод Ньютона: Отриманий результат не є коренем. f(x) = {fFinal:E4}");
                         }
