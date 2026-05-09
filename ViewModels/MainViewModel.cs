@@ -101,7 +101,7 @@ namespace EquationSolver.ViewModels
             {
                 if (!double.IsFinite(value)) return value.ToString();
 
-                int decimals = 5; // default
+                int decimals = 5; 
                 double eps = Validator.ParseDouble(epsilonStr, out bool epsSuccess);
                 if (epsSuccess && eps > 0 && eps <= 1)
                 {
@@ -134,7 +134,6 @@ namespace EquationSolver.ViewModels
                     return;
                 }
 
-                // Check for non-blocking warnings
                 var warnings = Validator.CheckWarnings(Equation, SelectedMethod, _parser);
                 if (warnings.Any())
                 {
